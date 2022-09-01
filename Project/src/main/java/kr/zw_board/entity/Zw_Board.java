@@ -10,7 +10,16 @@ public class Zw_Board {
 	private int zw_cnt;
 	private int zw_likes;
 	private int zw_cmtcnt;
+	private int notice;
 	
+	
+	
+	public int getNotice() {
+		return notice;
+	}
+	public void setNotice(int notice) {
+		this.notice = notice;
+	}
 	public int getZw_seq() {
 		return zw_seq;
 	}

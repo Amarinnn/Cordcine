@@ -2,6 +2,7 @@ package kr.zw_board.controller;
 
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -51,8 +52,12 @@ public class PageListController implements Controller {
 		board.setCurrentPage(Integer.parseInt(p));
 		List<Zw_Board> list=dao.someList(board);
 		
+		List<Zw_Board> notice_list =dao.noticeList();
+		
+		
 		request.setAttribute("list", list);
 		request.setAttribute("board", board);
+		request.setAttribute("notice", notice_list);
 		
 //		String nextPage = "boardList";
 		return "board/boardList2";

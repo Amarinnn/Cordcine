@@ -298,7 +298,7 @@ $(document).ready(function(){
 			    				<button class="btn btn-sm btn-warning" onclick="goNotice(${vo.zw_seq})">공지</button>
 			    			</c:when>
 			    			<c:otherwise>
-			    				<button class="btn btn-sm btn-warning" onclick="delNotice(${vo.zw_seq})">공지</button>
+			    				<button class="btn btn-sm btn-warning" onclick="delNotice(${vo.zw_seq})">공지 제거</button>
 			    			</c:otherwise>
 	    				</c:choose>
 	    				<button class="btn btn-sm btn-warning" onclick="goUpdate(${vo.zw_seq})">수정</button>

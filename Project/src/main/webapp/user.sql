@@ -1,15 +1,4 @@
-create table userT(
-user_num number,
-email varchar(50),
-username varchar(20),
-address varchar(100),
-birth date,
-address_detail varchar(100),
-zipcode number,
-grade varchar(20),
-pw varchar(50),
-user_regdate date,
-user_id varchar(20),
+select * from t_login where login_id=(select login_id from t_user where login_id='admin' and u_pw='admin')
 
 primary key (user_num)
 
@@ -17,6 +6,19 @@ primary key (user_num)
 
 create sequence user_num_seq
 select * from T_USER;
+select * from t_login
+
+select * from t_zw_board
+
+
+delete from t_user where login_id='login_id 04'
+
+SELECT
+ login_id,
+ COUNT(login_id)
+FROM t_login
+GROUP BY login_id
+HAVING COUNT(login_id) > 1;
 
 select * from userT where user_id='pipi1055' and pw='pipipipi';
 
