@@ -174,7 +174,14 @@
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                 <a href="${cpath}/mypage.do?" class="dropdown-item">My account</a>
+                 <c:choose>
+              	<c:when test="${mvo.u_grade == 'admin' }">
+              	<a href="${cpath }/memberlist.do" class="dropdown-item">Admin Page</a>
+              	</c:when>
+              	<c:otherwise>
+              		<a href="${cpath}/mypageWrite.do" class="dropdown-item">My account</a>
+              	</c:otherwise>
+              </c:choose>
                   <div class="dropdown-divider"></div>
                   <a href="${cpath}/logout.do" class="dropdown-item">Logout</a>
               </div>

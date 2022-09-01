@@ -36,7 +36,7 @@ public class BoardViewController implements Controller {
 		m.put("id",login_id);
 		int result = dao.likeCheck(m);
 		String p = request.getParameter("p");
-		if (p==null || p=="0") {
+		if (p.equals("") || p.equals("0")) {
 			p = "1";
 		}
 		List<zw_comment> list = dao.allComment(num);

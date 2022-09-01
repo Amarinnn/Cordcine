@@ -69,7 +69,7 @@
       <div class="cover-wrap">
         <div class="container">
           <div class="cover">
-            제로웨이스ㅡ
+            제로웨이스트
           </div>
         </div>
       </div>
@@ -108,8 +108,8 @@
                     </tr>
                   </thead>
                   <tbody id="list">
-                  <c:forEach  var="vo" items="${notice }"> 
-    					<tr>
+                  <c:forEach  var="vo" items="${notice}"> 
+    					<tr class="bg-yellow-lt">
 			    			<td class ="text-center">공지</td>
 			    			<td><a href="${cpath }/boardView.do?num=${vo.zw_seq}&p=${board.currentPage}&login_id=${mvo.login_id}" class="text-reset">${vo.zw_title }<span class="text-orange">&nbsp;[${vo.zw_cmtcnt }]</span></a></td>
 			    			<td class="text-muted text-center"><img src="#" alt="icon">${vo.login_id }</td>
