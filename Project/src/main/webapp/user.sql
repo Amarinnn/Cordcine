@@ -246,3 +246,22 @@ select tb_cmt_seq as zw_cmt_seq, tb_seq as zw_seq, tb_cmt_content as zw_cmt_cont
 select img_cmt_seq as zw_cmt_seq, img_seq as zw_seq, img_cmt_content as zw_cmt_content, img_cmt_date as zw_cmt_date, login_id from t_img_comment where login_id=#{login_id} order by img_cmt_date DESC
 
 as zw_cmt_seq,  as zw_seq,  as zw_cmt_content,  as zw_cmt_date, login_id
+
+
+select count(notice) from t_zw_board where notice is not null
+
+
+select count(login_id) from (select * from (select * from(select * from t_login A join t_user B on A.login_id = B.login_id) order by joindate desc))
+
+
+select * from (select a.*, ROWNUM as rn from (select * from t_zw_board where notice is not null order by notice desc) a where ROWNUM <= 10 ) where rn >= 1
+
+select count(notice) from t_zw_board where notice is not null
+
+
+select * from (select a.*, ROWNUM as rn from (select zw_seq as seq, zw_title as title, zw_content as content, zw_file as files, zw_date as day, login_id, zw_cnt as cnt, zw_likes as likes, notice from t_zw_board where notice is not null order by notice desc) a where ROWNUM <= 10) where rn >= 0
+
+select zw_seq as seq, zw_title as title, zw_content as content, zw_file as files from t_zw_board
+
+
+

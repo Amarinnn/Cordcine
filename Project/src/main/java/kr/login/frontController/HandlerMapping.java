@@ -2,7 +2,8 @@ package kr.login.frontController;
 
 import java.util.HashMap;
 
-
+import kr.admin.controller.MemberListController;
+import kr.admin.controller.NoticeListController;
 import kr.join.controller.CalListController;
 import kr.join.controller.IdCheckController;
 import kr.join.controller.MemberDeleteController;
@@ -129,7 +130,12 @@ public class HandlerMapping {
 		
 		//공지사항
 		mappings.put("/boardNotice.do", new BoardNoticeController());
-		mappings.put("/delNotice.do", new BoardDeleteController());
+		mappings.put("/delNotice", new BoardDeleteController());
+		
+		
+		//관리자페이지
+		mappings.put("/memberlist.do", new MemberListController());
+		mappings.put("/adminNotice.do", new NoticeListController());
 		
 	}
 	public Controller getController(String command) {

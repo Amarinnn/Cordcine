@@ -18,5 +18,6 @@
   <mappers>
     <mapper resource="kr/login/dao/MemberMapper.xml"/>
 	<mapper resource="kr/login/dao/MapMapper.xml"/>
+	<mapper resource="kr/login/dao/AdminMapper.xml"/>
   </mappers>
 </configuration>

@@ -287,8 +287,6 @@ $(document).ready(function(){
     			
     		</Tr>
     		<tr>
-  				
-    			
     			<td colspan="4" align="right">
     			<c:choose>
 	    			<c:when test="${mvo.u_type eq 'admin' }">
@@ -305,7 +303,7 @@ $(document).ready(function(){
 	    				<button class="btn btn-sm btn-danger" onclick="goDel(${vo.zw_seq})">삭제</button>
 	    			</c:when>
 	    			
-	    			<c:when test="${vo.login_id  eq mb.login_id}">
+	    			<c:when test="${vo.login_id  eq mvo.login_id}">
 	    				<button class="btn btn-sm btn-warning" onclick="goUpdate(${vo.zw_seq})">수정</button>
 	    				<button class="btn btn-sm btn-danger" onclick="goDel(${vo.zw_seq})">삭제</button>
 	    			</c:when>
