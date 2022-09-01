@@ -90,7 +90,7 @@
       <div class="cover-wrap">
         <div class="container">
           <div class="cover">
-            지도
+            제로웨이스트
           </div>
         </div>
       </div>
@@ -102,7 +102,7 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                  Maps
+                  글작성
                 </h2>
               </div>
             </div>

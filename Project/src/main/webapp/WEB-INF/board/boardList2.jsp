@@ -100,24 +100,14 @@
                   <thead>
                     <tr>
                       <th>번호</th>
-                      <th class="w-50">제목</th>
-                      <th class="w-20">글쓴이</th>
-                      <th class="w-20">등록일</th>
+                      <th>제목</th>
+                      <th>글쓴이</th>
+                      <th>등록일</th>
                       <th>조회</th>
                       <th>추천</th>
                     </tr>
                   </thead>
                   <tbody id="list">
-                  <c:forEach  var="vo" items="${notice}"> 
-    					<tr class="bg-yellow-lt">
-			    			<td class ="text-center">공지</td>
-			    			<td><a href="${cpath }/boardView.do?num=${vo.zw_seq}&p=${board.currentPage}&login_id=${mvo.login_id}" class="text-reset">${vo.zw_title }<span class="text-orange">&nbsp;[${vo.zw_cmtcnt }]</span></a></td>
-			    			<td class="text-muted text-center"><img src="#" alt="icon">${vo.login_id }</td>
-			    			<td class="text-muted text-center">${vo.zw_date }</td>
-			    			<td class="text-muted  text-center">${vo.zw_cnt }</td>
-			    			<td class="text-muted text-center">${vo.zw_likes }</td>
-			    		</tr>
-    				</c:forEach>
                   	<c:forEach  var="vo" items="${list }"> 
     					<tr>
 			    			<td class ="text-center">${vo.zw_seq }</td>

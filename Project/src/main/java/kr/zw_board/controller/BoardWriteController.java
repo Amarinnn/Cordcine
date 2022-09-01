@@ -36,15 +36,13 @@ public class BoardWriteController implements Controller{
 				e.printStackTrace();
 			}
 		}
-		
-		
 		try{
 			multi=new MultipartRequest(request, savePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		String filename = multi.getFilesystemName("filename1");
+		String filename = multi.getFilesystemName("filename");
 		String title = multi.getParameter("title");
 		String writer = multi.getParameter("writer");
 		System.out.println(writer);

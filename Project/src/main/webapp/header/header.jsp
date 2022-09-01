@@ -209,6 +209,9 @@
                         <a class="dropdown-item" href="#">
                           비건
                         </a>
+                        <a class="dropdown-item" href="${cpath }/imgList.do">
+                          이미지게시판
+                        </a>
                         <a class="dropdown-item" href="#">
                           함께해요
                         </a>

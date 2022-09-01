@@ -5,6 +5,19 @@ import java.util.HashMap;
 import kr.admin.controller.AdminDeleteController;
 import kr.admin.controller.MemberListController;
 import kr.admin.controller.NoticeListController;
+import kr.img_comment.controller.ImgCmtDeleteController;
+import kr.img_comment.controller.ImgCmtListController;
+import kr.img_comment.controller.ImgCmtUpdateController;
+import kr.img_comment.controller.ImgCmtWriteController;
+import kr.imgboard.controller.ImgBoardDeleteController;
+import kr.imgboard.controller.ImgBoardUpdateController;
+import kr.imgboard.controller.ImgBoardUpdateFormController;
+import kr.imgboard.controller.ImgBoardViewController;
+import kr.imgboard.controller.ImgBoardWriteController;
+import kr.imgboard.controller.ImgBoardWriteFormController;
+import kr.imgboard.controller.ImgFileDeleteController;
+import kr.imgboard.controller.ImgListController;
+import kr.imgboard.controller.ImgSearchListController;
 import kr.join.controller.CalListController;
 import kr.join.controller.IdCheckController;
 import kr.join.controller.MemberDeleteController;
@@ -138,6 +151,23 @@ public class HandlerMapping {
 		mappings.put("/memberlist.do", new MemberListController());
 		mappings.put("/adminNotice.do", new NoticeListController());
 		mappings.put("/user_delete.do", new AdminDeleteController());
+		
+		// 이미지 게시판
+		mappings.put("/imgBoardWriteForm.do", new ImgBoardWriteFormController());
+		mappings.put("/imglike.do", new LikeController());
+		
+		mappings.put("/imgBoardWrite.do", new ImgBoardWriteController());
+		mappings.put("/imgBoardDelete.do", new ImgBoardDeleteController());
+		mappings.put("/imgBoardView.do", new ImgBoardViewController());
+		mappings.put("/imgBoardUpdate.do", new ImgBoardUpdateController());
+		mappings.put("/imgBoardUpdateForm.do", new ImgBoardUpdateFormController());
+		mappings.put("/imgCommentWrite.do", new ImgCmtWriteController());
+		mappings.put("/imgCommentList.do", new ImgCmtListController() );
+		mappings.put("/imgCommentUpdate.do", new ImgCmtUpdateController());
+		mappings.put("/imgCommentDelete.do", new ImgCmtDeleteController());
+		mappings.put("/imgList.do", new ImgListController());
+		mappings.put("/imgSearch.do", new ImgSearchListController());
+		mappings.put("/imgfileDelete.do", new ImgFileDeleteController());
 		
 	}
 	public Controller getController(String command) {

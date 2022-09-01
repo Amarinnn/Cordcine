@@ -73,7 +73,7 @@ $(document).ready(function(){
       <div class="cover-wrap">
         <div class="container">
           <div class="cover">
-            제로웨이스ㅡ
+            제로웨이스트
           </div>
         </div>
       </div>

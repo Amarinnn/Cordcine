@@ -30,13 +30,17 @@ public class BoardViewController implements Controller {
 		int num = Integer.parseInt(request.getParameter("num"));
 		HttpSession session = request.getSession();
 		Member mo = (Member)session.getAttribute("mvo");
-		String login_id =mo.getLogin_id();
-		Map<String,Object> m = new HashMap<>();
-		m.put("no",num);
-		m.put("id",login_id);
-		int result = dao.likeCheck(m);
+		if(mo!=null) {
+			String login_id =mo.getLogin_id();
+			Map<String,Object> m = new HashMap<>();
+			m.put("no",num);
+			m.put("id",login_id);
+			int result = dao.likeCheck(m);
+			request.setAttribute("likecheck", result);
+		}
+		
 		String p = request.getParameter("p");
-		if (p.equals("") || p.equals("0")) {
+		if (p==null || p=="0") {
 			p = "1";
 		}
 		List<zw_comment> list = dao.allComment(num);
@@ -48,7 +52,7 @@ public class BoardViewController implements Controller {
 		int likes = dao.likeCount(num);
 		System.out.println(likes);
 		request.setAttribute("likes", likes);
-		request.setAttribute("likecheck", result);
+		
 		request.setAttribute("p", Integer.parseInt(p));
 		return "board/boardView";
 	}
