@@ -212,14 +212,6 @@ $(document).ready(function(){
   	
   	}
   	
-  	//공지
-  	function goNotice(num){
-  		location.href="${cpath}/boardNotice.do?num="+ num;
-  	}
-  	function delNotice(num){
-  		location.href="${cpath}/delNotice.do?num="+num;
-  	}
-  	
   	
   	</script>
   	
@@ -287,27 +279,13 @@ $(document).ready(function(){
     			
     		</Tr>
     		<tr>
+  				
+    			
     			<td colspan="4" align="right">
-    			<c:choose>
-	    			<c:when test="${mvo.u_type eq 'admin' }">
-	    				<c:choose>
-			    			<c:when test="${vo.notice eq 0 }">
-			    				
-			    				<button class="btn btn-sm btn-warning" onclick="goNotice(${vo.zw_seq})">공지</button>
-			    			</c:when>
-			    			<c:otherwise>
-			    				<button class="btn btn-sm btn-warning" onclick="delNotice(${vo.zw_seq})">공지 제거</button>
-			    			</c:otherwise>
-	    				</c:choose>
-	    				<button class="btn btn-sm btn-warning" onclick="goUpdate(${vo.zw_seq})">수정</button>
-	    				<button class="btn btn-sm btn-danger" onclick="goDel(${vo.zw_seq})">삭제</button>
-	    			</c:when>
-	    			
-	    			<c:when test="${vo.login_id  eq mvo.login_id}">
-	    				<button class="btn btn-sm btn-warning" onclick="goUpdate(${vo.zw_seq})">수정</button>
-	    				<button class="btn btn-sm btn-danger" onclick="goDel(${vo.zw_seq})">삭제</button>
-	    			</c:when>
-	    		</c:choose>
+    			<c:if test="${vo.login_id  eq mvo.login_id}">
+    				<button class="btn btn-outline-success w-5" onclick="goUpdate(${vo.zw_seq})">수정</button>
+    				<button class="btn btn-outline-danger w-5" onclick="goDel(${vo.zw_seq})">삭제</button>
+    			</c:if>
     			<button class="btn btn-outline-primary w-5" onclick="goList()">목록</button>
     			</td>
     		</tr>
@@ -315,14 +293,14 @@ $(document).ready(function(){
     		</table>
 	    		<div class="row mt-3 mb-2">
 	            <div class="col"></div>
-	            <div class="col " id="likebtn" > 
-	            <button type="button"  onclick="return goLike()" id="likebtn2" class="btn btn-info w-20">
+	            <div class="col" id="likebtn" >
+	            <button type="button"  onclick="return goLike()" id="likebtn2" class="btn btn-outline-info w-10">
 	              <c:choose>
 	                <c:when test="${likecheck eq 0 }">
-	                  <i id ="l" class="xi-heart-o"></i>&nbsp;
+	                  <i id ="l" class="xi-heart-o"></i>
 	                </c:when>
 	                <c:when test="${likecheck eq 1 }">
-	                  <i id = "l" class="xi-heart"></i>&nbsp;
+	                  <i id = "l" class="xi-heart"></i>
 	                </c:when>
 	              </c:choose>
 	              <span id="likes">&nbsp;${likes}</span>

@@ -1,6 +1,5 @@
 package kr.zw_board.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
@@ -27,16 +26,6 @@ public class BoardWriteController implements Controller{
 		int sizeLimit = 10 * 1024 * 1024;
 		
 		String savePath = request.getSession().getServletContext().getRealPath("/upload");
-		File Folder = new File(savePath);
-		
-		if (!Folder.exists()) {
-			try {
-				Folder.mkdir();
-			}catch (Exception e){
-				e.printStackTrace();
-			}
-		}
-		
 		
 		try{
 			multi=new MultipartRequest(request, savePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
@@ -44,7 +33,7 @@ public class BoardWriteController implements Controller{
 			e.printStackTrace();
 		}
 		
-		String filename = multi.getFilesystemName("filename1");
+		String filename = multi.getFilesystemName("filename");
 		String title = multi.getParameter("title");
 		String writer = multi.getParameter("writer");
 		System.out.println(writer);

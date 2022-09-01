@@ -36,11 +36,11 @@
 	</select>
 	
 	<select id="t_searchPage" parameterType="kr.map.entity.MapPaging" resultType="kr.map.entity.Mapvo">
-	select * from (select * from(select a.*, ROWNUM as store_num from (select * from ((select store_name, store_addr, homepage from zw_shop) union all (select store_name, store_addr, homepage from vegan_shop)) where store_name like '%' ||#{store_search}||'%' )a) where ROWNUM &lt;= #{list_end}) where store_num &gt;= #{list_start}
+	select * from (select * from(select a.*, ROWNUM as store_num from (select * from ((select store_name, store_addr, homepage from zw_shop) union all (select store_name, store_addr, homepage from vegan_shop)) where store_name like '%제로%' )a) where ROWNUM &lt;= #{list_end}) where store_num &gt;= #{list_start}
 	</select>
 	
 	<select id="a_searchPage" parameterType="kr.map.entity.MapPaging" resultType="kr.map.entity.Mapvo">
-	select * from(select * from(select a.*, ROWNUM as store_num from (select * from ((select store_name, store_addr, homepage from zw_shop) union all (select store_name, store_addr, homepage from vegan_shop))where store_addr like '%' ||#{store_search}||'%' )a) where ROWNUM &lt;= #{list_end})where store_num &gt;= #{list_start}
+	select * from(select * from(select a.*, ROWNUM as store_num from (select * from ((select store_name, store_addr, homepage from KAKAO) union all (select store_name, store_addr, homepage from vegan_shop))where store_addr like '%' ||#{store_search}||'%' )a) where ROWNUM &lt;= #{list_end})where store_num &gt;= #{list_start}
 	</select>
 
 </mapper>

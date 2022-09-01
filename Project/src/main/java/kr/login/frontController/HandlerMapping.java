@@ -2,9 +2,19 @@ package kr.login.frontController;
 
 import java.util.HashMap;
 
-import kr.admin.controller.AdminDeleteController;
-import kr.admin.controller.MemberListController;
-import kr.admin.controller.NoticeListController;
+import kr.img_comment.controller.ImgCmtDeleteController;
+import kr.img_comment.controller.ImgCmtListController;
+import kr.img_comment.controller.ImgCmtUpdateController;
+import kr.img_comment.controller.ImgCmtWriteController;
+import kr.imgboard.controller.ImgBoardDeleteController;
+import kr.imgboard.controller.ImgBoardUpdateController;
+import kr.imgboard.controller.ImgBoardUpdateFormController;
+import kr.imgboard.controller.ImgBoardViewController;
+import kr.imgboard.controller.ImgBoardWriteController;
+import kr.imgboard.controller.ImgBoardWriteFormController;
+import kr.imgboard.controller.ImgFileDeleteController;
+import kr.imgboard.controller.ImgListController;
+import kr.imgboard.controller.ImgSearchListController;
 import kr.join.controller.CalListController;
 import kr.join.controller.IdCheckController;
 import kr.join.controller.MemberDeleteController;
@@ -36,7 +46,6 @@ import kr.login.controller.MypageVgController;
 import kr.login.controller.MypageWriteController;
 import kr.weekly.controller.WeeklyViewController;
 import kr.zw_board.controller.BoardDeleteController;
-import kr.zw_board.controller.BoardNoticeController;
 import kr.zw_board.controller.BoardUpdateController;
 import kr.zw_board.controller.BoardUpdateFormController;
 import kr.zw_board.controller.BoardViewController;
@@ -79,6 +88,7 @@ public class HandlerMapping {
 		mappings.put("/joinIdCheck.do",new joinIdCheckController());
 		mappings.put("/joinS.do",new joinSController());
 		mappings.put("/memberWrite.do",new MemberWriteController());
+		mappings.put("/main.do",new MainController());
 		mappings.put("/idCheck.do",new IdCheckController());
 		mappings.put("/nicCheck.do",new NicCheckController());
 		mappings.put("/memberView.do", new MemberViewController());
@@ -120,7 +130,22 @@ public class HandlerMapping {
 		mappings.put("/zwlist.do", new PageListController());
 		mappings.put("/zwSearch.do", new SearchListController());
 		mappings.put("/fileDelete.do", new FileDeleteController());
+		// 이미지 게시판
+		mappings.put("/imgBoardWriteForm.do", new ImgBoardWriteFormController());
+		mappings.put("/imglike.do", new LikeController());
 		
+		mappings.put("/imgBoardWrite.do", new ImgBoardWriteController());
+		mappings.put("/imgBoardDelete.do", new ImgBoardDeleteController());
+		mappings.put("/imgBoardView.do", new ImgBoardViewController());
+		mappings.put("/imgBoardUpdate.do", new ImgBoardUpdateController());
+		mappings.put("/imgBoardUpdateForm.do", new ImgBoardUpdateFormController());
+		mappings.put("/imgCommentWrite.do", new ImgCmtWriteController());
+		mappings.put("/imgCommentList.do", new ImgCmtListController() );
+		mappings.put("/imgCommentUpdate.do", new ImgCmtUpdateController());
+		mappings.put("/imgCommentDelete.do", new ImgCmtDeleteController());
+		mappings.put("/imgList.do", new ImgListController());
+		mappings.put("/imgSearch.do", new ImgSearchListController());
+		mappings.put("/imgfileDelete.do", new ImgFileDeleteController());
 		//지도페이지
 		mappings.put("/searchpaging.do", new MapSearchPageController());
 		mappings.put("/map.do", new MapController());
@@ -128,16 +153,6 @@ public class HandlerMapping {
 		mappings.put("/paging.do", new MapPageController());
 		mappings.put("/pagelist.do", new MapPageListController());
 		mappings.put("/mapsearch.do", new MapSearchController());
-		
-		//공지사항
-		mappings.put("/boardNotice.do", new BoardNoticeController());
-		mappings.put("/delNotice.do", new BoardDeleteController());
-		
-		
-		//관리자페이지
-		mappings.put("/memberlist.do", new MemberListController());
-		mappings.put("/adminNotice.do", new NoticeListController());
-		mappings.put("/user_delete.do", new AdminDeleteController());
 		
 	}
 	public Controller getController(String command) {
