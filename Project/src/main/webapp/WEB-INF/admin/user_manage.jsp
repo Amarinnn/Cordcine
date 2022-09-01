@@ -78,12 +78,13 @@
 		console.log(tdArr);
 		
 		$.ajax({
-			 url: "${cpath}/u_delete.do",
+			 url: "${cpath}/user_delete.do",
 			  type : "post",
 			  traditional : true ,
 			  data : {tdArr:tdArr},
 			  success : function(){
 				  alert("삭제 되었습니다.");
+				  location.href="${cpath}/memberlist.do"
 			  },
 			  error : function(){
 				  alert("error");

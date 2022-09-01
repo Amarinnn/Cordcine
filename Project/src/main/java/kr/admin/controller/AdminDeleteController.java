@@ -20,14 +20,16 @@ public class AdminDeleteController implements Controller{
 		
 		String[] test = request.getParameterValues("tdArr");
 		
-		for (String s : test) {
-			System.out.println(s);
-		}
-		
 		MemberMyBatisDAO dao = new MemberMyBatisDAO();
 		
+		for (String s : test) {
+			dao.memberDelete(s);
+		}
 		
-		return "adminPage";
+		
+		
+		
+		return "admin/user_manage";
 	}
 	
 
