@@ -2,6 +2,7 @@ package kr.login.frontController;
 
 import java.util.HashMap;
 
+
 import kr.join.controller.CalListController;
 import kr.join.controller.IdCheckController;
 import kr.join.controller.MemberDeleteController;
@@ -33,6 +34,7 @@ import kr.login.controller.MypageVgController;
 import kr.login.controller.MypageWriteController;
 import kr.weekly.controller.WeeklyViewController;
 import kr.zw_board.controller.BoardDeleteController;
+import kr.zw_board.controller.BoardNoticeController;
 import kr.zw_board.controller.BoardUpdateController;
 import kr.zw_board.controller.BoardUpdateFormController;
 import kr.zw_board.controller.BoardViewController;
@@ -75,7 +77,6 @@ public class HandlerMapping {
 		mappings.put("/joinIdCheck.do",new joinIdCheckController());
 		mappings.put("/joinS.do",new joinSController());
 		mappings.put("/memberWrite.do",new MemberWriteController());
-		mappings.put("/main.do",new MainController());
 		mappings.put("/idCheck.do",new IdCheckController());
 		mappings.put("/nicCheck.do",new NicCheckController());
 		mappings.put("/memberView.do", new MemberViewController());
@@ -125,6 +126,10 @@ public class HandlerMapping {
 		mappings.put("/paging.do", new MapPageController());
 		mappings.put("/pagelist.do", new MapPageListController());
 		mappings.put("/mapsearch.do", new MapSearchController());
+		
+		//공지사항
+		mappings.put("/boardNotice.do", new BoardNoticeController());
+		mappings.put("/delNotice.do", new BoardDeleteController());
 		
 	}
 	public Controller getController(String command) {

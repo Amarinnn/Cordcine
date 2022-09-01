@@ -26,6 +26,9 @@ public class MapSearchController implements Controller{
 		String search = request.getParameter("search");
 		String option = request.getParameter("option");
 		MemberMyBatisDAO dao = new MemberMyBatisDAO();
+		
+		System.out.println("search : "+search);
+		System.out.println("option : "+option);
 		List<Mapvo> list = new ArrayList<Mapvo>();
 		if(option.equals("가게명")) {
 			 list = dao.t_SearchPage(page, search);
