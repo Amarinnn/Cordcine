@@ -74,7 +74,7 @@
       <div class="cover-wrap">
         <div class="container">
           <div class="cover">
-            지도
+            제로웨이스트
           </div>
         </div>
       </div>
@@ -111,7 +111,7 @@
     			</tr>
     			<tr>
     				<td>첨부파일</td>
-    				<td><div id="change">${vo.zw_file }<c:if test="${vo.zw_file != ' ' }">
+    				<td><div id="change">${vo.zw_file }<c:if test="${vo.zw_file != ' ' }"><img id="upimg" src="${cpath}/upload/${vo.zw_file}">
     			<button type="button" class ="btn btn-sm btn-warning" onclick ="fileDelete(${vo.zw_seq },'${vo.zw_file }')">X</button>
     			</c:if></div></div><input type="file" name ="filename" ></td>
     				
@@ -119,7 +119,7 @@
     			<tr>
     				<td colspan="2" align="right">
     					<button type="submit" class="btn btn-sm btn-primary" >수정 </button>
-    					<button type="button" class="btn btn-sm btn-warning" onclick="location.href='${cpath}/boardView.do?num=${vo.zw_seq }&login_id=${mvo.login_id}'">취소 </button>
+    					<button type="button" class="btn btn-sm btn-warning" onclick="location.href='${cpath }/boardView.do?num=${vo.zw_seq }'">취소 </button>
     					<button type="button" class="btn btn-sm btn-info" onclick="location.href='${cpath }/zwlist.do'">리스트</button>
     				</td>
     			</tr>

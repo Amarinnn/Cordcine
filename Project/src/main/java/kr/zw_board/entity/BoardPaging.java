@@ -1,7 +1,7 @@
 package kr.zw_board.entity;
 
 public class BoardPaging {
-	private int pagePerCount = 5;//한 페이지에 나올 게시글 수
+	private int pagePerCount = 10;//한 페이지에 나올 게시글 수
 	private int pagingPerCount = 5; // 한번에 보여줄 페이징 숫자 갯수 
 	private int allPageCount;//전체 게시글 수
 	private int numPageCount;// 전체 게시글 수 / 한 페이지=> 모든 페이지의 개수

@@ -11,6 +11,7 @@ public class Board {
 	private int zw_likes;
 	private int zw_cmtcnt;  //댓글수
 	
+	
 	public int getZw_seq() {
 		return zw_seq;
 	}
