@@ -411,8 +411,4 @@ public class BoardMyBatisDAO {
 			session.close();
 		}
 		
-		
-		
-		
->>>>>>> 6dd790d 등급제 게시판
 }

@@ -206,4 +206,9 @@
  	select * from (select a.*, ROWNUM from t_zw_board a where notice is not null order by notice desc) where ROWNUM &lt;= 3
  </select> 
  
+<<<<<<< HEAD
+=======
+ 
+ 	
+>>>>>>> branch 'di' of https://gwangju-ai-gitlab.elice.io/spring_a/cordcaine/cordcaine.git
 </mapper>

@@ -19,7 +19,10 @@
     <mapper resource="kr/login/dao/MemberMapper.xml"/>
 	<mapper resource="kr/login/dao/MapMapper.xml"/>
 	<mapper resource="kr/login/dao/AdminMapper.xml"/>
+<<<<<<< HEAD
 	<mapper resource="kr/imgboard/dao/ImgBoardMapper.xml"/>
+=======
+>>>>>>> branch 'di' of https://gwangju-ai-gitlab.elice.io/spring_a/cordcaine/cordcaine.git
 	<mapper resource="kr/login/dao/GradeMapper.xml"/>
   </mappers>
 </configuration>
