@@ -21,6 +21,5 @@
 	<mapper resource="kr/login/dao/AdminMapper.xml"/>
 	<mapper resource="kr/imgboard/dao/ImgBoardMapper.xml"/>
 	<mapper resource="kr/login/dao/GradeMapper.xml"/>
->>>>>>> 6dd790d 등급제 게시판
   </mappers>
 </configuration>
