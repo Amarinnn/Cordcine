@@ -18,6 +18,22 @@ import kr.imgboard.controller.ImgBoardWriteFormController;
 import kr.imgboard.controller.ImgFileDeleteController;
 import kr.imgboard.controller.ImgListController;
 import kr.imgboard.controller.ImgSearchListController;
+import kr.grade.controller.GradeDeleteController;
+import kr.grade.controller.GradeDeleteNoticeController;
+import kr.grade.controller.GradeFileDeleteController;
+import kr.grade.controller.GradeLikeController;
+import kr.grade.controller.GradeListController;
+import kr.grade.controller.GradeNoticeController;
+import kr.grade.controller.GradeSearchListController;
+import kr.grade.controller.GradeUpdateController;
+import kr.grade.controller.GradeUpdateFormController;
+import kr.grade.controller.GradeViewController;
+import kr.grade.controller.GradeWriteController;
+import kr.grade.controller.GradeWriteFormController;
+import kr.grade_comment.controller.GradeCommentDeleteController;
+import kr.grade_comment.controller.GradeCommentListController;
+import kr.grade_comment.controller.GradeCommentUpdateController;
+import kr.grade_comment.controller.GradeCommentWriteController;
 import kr.join.controller.CalListController;
 import kr.join.controller.IdCheckController;
 import kr.join.controller.MemberDeleteController;
@@ -153,6 +169,26 @@ public class HandlerMapping {
 		mappings.put("/memberlist.do", new MemberListController());
 		mappings.put("/adminNotice.do", new NoticeListController());
 		mappings.put("/user_delete.do", new AdminDeleteController());
+
+		
+		
+		//등급제 게시판
+		mappings.put("/gradeList.do", new GradeListController());
+		mappings.put("/gradeLike.do", new GradeLikeController());
+		mappings.put("/gradeWriteForm.do", new GradeWriteFormController());
+		mappings.put("/gradeWrite.do", new GradeWriteController());
+		mappings.put("/gradeDelete.do", new GradeDeleteController());
+		mappings.put("/gradeView.do", new GradeViewController());
+		mappings.put("/gradeUpdate.do", new GradeUpdateController());
+		mappings.put("/gradeUpdateForm.do", new GradeUpdateFormController());
+		mappings.put("/gcommentWrite.do", new GradeCommentWriteController());
+		mappings.put("/gcommentList.do", new GradeCommentListController() );
+		mappings.put("/gcommentUpdate.do", new GradeCommentUpdateController());
+		mappings.put("/gcommentDelete.do", new GradeCommentDeleteController());
+		mappings.put("/gradeSearch.do", new GradeSearchListController());
+		mappings.put("/gfileDelete.do", new GradeFileDeleteController());
+		mappings.put("/gradeNotice.do", new GradeNoticeController());
+		mappings.put("/gradeDelNotice.do", new GradeDeleteNoticeController());
 		
 		// 이미지 게시판
 		mappings.put("/imgBoardWriteForm.do", new ImgBoardWriteFormController());

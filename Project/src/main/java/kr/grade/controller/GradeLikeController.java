@@ -1,4 +1,4 @@
-package kr.zw_board.controller;
+package kr.grade.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,37 +15,36 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import kr.board.dao.BoardMyBatisDAO;
-import kr.imgboard.dao.ImgBoardMyBatisDAO;
 import kr.login.controller.Controller;
 import kr.login.entity.Member;
 
-public class LikeController implements Controller {
+public class GradeLikeController implements Controller {
 
 	@Override
 	public String requestProcessor(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int img_seq = Integer.parseInt(request.getParameter("img_seq"));
+		int grade_seq = Integer.parseInt(request.getParameter("grade_seq"));
 		/* String login_id = request.getParameter("login_id"); */
 		HttpSession session = request.getSession();
 		Member mo = (Member)session.getAttribute("mvo");
 		String login_id =mo.getLogin_id();
 		
 		Map<String,Object> m = new HashMap<>();
-		m.put("no",img_seq);
+		m.put("no",grade_seq);
 		m.put("id",login_id);
-		ImgBoardMyBatisDAO dao = new ImgBoardMyBatisDAO();
+		BoardMyBatisDAO dao = new BoardMyBatisDAO();
 		
-		int result = dao.imglikeCheck(m);
-		int result = dao.likeCheck(m);
+		int result = dao.gradeLikeCheck(m);
+
 		if(result==0) {
-			dao.imglikeUpdate(m);
+			dao.gradeLikeUpdate(m);
 		}else {
-			dao.imglikeDelete(m);
+			dao.gradeLikeDelete(m);
 		}
 		
-		int likes = dao.imglikeCount(img_seq);
+		int likes = dao.gradeLikeCount(grade_seq);
 		PrintWriter out = response.getWriter();
-		result = dao.imglikeCheck(m);
+		result = dao.gradeLikeCheck(m);
 		Map<String,Object> m2 = new HashMap<>();
 		m2.put("likes", likes);
 		m2.put("result", result);
