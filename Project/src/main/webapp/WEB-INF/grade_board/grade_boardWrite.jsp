@@ -90,7 +90,7 @@
       <div class="cover-wrap">
         <div class="container">
           <div class="cover">
-            제로웨이스트
+            등급제 게시판
           </div>
         </div>
       </div>
@@ -110,7 +110,7 @@
         <div class="page-body">
           <div class="container-xl">
             <div class="row row-cards">
-            <form action="${cpath }/boardWrite.do" method="post" name="writeForm" enctype="multipart/form-data" accept-charset="UTF-8" onsubmit="return checkForm()">
+            <form action="${cpath }/gradeWrite.do" method="post" name="writeForm" enctype="multipart/form-data" accept-charset="UTF-8" onsubmit="return checkForm()">
     		<table class="table table-bordered">
     			<tr>
     				<input type="hidden" name="writer" value="${mvo.login_id }">
@@ -126,7 +126,7 @@
     			<tr>
     				<Td colspan="2">
     				<button type="submit" class="btn btn-success btn-sm">등록</button>
-    				<button type="button" class ="btn btn-warning btn-sm" onclick="location.href='${cpath }/zwlist.do'">취소</button>
+    				<button type="button" class ="btn btn-warning btn-sm" onclick="location.href='${cpath }/gradeList.do'">취소</button>
     				</Td>
     			</tr>
     		</table>

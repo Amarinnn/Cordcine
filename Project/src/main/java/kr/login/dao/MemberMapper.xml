@@ -202,5 +202,7 @@
  <select id="noticeList" resultType="kr.zw_board.entity.Zw_Board">
  	select * from (select a.*, ROWNUM from t_zw_board a where notice is not null order by notice desc) where ROWNUM &lt;= 3
  </select> 
+ 
+ 
  	
 </mapper>

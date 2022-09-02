@@ -11,6 +11,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import kr.grade.entity.grade_Board;
+import kr.grade_comment.entity.Grade_comment;
 import kr.zw_board.entity.BoardPaging;
 import kr.zw_board.entity.Member;
 import kr.zw_board.entity.Zw_Board;
@@ -223,6 +225,186 @@ public class BoardMyBatisDAO {
 			session.close();
 			return list;
 		}
+		
+		
+		
+
+		//등급제 게시판
+		public int gradeListCount() {
+			SqlSession session =sqlSessionFactory.openSession();
+			int count =session.selectOne("gradeListCount");
+			session.close();
+			return count;
+		}
+		
+		public List<grade_Board> gradeList(BoardPaging page){
+			SqlSession session = sqlSessionFactory.openSession();
+			List<grade_Board> list=session.selectList("gradeList",page);
+			session .close();//반납
+			return list;
+		}
+		
+		public List<grade_Board> gradeNoticeList(){
+			SqlSession session =sqlSessionFactory.openSession();
+			List<grade_Board> list =session.selectList("gradeNoticeList");
+			session.close();
+			return list;
+		}
+		
+		public List<grade_Board> gradeSearchList(Map<String,Object> m ){
+			
+			SqlSession session = sqlSessionFactory.openSession();
+			List<grade_Board> list=session.selectList("gradeSearchList",m);
+			session.close();//반납
+			return list;
+			
+			
+		}
+		public List<Grade_comment> gradeAllComment(int num){
+			SqlSession session =sqlSessionFactory.openSession();
+			List<Grade_comment> list =session.selectList("gradeAllComment",num);
+			session.close();
+			return list;
+		}
+		public int gradeBoardWrite(grade_Board vo) {
+			SqlSession session =sqlSessionFactory.openSession();
+			int cnt =session.insert("gradeBoardWrite",vo);
+			String login_id = vo.getLogin_id();
+			session.update("writePoint", login_id);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
+		public int gradeCommentWrite(Grade_comment comm) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt = session.insert("gradeCommentWrite",comm);
+			String login_id = comm.getLogin_id();
+			session.update("commentPoint", login_id);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
+		public int gradeBoardDelete(int num) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.delete("gradeCommentDelete2", num);
+			int cnt =session.delete("gradeBoardDelete",num);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
+		public int gradeCommentDelete(int num) {
+			SqlSession session =sqlSessionFactory.openSession();
+			int cnt =session.delete("gradeCommentDelete",num);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
+		public grade_Board gradeBoardView(int num) {
+			SqlSession session = sqlSessionFactory.openSession();
+			grade_Board vo =session.selectOne("gradeBoardView", num);
+			session.close();
+			return vo;
+		}
+		
+		public int gradeBoardUpdate(grade_Board vo) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt = session.update("gradeBoardUpdate", vo);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		public int gradeBoardUpdate2(grade_Board vo) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt = session.update("gradeBoardUpdate2", vo);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
+		public void gradeCountUpdate(int num) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt= session.update("gradeCountUpdate", num);
+			session.commit();
+			session.close();
+		}
+
+		public void gradeCommentUpdate(Grade_comment comm) {
+			SqlSession session = sqlSessionFactory.openSession();
+			session.update("gradeCommentUpdate", comm);
+			session.commit();
+			session.close();
+		}
+		
+		public int gradeLikeCheck(Map<String,Object> m ) {
+			SqlSession session =sqlSessionFactory.openSession();
+			int cnt =session.selectOne("gradeLikeCheck",m);
+			session.close();
+			return cnt;
+		}
+		
+		public void gradeLikeUpdate(Map<String,Object> m ) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.update("gradeLikeUpdate",m);
+			session.commit();
+			session.close();
+			
+			
+		}
+		
+		public void gradeLikeDelete(Map<String,Object> m ) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.delete("gradeLikeDelete",m);
+			session.commit();
+			session.close();
+		}
+		
+		public int gradeLikeCount(int grade_seq) {
+			
+			SqlSession session =sqlSessionFactory.openSession();
+			int cnt =session.selectOne("gradeLikeCount",grade_seq);
+			Map<String,Object> m = new HashMap<>();
+			m.put("cnt", cnt);
+			m.put("grade_seq", grade_seq);
+			session.update("gradeUpdateLike", m);
+			session.commit();
+			session.close();
+			return cnt;
+			
+		}
+
+		public int gradeSearchListCount(Map<String,Object> m) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt=session.selectOne("gradeSearchListCount", m);
+			session.close();//반납
+			return cnt;
+		}
+
+		public void gradeDeleteFile(int grade_seq) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.update("gradeDeleteFile", grade_seq);
+			session.commit();
+			session.close();
+		}
+		
+		public void gradeUpdateNotice(int grade_seq) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.update("gradeUpdateNotice", grade_seq);
+			session.commit();
+			session.close();
+		}
+		
+		public void gradeDeleteNotice(int grade_seq) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.update("gradeDeleteNotice", grade_seq);
+			session.commit();
+			session.close();
+		}
+		
+		
 		
 		
 }

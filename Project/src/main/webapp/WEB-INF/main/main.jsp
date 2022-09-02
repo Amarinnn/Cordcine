@@ -242,7 +242,7 @@
                         <a class="dropdown-item" href="#">
                           실천해요
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="${cpath }/gradeList.do">
                           등급제게시판
                         </a>
                       </div>

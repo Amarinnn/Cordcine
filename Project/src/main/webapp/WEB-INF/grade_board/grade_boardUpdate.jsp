@@ -52,9 +52,9 @@
 	 	 })
 	function fileDelete(num,file){
 		$.ajax({
-		url : "${cpath}/fileDelete.do",
+		url : "${cpath}/gradeFileDelete.do",
 		type : "post",
-		data : {"zw_seq":num,"file":file},
+		data : {"grade_seq":num,"file":file},
 		success : function(){
 			$('#change').html("");
 		},
@@ -74,7 +74,7 @@
       <div class="cover-wrap">
         <div class="container">
           <div class="cover">
-            제로웨이스트
+            등급제 게시판
           </div>
         </div>
       </div>
@@ -96,31 +96,31 @@
           <div class="container-xl">
             <div class="row row-cards">
             <div class="panel-body">
-    	<form action="${cpath }/boardUpdate.do" method="post" enctype="multipart/form-data">
+    	<form action="${cpath }/gradeUpdate.do" method="post" enctype="multipart/form-data">
     		
     		<table class="table table-bordered">
     			<input type ="hidden" name ="login_id" value="${mvo.login_id }"/>
-    			<input type="hidden" name ="zw_seq" value="${vo.zw_seq }"/>
+    			<input type="hidden" name ="grade_seq" value="${vo.grade_seq }"/>
     			<tr>
     				<td>제목</td>
-    				<td><input type="text" name="zw_title" class="form-control" value="${vo.zw_title }"></td>
+    				<td><input type="text" name="grade_title" class="form-control" value="${vo.grade_title }"></td>
     			</tr>
     			<tr>
     				<td>내용</td>
-    				<td><textarea rows="10" name="zw_content" class="form-control" id="tinymce-default">${vo.zw_content }</textarea></td>
+    				<td><textarea rows="10" name="grade_content" class="form-control" id="tinymce-default">${vo.grade_content }</textarea></td>
     			</tr>
     			<tr>
     				<td>첨부파일</td>
-    				<td><div id="change">${vo.zw_file }<c:if test="${vo.zw_file != ' ' }">
-    			<button type="button" class ="btn btn-sm btn-warning" onclick ="fileDelete(${vo.zw_seq },'${vo.zw_file }')">X</button>
+    				<td><div id="change">${vo.grade_file }<c:if test="${vo.grade_file != ' ' }">
+    			<button type="button" class ="btn btn-sm btn-warning" onclick ="fileDelete(${vo.grade_seq },'${vo.grade_file }')">X</button>
     			</c:if></div></div><input type="file" name ="filename" ></td>
     				
     			</tr>
     			<tr>
     				<td colspan="2" align="right">
     					<button type="submit" class="btn btn-sm btn-primary" >수정 </button>
-    					<button type="button" class="btn btn-sm btn-warning" onclick="location.href='${cpath}/boardView.do?num=${vo.zw_seq }&login_id=${mvo.login_id}'">취소 </button>
-    					<button type="button" class="btn btn-sm btn-info" onclick="location.href='${cpath }/zwlist.do'">리스트</button>
+    					<button type="button" class="btn btn-sm btn-warning" onclick="location.href='${cpath}/gradeView.do?num=${vo.grade_seq }&login_id=${mvo.login_id}'">취소 </button>
+    					<button type="button" class="btn btn-sm btn-info" onclick="location.href='${cpath }/gradeList.do'">리스트</button>
     				</td>
     			</tr>
     		</table>
