@@ -97,19 +97,23 @@
 </select>
 
 <!-- 게시판 -->
+
+<select id="searchHeadCount" parameterType="String" resultType="int">
+	select count(*) from t_zw_board where zw_headline= ${headval}
+</select>
 <select id="searchListCount" parameterType="map" resultType ="int">
 	select count(*) from t_zw_board where ${val} like '%' ||#{text}||'%'
 </select>
  <select id="allList" resultType="kr.zw_board.entity.Zw_Board">
-   select zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,(select count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as zw_cmtcnt from  t_zw_board b order by zw_seq desc
+   select zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,zw_headline,(select count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as zw_cmtcnt from  t_zw_board b order by zw_seq desc
  </select>
  
  <select id="someList" resultType="kr.zw_board.entity.Zw_Board" parameterType="kr.zw_board.entity.BoardPaging">
-    select xx.zw_seq, xx.zw_title, xx.zw_content,xx.zw_file, xx.zw_date, xx.login_id, xx.zw_cnt,xx.zw_likes,xx.zw_cmtcnt from (select rownum as r, x.* from (select zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,(select count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as zw_cmtcnt from  t_zw_board b order by zw_seq DESC) x) xx where xx.r between #{startCount} and #{endCount}
+    select xx.zw_seq, xx.zw_title, xx.zw_content,xx.zw_file, xx.zw_date, xx.login_id, xx.zw_cnt,xx.zw_likes,xx.zw_headline,xx.zw_cmtcnt from (select rownum as r, x.* from (select zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,zw_headline,(select count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as zw_cmtcnt from  t_zw_board b order by zw_seq DESC) x) xx where xx.r between #{startCount} and #{endCount}
   </select>
   
   <select id="searchList" resultType="kr.zw_board.entity.Zw_Board" parameterType="map">
-    select xx.zw_seq, xx.zw_title, xx.zw_content,xx.zw_file, xx.zw_date, xx.login_id, xx.zw_cnt,xx.zw_likes,xx.zw_cmtcnt from (select rownum as r, x.* from (select zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,(select count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as zw_cmtcnt from  t_zw_board b where  ${val} like '%' ||#{text}||'%' order by zw_seq DESC) x) xx where xx.r between #{board.startCount} and #{board.endCount}  
+    select xx.zw_seq, xx.zw_title, xx.zw_content,xx.zw_file, xx.zw_date, xx.login_id, xx.zw_cnt,xx.zw_likes,xx.zw_headline,xx.zw_cmtcnt from (select rownum as r, x.* from (select zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,zw_headline,(select count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as zw_cmtcnt from  t_zw_board b where  ${val} like '%' ||#{text}||'%' order by zw_seq DESC) x) xx where xx.r between #{board.startCount} and #{board.endCount}  
   </select>
   
 <!--  <select id="memberLogin" parameterType="String" resultType="kr.zw_board.entity.Member">

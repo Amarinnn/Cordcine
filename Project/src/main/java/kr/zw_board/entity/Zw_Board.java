@@ -10,7 +10,14 @@ public class Zw_Board {
 	private int zw_cnt;
 	private int zw_likes;
 	private int zw_cmtcnt;
+	private String zw_headline;
 	
+	public String getZw_headline() {
+		return zw_headline;
+	}
+	public void setZw_headline(String zw_headline) {
+		this.zw_headline = zw_headline;
+	}
 	public int getZw_seq() {
 		return zw_seq;
 	}

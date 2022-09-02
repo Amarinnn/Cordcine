@@ -81,9 +81,22 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                <a href="${cpath }/zwlist.do">제로웨이스트</a>
-                  
-                </h2>
+                <a href="${cpath }/zwlist.do">제로웨이스트</a> </h2></br>
+                <form action="${cpath }/hlSearch.do" method="get" id="searchForm" >
+                  <select type="text" class="from-select" name="headval" id="headline-tags" value="">
+                    	<option value="제로웨이스트">제로웨이스트</option>
+                    	<option value="비건">비건</option>
+                    </select>
+                    <button type="submit" class="btn btn-icon" value="Submit" ><svg xmlns="http://www.w3.org/2000/svg"
+                          class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24"
+                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                          <circle cx="10" cy="10" r="7"></circle>
+                          <line x1="21" y1="21" x2="15" y2="15"></line>
+                        </svg></button>
+                  </form>
+               
               </div>
             </div>
           </div>
@@ -100,6 +113,7 @@
                   <thead>
                     <tr>
                       <th>번호</th>
+                   
                       <th>제목</th>
                       <th>글쓴이</th>
                       <th>등록일</th>
@@ -108,10 +122,22 @@
                     </tr>
                   </thead>
                   <tbody id="list">
+                  <c:forEach  var="vo" items="${notice}">
+    					<tr class="bg-yellow-lt">
+			    			<td class ="text-center">공지</td>
+			    			<td><a href="${cpath }/boardView.do?num=${vo.zw_seq}&p=${board.currentPage}&login_id=${mvo.login_id}" class="text-reset">${vo.zw_title }<span class="text-orange">&nbsp;[${vo.zw_cmtcnt }]</span></a></td>
+			    			<td class="text-muted text-center"><img src="#" alt="icon">${vo.login_id }</td>
+			    			<td class="text-muted text-center">${vo.zw_date }</td>
+			    			<td class="text-muted  text-center">${vo.zw_cnt }</td>
+			    			<td class="text-muted text-center">${vo.zw_likes }</td>
+			    		</tr>
+    				</c:forEach>
                   	<c:forEach  var="vo" items="${list }"> 
     					<tr>
-			    			<td class ="text-center">${vo.zw_seq }</td>
-			    			<td><a href="${cpath }/boardView.do?num=${vo.zw_seq}&p=${board.currentPage}&login_id=${mvo.login_id}" class="text-reset">${vo.zw_title }<span class="text-orange">&nbsp;[${vo.zw_cmtcnt }]</span></a></td>
+			    			<td class="text-muted text-center">${vo.zw_seq }</td>
+			    			
+			    			<td class="text-muted text-center" ><a href="${cpath }/boardView.do?num=${vo.zw_seq}&p=${board.currentPage}&login_id=${mvo.login_id}" class="text-reset"><span class="text-green">[${vo.zw_headline}]<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 21c.5 -4.5 2.5 -8 7 -10"></path><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z"></path></svg></span>
+			    			${vo.zw_title }<span class="text-orange">&nbsp;[${vo.zw_cmtcnt }]</span></a></td>
 			    			<td class="text-muted text-center"><img src="#" alt="icon">${vo.login_id }</td>
 			    			<td class="text-muted text-center">${vo.zw_date }</td>
 			    			<td class="text-muted  text-center">${vo.zw_cnt }</td>
@@ -174,12 +200,16 @@
                   </svg>
                   글쓰기</a>
               </div>
-              <form action="${cpath }/zwSearch.do" method="get" id="searchForm" onsubmit="return checksearch()">
+              
                 <div class="card-footer">
                   <div class="row m-auto mb-3">
 
-                    <div class="col-3"></div>
+                    <div class="col-3">
+                    
+                    
+                    </div>
                     <div class="col-auto">
+                    <form action="${cpath }/zwSearch.do" method="get" id="searchForm" onsubmit="return checksearch()">
                       <select type="text" class="form-select" name ="val" placeholder="Select a date" id="select-tags" value="">
                         <option value="zw_title">제목</option>
                         <option value="login_id">작성자</option>

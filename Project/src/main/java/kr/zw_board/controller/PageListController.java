@@ -50,6 +50,8 @@ public class PageListController implements Controller {
 		board.end_Page(Integer.parseInt(p));
 		board.setCurrentPage(Integer.parseInt(p));
 		List<Zw_Board> list=dao.someList(board);
+		List<Zw_Board> notice_list =dao.noticeList();
+		request.setAttribute("notice", notice_list);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("board", board);
