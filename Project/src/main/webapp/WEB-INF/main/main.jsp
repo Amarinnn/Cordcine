@@ -226,7 +226,32 @@
                             이미지
                           </a>
                         </div>
-
+                  </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
+                    <span class="nav-link-title">
+                      자유게시판
+                    </span>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu">
+                    <div class="dropdown-menu-columns">
+                      <div class="dropdown-menu-column">
+                        <a class="dropdown-item" href="${cpath }/zwlist.do">
+                          제로웨이스트
+                        </a>
+                        <a class="dropdown-item" href="#">
+                          비건
+                        </a>
+                        <a class="dropdown-item" href="#">
+                          함께해요
+                        </a>
+                        <a class="dropdown-item" href="#">
+                          실천해요
+                        </a>
+                        <a class="dropdown-item" href="${cpath }/gradeList.do">
+                          등급제게시판
+                        </a>
+                      </div>
                       </div>
                     </div>
                   </li>
