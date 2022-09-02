@@ -2,16 +2,12 @@ package kr.login.dao;
 
 import java.io.InputStream;
 import java.util.List;
-import java.util.Objects;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-
-
-import kr.admin.entity.AdminPaging;
 import kr.login.entity.Cal;
 import kr.login.entity.Kakao_member;
 import kr.login.entity.Member;
@@ -312,83 +308,7 @@ public class MemberMyBatisDAO {
 			return list;
 		}
 		
-
-
-		//관리자페이지
-		public List<Member> adminList() {
-			AdminPaging paging = new AdminPaging();
-			
-			List<Member> list;
-			SqlSession session = sqlSessionFactory.openSession();
-			
-			if(Objects.equals(paging.getOption(), "user_id") && (paging.getSearch() != null)) {
-				list = session.selectList("idList", paging );
-			}else if(Objects.equals(paging.getOption(), "user_nick") && (paging.getSearch() != null)){
-				list = session.selectList("nickList", paging );
-			}else {
-				list = session.selectList("allList");
-			}
-			
-			session.close();
-			return list;
-			
-		}
-		
-		public List<Member> adminPageList(int num){
-			
-			AdminPaging pagelist = new AdminPaging();
-			pagelist.list_Start(num);
-			pagelist.list_End(num);
-			System.out.println(pagelist);
-			SqlSession session = sqlSessionFactory.openSession();
-			List<Member> list = session.selectList("adminpageList", pagelist);
-			session.close();
-			return list;
-			
-		}
-		
-		public List<Member> searching(int num, AdminPaging searchlist){
-			
-			SqlSession session = sqlSessionFactory.openSession();
-			
-			searchlist.list_Start(num);
-			searchlist.list_End(num);
-			
-			System.out.println(searchlist);
-			List<Member> list;
-			if(Objects.equals(searchlist.getOption(), "user_id")) {
-				list = session.selectList("idSearchList", searchlist );
-			}else {
-				list = session.selectList("nickSearchList", searchlist );
-			}
-			session.close();
-			return list;
-		}
-		
-		
-		
-		public int noticeList() {
-
-			SqlSession session = sqlSessionFactory.openSession();
-			int count = session.selectOne("adminnoticeList");
-			session.close();
-			return count;
-			
-		}
-		
-		
-		public List<Member> noticePageList(int num){
-			
-			AdminPaging pagelist = new AdminPaging();
-			pagelist.list_Start(num);
-			pagelist.list_End(num);
-			System.out.println(pagelist);
-			SqlSession session = sqlSessionFactory.openSession();
-			List<Member> list = session.selectList("noticepageList", pagelist);
-			session.close();
-			return list;
-			
-		}
+		//게시판
 		
 		
 		

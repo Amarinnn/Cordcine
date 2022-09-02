@@ -22,7 +22,7 @@ public class BoardUpdateFormController implements Controller {
 		BoardMyBatisDAO dao = new BoardMyBatisDAO();
 		
 		Zw_Board vo =dao.boardView(num);
-		request.setAttribute("vo", vo);
+		request.setAttribute("imgvo", vo);
 		
 		return "board/boardUpdate";
 	}

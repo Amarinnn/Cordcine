@@ -1,7 +1,6 @@
 package kr.board.dao;
 
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +18,6 @@ import kr.zw_comment.entity.zw_comment;
 
 // MyBatis FrameWork : java <----- SQL Mapping ----> SQL(XML파일)
 // http://mybatis.org
-
 public class BoardMyBatisDAO {
 	private static SqlSessionFactory sqlSessionFactory;
 	// 초기화 블럭 ( 프로그램 실행시 딱 한번만 실행이 되는 블럭)
@@ -201,7 +199,6 @@ public class BoardMyBatisDAO {
 			session.close();
 		}
 		
-		
 		//공지
 		public void updateNotice(int zw_seq) {
 			SqlSession session =sqlSessionFactory.openSession();
@@ -231,8 +228,5 @@ public class BoardMyBatisDAO {
 			session.close();//반납
 			return cnt;
 		}
-		
-		
-		
-		
+			
 }

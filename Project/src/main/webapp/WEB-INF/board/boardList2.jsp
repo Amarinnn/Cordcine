@@ -69,7 +69,7 @@
       <div class="cover-wrap">
         <div class="container">
           <div class="cover">
-            제로웨이스트
+            제로웨이스ㅡ
           </div>
         </div>
       </div>
@@ -113,7 +113,6 @@
                   <thead>
                     <tr>
                       <th>번호</th>
-                   
                       <th>제목</th>
                       <th>글쓴이</th>
                       <th>등록일</th>

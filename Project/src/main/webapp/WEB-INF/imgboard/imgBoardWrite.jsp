@@ -33,8 +33,11 @@
   <!-- my -->
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">
   <link rel="stylesheet" href="${cpath }/css/my/dy.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="${cpath}/css/my/reply.css">
   
+=======
+>>>>>>> 0d4a7d684e01cce5f338feb7bd868dc163a5e876
 <title>Bootstrap Example</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">

@@ -56,6 +56,7 @@ import kr.zw_board.controller.BoardViewController;
 import kr.zw_board.controller.BoardWriteController;
 import kr.zw_board.controller.BoardWriteFormController;
 import kr.zw_board.controller.FileDeleteController;
+import kr.zw_board.controller.HeadSearchController;
 import kr.zw_board.controller.LikeController;
 import kr.zw_board.controller.PageListController;
 import kr.zw_board.controller.SearchListController;
@@ -133,6 +134,7 @@ public class HandlerMapping {
 		mappings.put("/zwlist.do", new PageListController());
 		mappings.put("/zwSearch.do", new SearchListController());
 		mappings.put("/fileDelete.do", new FileDeleteController());
+		mappings.put("/hlSearch.do", new HeadSearchController());
 		
 		//지도페이지
 		mappings.put("/searchpaging.do", new MapSearchPageController());

@@ -38,7 +38,7 @@ public class SearchListController implements Controller {
 		BoardPaging board = new BoardPaging(); 
 		
 		board.setAllPageCount(dao.searchListCount(m));
-		System.out.println(dao.searchListCount(m));
+		
 		board.calculatePageCount();
 		board.startCount(Integer.parseInt(p));
 		board.endCount(Integer.parseInt(p));

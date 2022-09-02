@@ -194,17 +194,5 @@
  	update t_zw_board set zw_cnt=zw_cnt+1 where zw_seq=#{zw_seq}
  </update>
  	
- 	<!-- 공지 -->
- <update id="updateNotice" parameterType="int">
-	update t_zw_board set notice = noticeseq.nextval where zw_seq=#{zw_seq}
- </update>
- 
- <update id="deleteNotice" parameterType="int">
- 	update t_zw_board set notice = null where zw_seq=#{zw_seq}
- </update>
- 
- <select id="noticeList" resultType="kr.zw_board.entity.Zw_Board">
- 	select * from (select a.*, ROWNUM from t_zw_board a where notice is not null order by notice desc) where ROWNUM &lt;= 3
- </select> 
  	
 </mapper>

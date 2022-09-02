@@ -174,14 +174,7 @@
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                 <c:choose>
-              	<c:when test="${mvo.u_grade == 'admin' }">
-              	<a href="${cpath }/memberlist.do" class="dropdown-item">Admin Page</a>
-              	</c:when>
-              	<c:otherwise>
-              		<a href="${cpath}/mypageWrite.do" class="dropdown-item">My account</a>
-              	</c:otherwise>
-              </c:choose>
+                 <a href="${cpath}/mypage.do?" class="dropdown-item">My account</a>
                   <div class="dropdown-divider"></div>
                   <a href="${cpath}/logout.do" class="dropdown-item">Logout</a>
               </div>
@@ -200,77 +193,79 @@
             <div class="collapse navbar-collapse" id="navbar-menu">
               <div class="d-flex flex-column flex-md-row flex-fill align-items-stretch align-items-md-center">
                 <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="${cpath }/map.do">
-                    <span class="nav-link-title">
-                      Maps
-                    </span>
-                  </a>
-                </li>
-                 <li class="nav-item">
+                  <li class="nav-item">
+                    <a class="nav-link" href="${cpath }/map.do">
+                      <span class="nav-link-title">
+                        Maps
+                      </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-link" href="${cpath}/weeklyView.do">
                       <span class="nav-link-title">
                         주간인기검색어
                       </span>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="${cpath}/#.do">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
                       <span class="nav-link-title">
-                        유튜브 Archive
+                        자유게시판
                       </span>
                     </a>
-                  </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
-                    <span class="nav-link-title">
-                      자유게시판
-                    </span>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu">
-                    <div class="dropdown-menu-columns">
-                      <div class="dropdown-menu-column">
-                        <a class="dropdown-item" href="${cpath }/zwlist.do">
-                          제로웨이스트
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          비건
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          함께해요
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          실천해요
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          등급제게시판
-                        </a>
-                      </div>
+                    <div class="dropdown-menu dropdown-menu">
+                      <div class="dropdown-menu-columns">
+                        <div class="dropdown-menu-column">
+                          <a class="dropdown-item" href="${cpath }/zwlist.do?page=1">
+                            제로웨이스트
+                          </a>
+                          <a class="dropdown-item" href="./gallery.html">
+                            Gallery
+                          </a>
+                          <a class="dropdown-item" href="${cpath }/imgList.do">
+                            이미지
+                          </a>
+                        </div>
 
-                    </div>
-                  </div>
-                </li>
-                <li class="nav-item active dropdown">
-                  <a class="nav-link dropdown-toggle" href="#navbar-layout" role="button" aria-expanded="false">
-                    <span class="nav-link-title ">
-                      정보게시판
-                    </span>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-arrow">
-                    <div class="dropdown-menu-columns">
-                      <div class="dropdown-menu-column">
-                        <a class="dropdown-item" href="${cpath}/callist.do">
-                          칼럼 Archive
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          공동구매
-                        </a>
-                        
                       </div>
                     </div>
-                  </div>
-                </li>
-              </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#navbar-layout" role="button" aria-expanded="false">
+                      <span class="nav-link-title ">
+                        정보게시판
+                      </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-arrow">
+                      <div class="dropdown-menu-columns">
+                        <div class="dropdown-menu-column">
+                          <a class="dropdown-item" href="${cpath}/callist.do">
+                            칼럼게시판
+                          </a>
+                          <a class="dropdown-item" href="./layout-boxed.html">
+                            Boxed
+                          </a>
+                          <a class="dropdown-item" href="./layout-vertical.html">
+                            Vertical
+                          </a>
+                          <a class="dropdown-item" href="./layout-vertical-transparent.html">
+                            Vertical transparent
+                          </a>
+                          <a class="dropdown-item" href="./layout-vertical-right.html">
+                            Right vertical
+                          </a>
+                          <a class="dropdown-item" href="./layout-condensed.html">
+                            Condensed
+                          </a>
+                          <a class="dropdown-item" href="./layout-combo.html">
+                            Combined
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+                </ul>
               </div>
             </div>
           </div>
