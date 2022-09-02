@@ -47,15 +47,15 @@ public class ImgBoardViewController implements kr.login.controller.Controller {
 		if (p==null || p=="0") {
 			p = "1";
 		}
-		List<Img_comment> list = dao.imgallComment(num);
-		
-		request.setAttribute("comlist", list);
+//		List<Img_comment> list = dao.imgallComment(num);
+//		
+//		request.setAttribute("comlist", list);
 		vo = dao.imgboardView(num);
 		dao.imgcountUpdate(num);
 		request.setAttribute("imgvo", vo);
-		int likes = dao.imglikeCount(num);
-		
-		request.setAttribute("imglikes", likes);
+//		int likes = dao.imglikeCount(num);
+//		
+//		request.setAttribute("imglikes", likes);
 		
 		request.setAttribute("p", Integer.parseInt(p));
 		return "imgboard/imgBoardView";

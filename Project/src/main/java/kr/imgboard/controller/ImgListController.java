@@ -44,6 +44,7 @@ public class ImgListController implements kr.login.controller.Controller {
 		//페이징 처리
 		ImgBoardPaging board = new ImgBoardPaging(); 
 		board.setAllPageCount(dao.imgallListCount());
+		
 		board.calculatePageCount();
 		board.startCount(Integer.parseInt(p));
 		board.endCount(Integer.parseInt(p));
@@ -51,7 +52,7 @@ public class ImgListController implements kr.login.controller.Controller {
 		board.end_Page(Integer.parseInt(p));
 		board.setCurrentPage(Integer.parseInt(p));
 		List<Img_Board> list=dao.imgsomeList(board);
-		
+		System.out.println(board.getEnd_page());
 		request.setAttribute("imglist", list);
 		request.setAttribute("board", board);
 		

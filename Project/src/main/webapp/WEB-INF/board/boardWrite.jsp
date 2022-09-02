@@ -33,6 +33,10 @@
 
   <!-- my -->
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">
+    <link rel="stylesheet" href="${cpath }/css/my/dy.css">
+      <link rel="stylesheet" href="${cpath }/css/my/reply.css">
+    
+  
 <title>Bootstrap Example</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
@@ -115,19 +119,29 @@
     		<table class="table table-bordered">
     			<tr>
     				<input type="hidden" name="writer" value="${mvo.login_id }">
+    				<td class="bal">
+                <div>
+                      <select type="text" class="form-select " name ="headval" placeholder="Select" id="headline-tags" value="">
+                        <option value="제로웨이스트">제로웨이스트</option>
+                        <option value="비건">비건</option>
+                        
+                      </select>
+                      
+                    </div>
+                </td>
     				<td><input type="text" id="title" name="title" class="form-control"/></td>
     			</tr>
     			<tr>
     				
-    				<td><textarea  rows="10" name="content" class="form-control" id="tinymce-default"></textarea></td>
+    				<td colspan="2"><textarea  rows="10" name="content" class="form-control" id="tinymce-default"></textarea></td>
     			</tr>
     			<tr>
-    				<Td><input type="file" name = "filename1"></Td>
+    				<Td colspan="2"><input type="file" name = "filename"></Td>
     			</tr>
     			<tr>
-    				<Td colspan="2">
-    				<button type="submit" class="btn btn-success btn-sm">등록</button>
-    				<button type="button" class ="btn btn-warning btn-sm" onclick="location.href='${cpath }/zwlist.do'">취소</button>
+    				<Td colspan="2" align="right">
+    				<button type="submit" class="btn btn-outline-success w-5">등록</button>
+    				<button type="button" class ="btn btn-outline-danger w-5" onclick="location.href='${cpath }/zwlist.do'">취소</button>
     				</Td>
     			</tr>
     		</table>

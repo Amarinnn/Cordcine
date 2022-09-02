@@ -61,6 +61,17 @@ public class BoardMyBatisDAO {
 			
 			
 		}
+		
+		public List<Zw_Board> HdSearchList(Map<String,Object> m ){
+			
+			SqlSession session = sqlSessionFactory.openSession();
+			List<Zw_Board> list=session.selectList("HdSearchList",m);
+			session.close();//반납
+			return list;
+			
+			
+		}
+		
 		public List<zw_comment> allComment(int num){
 			SqlSession session =sqlSessionFactory.openSession();
 			List<zw_comment> list =session.selectList("allComment",num);

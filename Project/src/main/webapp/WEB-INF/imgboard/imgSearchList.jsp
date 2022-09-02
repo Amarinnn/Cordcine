@@ -83,7 +83,21 @@ $(document).ready(function(){
         <br>
         
         <h2>목록(List)</h2>
-        <hr>
+        <form action="${cpath }/imgHlSearch.do" method="get" id="searchForm" >
+                  <select type="text" class="from-select" name="headval" id="headline-tags" value="말머리검색">
+                    	<option value="이벤트참여">이벤트참여</option>
+                        <option value="일상">일상</option>
+                        <option value="추천">추천</option>
+                    </select>
+                    <button type="submit" class="btn btn-icon" value="Submit" ><svg xmlns="http://www.w3.org/2000/svg"
+                          class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24"
+                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                          <circle cx="10" cy="10" r="7"></circle>
+                          <line x1="21" y1="21" x2="15" y2="15"></line>
+                        </svg></button>
+                  </form>
 
         <div class="row g-2">
         

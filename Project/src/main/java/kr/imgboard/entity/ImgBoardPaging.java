@@ -69,7 +69,7 @@ public class ImgBoardPaging {
 		
 		display = (int)Math.ceil((pageNum-1)/pagingPerCount);
 		if(allPageCount/pagePerCount <((pagingPerCount * display) + 5)) {
-			end_page = (int) Math.ceil(allPageCount/pagePerCount)+1;
+			end_page = (int) Math.ceil((double)allPageCount/pagePerCount);
 		}else {
 			end_page = (pagingPerCount * display) + pagingPerCount;
 

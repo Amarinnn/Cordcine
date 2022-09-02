@@ -48,12 +48,13 @@ public class BoardUpdateController implements Controller {
 		String zw_title = multi.getParameter("zw_title");
 		String zw_content = multi.getParameter("zw_content");
 		String filename = multi.getFilesystemName("filename");
+		String headval = multi.getParameter("headval");
 		System.out.println(zw_seq+zw_title+zw_content+filename);
 		vo2 = dao.boardView(zw_seq);
 		
 		
 		if (filename == "" || filename == null) {
-			
+			vo.setZw_headline(headval);
 			vo.setZw_seq(zw_seq);
 			vo.setZw_title(zw_title);
 			vo.setZw_content(zw_content); 
@@ -77,16 +78,14 @@ public class BoardUpdateController implements Controller {
 		
 		
 		
-		List<zw_comment> list = dao.allComment(zw_seq);
-		
-		request.setAttribute("comlist", list);
+//		List<zw_comment> list = dao.allComment(zw_seq);
+//		
+//		request.setAttribute("comlist", list);
 		vo = dao.boardView(zw_seq);
 		
 		request.setAttribute("vo", vo);
-		HttpSession session = request.getSession();
-		Member mo = (Member)session.getAttribute("mvo");
-		String login_id =mo.getLogin_id();
-		return "redirect:/boardView.do?num="+zw_seq+"&login_id="+login_id;
+		
+		return "redirect:/boardView.do?num="+zw_seq;
 	}
 
 }

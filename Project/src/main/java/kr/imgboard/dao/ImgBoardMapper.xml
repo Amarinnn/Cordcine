@@ -5,6 +5,9 @@
 <mapper namespace="kr.board.dao.BoardMapper">
 
 
+<select id="imgHlsearchListCount" parameterType="map" resultType ="int">
+	select count(*) from t_img_board where img_headline=#{headval}
+</select>
  <select id="imgallListCount" resultType="int">
 	SELECT count(*) from t_img_board
 </select>
@@ -24,6 +27,9 @@
     select xx.img_seq, xx.img_title, xx.img_content,xx.img_file1,xx.img_file2, xx.img_file3,xx.img_file4,xx.img_file5,xx.img_regdate, xx.login_id, xx.img_cnt,xx.img_headline,xx.img_likes,xx.img_cmtcnt from (select rownum as r, x.* from (select img_seq,img_title,img_content,img_file1,img_file2,img_file3,img_file4,img_file5,img_headline,img_regdate,login_id,img_cnt,img_likes,(select count(*) from t_img_comment c where c.img_seq = b.img_seq) as img_cmtcnt from  t_img_board b where  ${val} like '%' ||#{text}||'%' order by img_seq DESC) x) xx where xx.r between #{board.startCount} and #{board.endCount}  
   </select>
   
+  <select id="imgHlSearchList" resultType="kr.imgboard.entity.Img_Board" parameterType="map">
+    select xx.img_seq, xx.img_title, xx.img_content,xx.img_file1,xx.img_file2, xx.img_file3,xx.img_file4,xx.img_file5,xx.img_regdate, xx.login_id, xx.img_cnt,xx.img_headline,xx.img_likes,xx.img_cmtcnt from (select rownum as r, x.* from (select img_seq,img_title,img_content,img_file1,img_file2,img_file3,img_file4,img_file5,img_headline,img_regdate,login_id,img_cnt,img_likes,(select count(*) from t_img_comment c where c.img_seq = b.img_seq) as img_cmtcnt from  t_img_board b where img_headline=#{headval} order by img_seq DESC) x) xx where xx.r between #{board.startCount} and #{board.endCount}  
+  </select>
 
  
  <select id="imgallComment" parameterType="int" resultType="kr.img_comment.entity.Img_comment">

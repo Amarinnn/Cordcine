@@ -24,8 +24,6 @@
 
   <!-- my -->
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">
-  <link rel="stylesheet" href="${cpath}/css/my/image.css">
-  <link rel="stylesheet" href="${cpath}/css/my/dy.css">
 <title>Bootstrap Example</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
@@ -33,8 +31,13 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
+$(document).ready(function(){
+	var val= '${headval}';
+	$("#headline-tags").val(val).prop("selected",true);
+})
 
 
+	
 	function goWrite(){
 		if(${mvo.login_id==null}){
 			alert("로그인후 이용하세요");
@@ -74,12 +77,12 @@
           </div>
         </div>
       </div>
+      
       <!------------여기부터 입력----------->
       <div class="container">
         <br>
         
-        <h2 class="page-title">
-                <a href="${cpath }/imgList.do">이미지 게시판</a> </h2><br>
+        <h2>목록(List)</h2>
         <form action="${cpath }/imgHlSearch.do" method="get" id="searchForm" >
                   <select type="text" class="from-select" name="headval" id="headline-tags" value="말머리검색">
                     	<option value="이벤트참여">이벤트참여</option>
@@ -95,12 +98,11 @@
                           <line x1="21" y1="21" x2="15" y2="15"></line>
                         </svg></button>
                   </form>
-
         <div class="row g-2">
         
 
           
-       	<c:forEach var ="vo" items="${imglist }">
+       	<c:forEach var ="vo" items="${imglist2 }">
            <div class="col-4 col-sm-4">
             <div class="card">
             <c:choose>
@@ -122,13 +124,10 @@
             </c:choose>
               
               <div class="card-body">
-                <p class="text-green">[${vo.img_headline}]<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 21c.5 -4.5 2.5 -8 7 -10"></path><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z"></path></svg></p>
+                <p class="text-green">[${vo.img_headline }]<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 21c.5 -4.5 2.5 -8 7 -10"></path><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z"></path></svg>
               
-                <a href="${cpath }/imgBoardView.do?num=${vo.img_seq}&p=${board.currentPage}" class="text-reset">
-                <h3 class="card-title">${vo.img_title }<span class="text-orange">&nbsp;[${vo.img_cmtcnt }]</span></h3></a>
-                <div class="text-truncate" id="s">
-                	<div class="text-muted text-truncate">${vo.img_content }</div>
-                </div>
+                <a href="${cpath }/imgBoardView.do?num=${vo.img_seq}&p=${board2.currentPage}" class="text-reset"><h3 class="card-title">${vo.img_title }<span class="text-orange">&nbsp;[${vo.img_cmtcnt }]</span></h3></a>
+                <p class="text-muted">${vo.img_content }</p>
                 <hr class="mb-3 mt-2">
                 <div class="d-flex align-items-center">
     
@@ -157,9 +156,9 @@
         </div>
               <div class="card-footer d-flex align-items-center py-2">
                 <ul class="pagination m-0 m-auto">
-                <c:if test="${board.pagingPerCount<board.start_page}">
+                <c:if test="${board2.pagingPerCount<board2.start_page}">
                   <li class="page-item abled">
-                    <a class="page-link" href="${cpath }/imgList.do?p=${board.start_page-1}" tabindex="-1" aria-abled="true">
+                    <a class="page-link" href="${cpath }/imgHlSearch.do?p=${board2.start_page-1}&textval=${textval}" tabindex="-1" aria-abled="true">
                       <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -167,14 +166,13 @@
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         page += <polyline points="15 6 9 12 15 18" /></svg>prev</a></li>
 				</c:if>
-				    <c:forEach var="i" begin="${board.start_page}" end="${board.end_page}">
+				    <c:forEach var="i" begin="${board2.start_page}" end="${board2.end_page}">
 				    	<c:choose>
-				    	<c:when test="${board.currentPage eq i}">
-				    	<li class="page-item active"><a class="page-link" href="${cpath }/imgList.do?p=${i}">${i}</a></li>
+				    	<c:when test="${board2.currentPage eq i}">
+				    	<li class="page-item active"><a class="page-link" href="${cpath }/imgHlSearch.do?p=${i}&headval=${headval}">${i}</a></li>
 				    	</c:when>
 				    	<c:otherwise>
-				    	
-					    <li class="page-item "><a class="page-link" href="${cpath }/imgList.do?p=${i}">${i}</a></li>
+					    <li class="page-item"><a class="page-link" href="${cpath }/imgHlSearch.do?p=${i}&headval=${headval}">${i}</a></li>
 					    </c:otherwise>
 					    </c:choose>
 				    </c:forEach>
@@ -182,8 +180,8 @@
 				   
                       <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
                       
-				<c:if test="${board.numPageCount>board.end_page}">
-					<li class="page-item abled"><a class="page-link" href="${cpath }/imgList.do?p=${board.end_page+1}" tabindex="1" aria-abled="true">next
+				<c:if test="${board2.numPageCount>board2.end_page}">
+					<li class="page-item abled"><a class="page-link" href="${cpath }/imgHlSearch.do?p=${board2.end_page+1}&textval=${textval}" tabindex="1" aria-abled="true">next
 					<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" 
                       stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" 
                       stroke-linejoin="round">
@@ -211,7 +209,7 @@
 
                     <div class="col-3"></div>
                     <div class="col-auto">
-                      <select type="text" class="form-select" name ="val" placeholder="Select a date" id="select-tags" value="">
+                      <select type="text" class="form-select" name ="val" placeholder="Select a date" id="select-tags" >
                         <option value="img_title">제목</option>
                         <option value="login_id">작성자</option>
                         <option value="img_content">내용</option>
@@ -219,7 +217,7 @@
                     </div>
                     <div class="col-4">
                       <div class="input-group">
-                        <input type="text" class="form-control" name="text" aria-label="Text input with dropdown button" id="search">
+                        <input type="text" class="form-control" name="text" aria-label="Text input with dropdown button" id="search" value="${text }">
                       </div>
                     </div>
                     <div class="col-1">

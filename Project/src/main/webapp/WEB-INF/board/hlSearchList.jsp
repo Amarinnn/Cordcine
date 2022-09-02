@@ -32,8 +32,8 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 $(document).ready(function(){
-	var val= '${val}';
-	$("#select-tags").val(val).prop("selected",true);
+	var val= '${headval}';
+	$("#headline-tags").val(val).prop("selected",true);
 })
 
 
@@ -140,7 +140,7 @@ $(document).ready(function(){
                   	<c:forEach  var="vo" items="${list2 }"> 
     					<tr>
 			    			<td class ="text-center">${vo.zw_seq }</td>
-							<td class="text-muted " ><a href="${cpath }/boardView.do?num=${vo.zw_seq}&p=${board.currentPage}&login_id=${mvo.login_id}" class="text-reset"><span class="text-green">[${vo.zw_headline}]<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 21c.5 -4.5 2.5 -8 7 -10"></path><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z"></path></svg></span>
+							<td class="text-muted" ><a href="${cpath }/boardView.do?num=${vo.zw_seq}&p=${board2.currentPage}&login_id=${mvo.login_id}" class="text-reset"><span class="text-green">[${vo.zw_headline}]<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 21c.5 -4.5 2.5 -8 7 -10"></path><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z"></path></svg></span>
 			    			${vo.zw_title }<span class="text-orange">&nbsp;[${vo.zw_cmtcnt }]</span></a></td>			    			<td class="text-muted text-center"><img src="#" alt="icon">${vo.login_id }</td>
 			    			<td class="text-muted text-center">${vo.zw_date }</td>
 			    			<td class="text-muted  text-center">${vo.zw_cnt }</td>
@@ -157,7 +157,7 @@ $(document).ready(function(){
                 <ul class="pagination m-0 m-auto">
                 <c:if test="${board2.pagingPerCount<board2.start_page}">
                   <li class="page-item abled">
-                    <a class="page-link" href="${cpath }/zwSearch.do?p=${board2.start_page-1}&val=${val}&text=${text}" tabindex="-1" aria-abled="true">
+                    <a class="page-link" href="${cpath }/hlSearch.do?p=${board2.start_page-1}&headval=${headval}" tabindex="-1" aria-abled="true">
                       <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
                         stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
@@ -168,10 +168,10 @@ $(document).ready(function(){
 				    <c:forEach var="i" begin="${board2.start_page}" end="${board2.end_page}">
 				    	<c:choose>
 				    	<c:when test="${board2.currentPage eq i}">
-				    	<li class="page-item active"><a class="page-link" href="${cpath }/zwSearch.do?p=${i}&val=${val}&text=${text}">${i}</a></li>
+				    	<li class="page-item active"><a class="page-link" href="${cpath }/hlSearch.do?p=${i}$headval=${headval}">${i}</a></li>
 				    	</c:when>
 				    	<c:otherwise>
-					    <li class="page-item"><a class="page-link" href="${cpath }/zwSearch.do?p=${i}&val=${val}&text=${text}">${i}</a></li>
+					    <li class="page-item"><a class="page-link" href="${cpath }/hlSearch.do?p=${i}&headval=${headval}">${i}</a></li>
 					    </c:otherwise>
 					    </c:choose>
 				    </c:forEach>
@@ -180,7 +180,7 @@ $(document).ready(function(){
                       <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
                       
 				<c:if test="${board2.numPageCount>board2.end_page}">
-					<li class="page-item abled"><a class="page-link" href="${cpath }/zwSearch.do?p=${board2.end_page+1}&val=${val}&text=${text}" tabindex="1" aria-abled="true">next
+					<li class="page-item abled"><a class="page-link" href="${cpath }/hlSearch.do?p=${board2.end_page+1}&headval=${headval}" tabindex="1" aria-abled="true">next
 					<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" 
                       stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" 
                       stroke-linejoin="round">

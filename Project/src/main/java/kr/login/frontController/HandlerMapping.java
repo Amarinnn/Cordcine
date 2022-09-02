@@ -16,6 +16,8 @@ import kr.imgboard.controller.ImgBoardViewController;
 import kr.imgboard.controller.ImgBoardWriteController;
 import kr.imgboard.controller.ImgBoardWriteFormController;
 import kr.imgboard.controller.ImgFileDeleteController;
+import kr.imgboard.controller.ImgHeadSearchController;
+import kr.imgboard.controller.ImgLikeController;
 import kr.imgboard.controller.ImgListController;
 import kr.imgboard.controller.ImgSearchListController;
 import kr.join.controller.CalListController;
@@ -156,7 +158,7 @@ public class HandlerMapping {
 		
 		// 이미지 게시판
 		mappings.put("/imgBoardWriteForm.do", new ImgBoardWriteFormController());
-		mappings.put("/imglike.do", new LikeController());
+		mappings.put("/imglike.do", new ImgLikeController());
 		
 		mappings.put("/imgBoardWrite.do", new ImgBoardWriteController());
 		mappings.put("/imgBoardDelete.do", new ImgBoardDeleteController());
@@ -170,6 +172,7 @@ public class HandlerMapping {
 		mappings.put("/imgList.do", new ImgListController());
 		mappings.put("/imgSearch.do", new ImgSearchListController());
 		mappings.put("/imgfileDelete.do", new ImgFileDeleteController());
+		mappings.put("/imgHlSearch.do", new ImgHeadSearchController());
 		
 	}
 	public Controller getController(String command) {

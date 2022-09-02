@@ -64,6 +64,21 @@
 		error : function(){alert("Error");}
 		});
 	}
+	
+	function check(){
+		var text = $('#tinymce-default').val();
+		if($('#img_title').val()==''){
+			alert("제목을 입력하세요");
+			return false
+		}else if(text == null){
+			alert("내용을 입력하세요");
+			return false
+		}
+		
+		var del = confirm("수정하시겠습니까");
+		if(del == true){ return true}
+		else{return false}
+	}
 </script>
 </head>
 <body>
@@ -99,7 +114,7 @@
           <div class="container-xl">
             <div class="row row-cards">
             <div class="panel-body">
-    	<form action="${cpath }/imgBoardUpdate.do" method="post" enctype="multipart/form-data">
+    	<form action="${cpath }/imgBoardUpdate.do" method="post" enctype="multipart/form-data" onsubmit="return check()">
     		
     		<table class="table table-bordered">
     			<input type ="hidden" name ="login_id" value="${mvo.login_id }"/>
@@ -107,7 +122,7 @@
     			<tr>
     				
     				<td>제목</td>
-    				<td><input type="text" name="img_title" class="form-control" value="${imgvo.img_title }"></td>
+    				<td><input type="text" name="img_title" class="form-control" id="img_title" value="${imgvo.img_title }"></td>
     			</tr>
     			<tr>
     				<td>내용</td>
@@ -168,9 +183,9 @@
     			</tr>
     			<tr>
     				<td colspan="2" align="right">
-    					<button type="submit" class="btn btn-sm btn-primary" >수정 </button>
-    					<button type="button" class="btn btn-sm btn-warning" onclick="location.href='${cpath}/imgBoardView.do?num=${imgvo.img_seq }'">취소 </button>
-    					<button type="button" class="btn btn-sm btn-info" onclick="location.href='${cpath }/imgList.do'">리스트</button>
+    					<button type="submit" class="btn btn-outline-success w-5" >수정 </button>
+    					<button type="button" class="btn btn-outline-danger w-5" onclick="location.href='${cpath}/imgBoardView.do?num=${imgvo.img_seq }'">취소 </button>
+    					<button type="button" class="btn btn-outline-primary w-5" onclick="location.href='${cpath }/imgList.do'">리스트</button>
     				</td>
     			</tr>
     		</table>

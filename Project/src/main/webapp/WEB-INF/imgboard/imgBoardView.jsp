@@ -319,7 +319,7 @@ $(document).ready(function(){
 	                  <i id = "l" class="xi-heart"></i>
 	                </c:when>
 	              </c:choose>
-	              <span id="likes">&nbsp;${imglikes}</span>
+	              <span id="likes">&nbsp;${imgvo.img_likes}</span>
 	              </button></div>
 	            <div class="col"></div>
 
