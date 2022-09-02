@@ -18,10 +18,7 @@
   <mappers>
     <mapper resource="kr/login/dao/MemberMapper.xml"/>
 	<mapper resource="kr/login/dao/MapMapper.xml"/>
-<<<<<<< HEAD
 	<mapper resource="kr/login/dao/AdminMapper.xml"/>
-=======
->>>>>>> 0d4a7d684e01cce5f338feb7bd868dc163a5e876
 	<mapper resource="kr/imgboard/dao/ImgBoardMapper.xml"/>
   </mappers>
 </configuration>
