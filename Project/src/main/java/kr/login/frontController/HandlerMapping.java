@@ -2,10 +2,10 @@ package kr.login.frontController;
 
 import java.util.HashMap;
 
+
 import kr.admin.controller.AdminDeleteController;
 import kr.admin.controller.MemberListController;
 import kr.admin.controller.NoticeListController;
-<<<<<<< HEAD
 import kr.img_comment.controller.ImgCmtDeleteController;
 import kr.img_comment.controller.ImgCmtListController;
 import kr.img_comment.controller.ImgCmtUpdateController;
@@ -19,8 +19,6 @@ import kr.imgboard.controller.ImgBoardWriteFormController;
 import kr.imgboard.controller.ImgFileDeleteController;
 import kr.imgboard.controller.ImgListController;
 import kr.imgboard.controller.ImgSearchListController;
-=======
->>>>>>> branch 'di' of https://gwangju-ai-gitlab.elice.io/spring_a/cordcaine/cordcaine.git
 import kr.grade.controller.GradeDeleteController;
 import kr.grade.controller.GradeDeleteNoticeController;
 import kr.grade.controller.GradeFileDeleteController;
@@ -192,7 +190,6 @@ public class HandlerMapping {
 		mappings.put("/gfileDelete.do", new GradeFileDeleteController());
 		mappings.put("/gradeNotice.do", new GradeNoticeController());
 		mappings.put("/gradeDelNotice.do", new GradeDeleteNoticeController());
-<<<<<<< HEAD
 		
 		// 이미지 게시판
 		mappings.put("/imgBoardWriteForm.do", new ImgBoardWriteFormController());
@@ -210,9 +207,6 @@ public class HandlerMapping {
 		mappings.put("/imgList.do", new ImgListController());
 		mappings.put("/imgSearch.do", new ImgSearchListController());
 		mappings.put("/imgfileDelete.do", new ImgFileDeleteController());
-=======
->>>>>>> branch 'di' of https://gwangju-ai-gitlab.elice.io/spring_a/cordcaine/cordcaine.git
-		
 	}
 	public Controller getController(String command) {
 		return mappings.get(command);

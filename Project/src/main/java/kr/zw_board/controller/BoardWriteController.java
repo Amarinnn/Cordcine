@@ -1,5 +1,6 @@
 package kr.zw_board.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.regex.Pattern;
 

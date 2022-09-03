@@ -36,7 +36,6 @@ public class LikeController implements Controller {
 		ImgBoardMyBatisDAO dao = new ImgBoardMyBatisDAO();
 		
 		int result = dao.imglikeCheck(m);
-		int result = dao.likeCheck(m);
 		if(result==0) {
 			dao.imglikeUpdate(m);
 		}else {

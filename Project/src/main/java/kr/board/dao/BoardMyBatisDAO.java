@@ -222,17 +222,12 @@ public class BoardMyBatisDAO {
 			session.close();
 			return list;
 		}
-		
-<<<<<<< Upstream, based on origin/master
-		//headline search
 		public int searchheadCount(String headval) {
 			SqlSession session = sqlSessionFactory.openSession();
 			int cnt=session.selectOne("searchHeadCount", headval);
 			session.close();//반납
 			return cnt;
 		}
-			
-=======
 		
 		
 
