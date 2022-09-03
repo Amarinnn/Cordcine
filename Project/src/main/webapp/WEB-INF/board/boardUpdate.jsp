@@ -9,7 +9,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>empty
+  <title>FOR THE URTH
   </title>
   <!-- CSS files -->
   <link href="${cpath}/css/tabler.css" rel="stylesheet" />
@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">
   <link rel="stylesheet" href="${cpath }/css/my/dy.css">
   <link rel="stylesheet" href="${cpath }/css/my/reply.css">
-<title>Bootstrap Example</title>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
 <script
@@ -69,12 +69,14 @@ $(document).ready(function(){
 	}
 	
 	function check(){
-		var text = $('#tinymce-dafault').val();
+		var title = $('#zw_title').val()
 		
-		if($('#zw_title').val()==''){
+		var content = $('#tinymce-default').val();
+		console.log(content);
+		if(title == ""){
 			alert("제목을 입력하세요");
 			return false
-		}else if(text == null){
+		}else if(content == ""){
 			alert("내용을 입력하세요");
 			return false
 		}
@@ -107,8 +109,7 @@ $(document).ready(function(){
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                  글 수정
-                </h2>
+                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2></br>
               </div>
             </div>
           </div>

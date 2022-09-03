@@ -13,7 +13,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>empty
+  <title>FOR THE URTH
   </title>
   <!-- CSS files -->
   <link href="${cpath}/css/tabler.css" rel="stylesheet" />
@@ -30,7 +30,6 @@
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">
   <link rel="stylesheet" href="${cpath}/css/my/dy.css">
   <link rel="stylesheet" href="${cpath}/css/my/reply.css">
-<title>Bootstrap Example</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
 <script
@@ -242,7 +241,7 @@ $(document).ready(function(){
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                  
+                  <a href="${cpath }/imgList.do">이미지 게시판</a><br>
                 </h2>
               </div>
             </div>

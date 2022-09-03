@@ -9,7 +9,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>empty
+  <title>FOR THE URTH
   </title>
   <!-- CSS files -->
   <link href="${cpath}/css/tabler.css" rel="stylesheet" />
@@ -24,7 +24,7 @@
 
   <!-- my -->
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">
-<title>Bootstrap Example</title>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
 <script
@@ -85,7 +85,7 @@ $(document).ready(function(){
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                <a href="${cpath }/zwlist.do">제로웨이스트</a> </h2></br>
+                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2></br>
                  <form action="${cpath }/hlSearch.do" method="get" id="searchForm" >
                   <select type="text" class="from-select" name="headval" id="headline-tags" value="">
                     	<option value="제로웨이스트">제로웨이스트</option>

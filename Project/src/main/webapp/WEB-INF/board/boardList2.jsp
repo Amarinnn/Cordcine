@@ -9,7 +9,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>empty
+<title>FOR THE URTH
   </title>
   <!-- CSS files -->
   <link href="${cpath}/css/tabler.css" rel="stylesheet" />
@@ -25,7 +25,7 @@
   <!-- my -->
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">
   <link rel="stylesheet" href="${cpath}/css/my/image.css">
-<title>Bootstrap Example</title>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
 <script

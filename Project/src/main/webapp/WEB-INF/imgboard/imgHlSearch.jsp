@@ -9,7 +9,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>empty
+  <title>FOR THE URTH
   </title>
   <!-- CSS files -->
   <link href="${cpath}/css/tabler.css" rel="stylesheet" />
@@ -24,7 +24,6 @@
 
   <!-- my -->
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">
-<title>Bootstrap Example</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
 <script
@@ -82,7 +81,7 @@ $(document).ready(function(){
       <div class="container">
         <br>
         
-        <h2>목록(List)</h2>
+        <h2><a href="${cpath }/imgList.do">이미지 게시판</a></h2><br>
         <form action="${cpath }/imgHlSearch.do" method="get" id="searchForm" >
                   <select type="text" class="from-select" name="headval" id="headline-tags" value="말머리검색">
                     	<option value="이벤트참여">이벤트참여</option>

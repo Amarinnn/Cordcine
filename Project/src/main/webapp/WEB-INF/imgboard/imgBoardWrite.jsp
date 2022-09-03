@@ -9,7 +9,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>empty
+  <title>FOR THE URTH
   </title>
   <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -37,7 +37,6 @@
     <link rel="stylesheet" href="${cpath}/css/my/reply.css">
   
 
-<title>Bootstrap Example</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
 
@@ -62,18 +61,28 @@
     	});
  	 })
 	function checkForm(){
-		change.innerHTML="<input type ="
+		
 		var title = $('#title').val();
 		var content = $('#tinymce-default').val();
+		var file1 = $('#file1').val();
+		var file2 = $('#file2').val();
+		var file3 = $('#file3').val();
+		var file4 = $('#file4').val();
+		var file5 = $('#file5').val();
+		
 		if(title == ""){
-			alert("제목을 입력하세요")
-			$('#title').focus();
+			alert("제목을 입력하세요");
+			
 			return false
 		}
 		
 		if(content == ""){
-			alert("내용을 입력하세요")
-			$('#tinymce-default').focus();
+			alert("내용을 입력하세요");
+			return false
+		}
+		
+		if(file1 == "" && file2 == "" && file3 == "" && file4 == "" && file5 == ""){
+			alert("이미지를 첨부하세요");
 			return false
 		}
 		
@@ -141,42 +150,42 @@
                           
                           <div id="pro-1">
                             <div class="fl-l w-75">
-                              <input type="file" class="form-control form-control-rounded mb-2 w-100"
+                              <input type="file" id="file1" class="form-control form-control-rounded mb-2 w-100"
                                 name="file1">
                             </div>
-                            <button type="button" class="fl-l btn btn-outline ms-3" id="plus">+</button>
+                            <button type="button"  class="fl-l btn btn-outline ms-3" id="plus">+</button>
                           </div>
                           <div id="pro-2">
                             <div class="fl-l w-75">
-                              <input type="file" class="form-control form-control-rounded mb-2 w-100"
+                              <input type="file" id="file2" class="form-control form-control-rounded mb-2 w-100"
                                 name="file2" >
                             </div>
                             <button type="button" class="fl-l btn btn-outline ms-3" id="min1">-</button>
                           </div>
                           <div id="pro-3">
                             <div class="fl-l w-75">
-                              <input type="file" class="form-control form-control-rounded mb-2 w-100"
+                              <input type="file" id="file3" class="form-control form-control-rounded mb-2 w-100"
                                 name="file3">
                             </div>
                           </div>
                           <div id="pro-4">
                             <div class="fl-l w-75">
-                              <input type="file" class="form-control form-control-rounded mb-2 w-100"
+                              <input type="file" id="file4" class="form-control form-control-rounded mb-2 w-100"
                                 name="file4" >
                             </div>
                           </div>
                           <div id="pro-5">
                             <div class="fl-l w-75">
-                              <input type="file" class="form-control form-control-rounded mb-2 w-100"
+                              <input type="file" id="file5" class="form-control form-control-rounded mb-2 w-100"
                                 name="file5" >
                             </div>
                           </div>
                         </td>
     			</tr>
     			<tr>
-    				<Td colspan="2">
-    				<button type="submit" class="btn btn-success btn-sm">등록</button>
-    				<button type="button" class ="btn btn-warning btn-sm" onclick="location.href='${cpath }/imgList.do'">취소</button>
+    				<Td colspan="2" align="right">
+    				<button type="submit" class="btn btn-outline-success w-5">등록</button>
+    				<button type="button" class ="btn btn-outline-danger w-5" onclick="location.href='${cpath }/imgList.do'">취소</button>
     				</Td>
     			</tr>
     		</table>

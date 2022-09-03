@@ -52,7 +52,7 @@ public class PageListController implements Controller {
 		List<Zw_Board> list=dao.someList(board);
 		
 		List<Zw_Board> notice_list =dao.noticeList();
-		System.out.println(notice_list.size());
+		System.out.println(board.getNumPageCount());
 		request.setAttribute("notice", notice_list);
 		
 		request.setAttribute("list", list);

@@ -9,12 +9,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>empty
+  <title>FOR THE URTH
   </title>
   <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-   <script src="${cpath }/js/summernote/summernote-lite.js"></script>
-<script src="${cpath }/js/summernote/lang/summernote-ko-KR.js"></script>
+   
 
 <link rel="stylesheet" href="${cpath }/css/summernote/summernote-lite.css">
 
@@ -37,7 +36,7 @@
       <link rel="stylesheet" href="${cpath }/css/my/reply.css">
     
   
-<title>Bootstrap Example</title>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
 
@@ -62,10 +61,12 @@
     	});
  	 })
 	function checkForm(){
-		change.innerHTML="<input type ="
-		var title = $('#title').val();
+		var text = $('#title').val();
+		
+		console.log(text)
+		
 		var content = $('#tinymce-default').val();
-		if(title == ""){
+		if(text == ""){
 			alert("제목을 입력하세요")
 			$('#title').focus();
 			return false
@@ -76,6 +77,7 @@
 			$('#tinymce-default').focus();
 			return false
 		}
+		
 		
 		return true
 	}
@@ -106,8 +108,7 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                  글작성
-                </h2>
+                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2></br>
               </div>
             </div>
           </div>

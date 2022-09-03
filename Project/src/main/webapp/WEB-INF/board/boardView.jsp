@@ -13,7 +13,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>empty
+  <title>FOR THE URTH
   </title>
   <!-- CSS files -->
   <link href="${cpath}/css/tabler.css" rel="stylesheet" />
@@ -29,7 +29,7 @@
   <!-- my -->
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">
   <link rel="stylesheet" href="${cpath}/css/my/dy.css">
-<title>Bootstrap Example</title>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
 <script
@@ -241,8 +241,7 @@ $(document).ready(function(){
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                  
-                </h2>
+                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2></br>
               </div>
             </div>
           </div>
@@ -307,6 +306,9 @@ $(document).ready(function(){
 	                <c:when test="${likecheck eq 1 }">
 	                  <i id = "l" class="xi-heart"></i>
 	                </c:when>
+	                <c:otherwise>
+	                <i id ="l" class="xi-heart-o"></i>
+	   				</c:otherwise>
 	              </c:choose>
 	              <span id="likes">&nbsp;${vo.zw_likes}</span>
 	              </button></div>

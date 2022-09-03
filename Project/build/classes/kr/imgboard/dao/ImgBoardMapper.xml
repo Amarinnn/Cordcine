@@ -111,7 +111,7 @@
  </update>
  
   <update id="imgboardUpdate" parameterType="kr.imgboard.entity.Img_Board">
- 	update t_img_board set img_title=#{img_title},img_content=#{img_content} where img_seq=#{img_seq}
+ 	update t_img_board set img_title=#{img_title},img_content=#{img_content},img_headline=#{img_headline} where img_seq=#{img_seq}
  </update>
  
  <update id="imgcommentUpdate" parameterType="kr.img_comment.entity.Img_comment">

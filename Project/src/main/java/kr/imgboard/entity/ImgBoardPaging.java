@@ -24,10 +24,10 @@ public class ImgBoardPaging {
 		this.allPageCount = allPageCount;
 	}
 	public void calculatePageCount() {
-		numPageCount = allPageCount/pagePerCount;
-		if(allPageCount%pagePerCount!=0) {
-			numPageCount+=6;
-		}
+		numPageCount = (int)Math.ceil((double)allPageCount)/pagePerCount;
+//		if(allPageCount%pagePerCount!=0) {
+//			numPageCount+=6;
+//		}
 	}
 	public void startCount(int pageNum) {
 		startCount=(pageNum-1)*pagePerCount+1;
