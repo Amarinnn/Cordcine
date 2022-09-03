@@ -45,13 +45,13 @@
         <h2>목록(List)</h2>
         <hr>
         <c:forEach var="cal_T" items="${list}" >
-        <div class="row">
+        <div class="row mt-2">
           <div class="col"></div>
           <div class="col-10">
             <div class="card">
               <div class="row row-0">
                 <div class="col-3">
-                  <img src="${cal_T.img}" class="w-100 h-100 object-cover" alt="Card side image" " style="max-width:200px max-height:200px"/>
+                  <img src="${cal_T.img}" class="w-100 h-100 object-cover" alt="Card side image" " style="max-width:auto; max-height:150px;"/>
                 </div>
                 <div class="col">
                   <div class="card-body">
