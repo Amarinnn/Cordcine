@@ -11,6 +11,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import kr.youtube.entity.Youtube;
+import kr.youtube.entity.YoutubePaging;
 import kr.zw_board.entity.BoardPaging;
 import kr.zw_board.entity.Member;
 import kr.zw_board.entity.Zw_Board;
@@ -223,6 +225,22 @@ public class BoardMyBatisDAO {
 			session.close();
 			return list;
 		}
+		// 유튜브
+		public int allyoutubecount() {
+			SqlSession session =sqlSessionFactory.openSession();
+			int cnt =session.selectOne("allyoutubecount");
+			session.close();
+			return cnt;
+			
+		}
+		
+		
+		public List<Youtube> youtubeSomeList(YoutubePaging page) {
+			SqlSession session = sqlSessionFactory.openSession();
+			List<Youtube> list=session.selectList("youtubeSomeList",page);
+			session .close();//반납
+			return list;
+	}
 		
 		
 }

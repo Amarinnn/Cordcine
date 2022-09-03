@@ -215,7 +215,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="${cpath}/#.do">
+                    <a class="nav-link" href="${cpath}/youtubelist.do">
                       <span class="nav-link-title">
                         유튜브 Archive
                       </span>
