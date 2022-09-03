@@ -39,7 +39,7 @@
 			<jsp:include page="../../header/header.jsp" />
 			<!-- 여기까지 header -->
 			 <!------------여기부터 입력----------->
-      <div class="container">
+       <div class="container">
         <br>
         
         <h2>목록(List)</h2>
@@ -68,9 +68,10 @@
         </c:forEach>
        
         
-
+	
       <div class="row row-cards mt-3">
-        <div class="col-1">
+      <div class="col-1"></div>
+        <div class="col">
           <div class="card">
             <div class="card-footer d-flex align-items-center py-2">
               <ul class="pagination m-0 m-auto">
@@ -111,7 +112,7 @@
                    
                       
                       </ul>
-        
+              
             </div>
             <form action="#" method="#">
               <div class="card-footer">
@@ -143,8 +144,9 @@
               </div>
             </form>
       </div>
+      
       </div>
-       <div class="col-1"></div>
+      <div class="col-1"></div>
       </div>
       </div>
       <!------------ㄲㅡㅌ----------->
