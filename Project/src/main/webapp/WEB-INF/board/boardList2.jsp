@@ -145,9 +145,6 @@
 			    			<td class="text-muted text-center">${vo.zw_likes }</td>
 			    		</tr>
     				</c:forEach>
-                    
-                    
-                    
                   </tbody>
                 </table>
               </div>
