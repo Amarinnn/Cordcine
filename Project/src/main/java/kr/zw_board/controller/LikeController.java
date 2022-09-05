@@ -34,7 +34,6 @@ public class LikeController implements Controller {
 		m.put("no",zw_seq);
 		m.put("id",login_id);
 		BoardMyBatisDAO dao = new BoardMyBatisDAO();
-		
 		int result = dao.likeCheck(m);
 		if(result==0) {
 			dao.likeUpdate(m);

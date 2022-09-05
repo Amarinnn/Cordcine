@@ -235,7 +235,6 @@ public class BoardMyBatisDAO {
 		}
 		
 		
-		
 
 		//등급제 게시판
 		public int gradeListCount() {
@@ -411,8 +410,6 @@ public class BoardMyBatisDAO {
 			session.commit();
 			session.close();
 		}
-		
-		
 	
 		//headline search
 		public int searchheadCount(String headval) {

@@ -197,7 +197,7 @@
  <update id="countUpdate" parameterType="int">
  	update t_zw_board set zw_cnt=zw_cnt+1 where zw_seq=#{zw_seq}
  </update>
- 
+ 	<!-- 공지 -->
  <update id="updateNotice" parameterType="int">
 	update t_zw_board set notice = noticeseq.nextval where zw_seq=#{zw_seq}
  </update>

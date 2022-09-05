@@ -10,7 +10,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-<title>empty</title>
+<title>FOR THE URTH</title>
 <!-- CSS files -->
 <link href="${cpath}/css/tabler.css" rel="stylesheet" />
 <link href="${cpath}/css/tabler-vendors.css" rel="stylesheet" />
@@ -22,7 +22,7 @@
 
 <!-- my -->
 <link rel="stylesheet" href="${cpath}/css/my/sub.css">
-<title>Bootstrap Example</title>
+<title>FOR THE URTH</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"
 	viewport-fit=cover" >
@@ -39,19 +39,19 @@
 			<jsp:include page="../../header/header.jsp" />
 			<!-- 여기까지 header -->
 			 <!------------여기부터 입력----------->
-      <div class="container">
+       <div class="container">
         <br>
         
         <h2>목록(List)</h2>
         <hr>
         <c:forEach var="cal_T" items="${list}" >
-        <div class="row">
+        <div class="row mt-2">
           <div class="col"></div>
           <div class="col-10">
             <div class="card">
               <div class="row row-0">
                 <div class="col-3">
-                  <img src="${cal_T.img}" class="w-100 h-100 object-cover" alt="Card side image" " style="max-width:200px max-height:200px"/>
+                  <img src="${cal_T.img}" class="w-100 h-100 object-cover" alt="Card side image" " style="max-width:auto; max-height:150px;"/>
                 </div>
                 <div class="col">
                   <div class="card-body">
@@ -68,8 +68,9 @@
         </c:forEach>
        
         
-
+	
       <div class="row row-cards mt-3">
+      <div class="col-1"></div>
         <div class="col">
           <div class="card">
             <div class="card-footer d-flex align-items-center py-2">
@@ -111,14 +112,7 @@
                    
                       
                       </ul>
-              <a href="#" class="btn btn-blue me-3">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil-plus" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                  <path d="M8 20l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4h4z"></path>
-                  <path d="M13.5 6.5l4 4"></path>
-                  <path d="M16 18h4m-2 -2v4"></path>
-                </svg>
-                글쓰기</a>
+              
             </div>
             <form action="#" method="#">
               <div class="card-footer">
@@ -150,7 +144,9 @@
               </div>
             </form>
       </div>
+      
       </div>
+      <div class="col-1"></div>
       </div>
       </div>
       <!------------ㄲㅡㅌ----------->
