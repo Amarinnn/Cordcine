@@ -33,6 +33,8 @@ public class LikeController implements Controller {
 		Map<String,Object> m = new HashMap<>();
 		m.put("no",zw_seq);
 		m.put("id",login_id);
+		ImgBoardMyBatisDAO dao = new ImgBoardMyBatisDAO();
+		
 		BoardMyBatisDAO dao = new BoardMyBatisDAO();
 		int result = dao.likeCheck(m);
 		if(result==0) {

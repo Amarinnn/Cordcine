@@ -384,16 +384,6 @@ public class MemberMyBatisDAO {
 			return list;
 			
 		}
-
-
-
-
-
-
-
-
-
-
 		
 		
 		

@@ -235,6 +235,12 @@ public class BoardMyBatisDAO {
 			session.close();
 			return list;
 		}
+		public int searchheadCount(String headval) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt=session.selectOne("searchHeadCount", headval);
+			session.close();//반납
+			return cnt;
+		}
 		// 유튜브
 		public int allyoutubecount() {
 			SqlSession session =sqlSessionFactory.openSession();
