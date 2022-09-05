@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?> <!-- 선언문(PI) 엔터나 띄어쓰기 하면 오류남 -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  <!-- dtd ... 스키마 : xml안에서 사용할 태그들이 정의되어있는 문서 -->
+<mapper namespace="kr.login.dao.MemberMapper"> <!-- 이 파일이 있는 패키지이름.xml파일 이름 -->
+ 	<select id="login" parameterType="kr.login.entity.Member" resultType="kr.login.entity.Member">
+ 		select * from t_login where login_id=(select login_id from t_user where login_id=#{login_id} and u_pw=#{u_pw})
+    </select>
+ 	<insert id="join1" parameterType="kr.login.entity.Member">
+ 		insert into t_login(login_id,login_type,user_name,joindate,u_birthdate,post,u_addr,u_nick) values(#{login_id},'m',#{user_name},sysdate,#{u_birthdate},#{post},#{u_addr},#{u_nick}) 		
+ 		
+ 	</insert>
+ 	<insert id="join2" parameterType="kr.login.entity.Member">
+ 		insert into t_user(login_id,u_pw) values (#{login_id},#{u_pw})
+ 	</insert>
+ 	<select id="KakaoLogin" parameterType="kr.login.entity.Kakao_member" resultType="kr.login.entity.Member">
+ 		select * from t_login where login_id=(select login_id from t_outer_login where login_id=#{login_id})
+ 	</select>
+ 	<insert id="KakaoJoin1" parameterType="kr.login.entity.Kakao_member">
+ 		insert into t_login(login_id,login_type,user_name,joindate,u_grade,u_nick) values(#{login_id},'k',#{user_name},sysdate,'지구지킴단',#{u_nick})
+ 	</insert>
+ 
+ 	<insert id="KakaoJoin2" parameterType="kr.login.entity.Kakao_member">
+ 		insert into t_outer_login(login_id,login_from) values(#{login_id},'k')
+ 	</insert>
+ 	<!-- 마이페이지 -->
+ 	<select id="myWriteZero" parameterType="String" resultType="kr.zw_board.entity.Board">
+   		select zw_title, zw_content, zw_file, zw_date, login_id, zw_cnt, zw_likes, (select count(*) from t_zero_waste_comment c where c.zw_seq=b.zw_seq) as zw_cmtcnt from t_zw_board b where login_id=#{login_id} order by zw_date DESC
+ 	</select>
+ 	<select id="myWriteVg" parameterType="String" resultType="kr.zw_board.entity.Board">
+   		select vb_seq as zw_seq, vb_title as zw_title, vb_content as zw_content, vb_file as zw_file, vb_date as zw_date, login_id, vb_cnt as zw_cnt, vb_likes as zw_likes, (select count(*) from t_vegan_board_comment c where c.vb_seq=b.vb_seq) as zw_cmtcnt from t_vegan_board b where login_id=#{login_id} order by vb_date DESC
+ 	</select>
+ 	<select id="myWriteTo" parameterType="String" resultType="kr.zw_board.entity.Board">
+   		select tb_seq as zw_seq, tb_title as zw_title, tb_content as zw_content, tb_file as zw_file, tb_regdate as zw_date, login_id, tb_cnt as zw_cnt, tb_likes as zw_likes, (select count(*) from t_together_comment c where c.tb_seq=b.tb_seq) as zw_cmtcnt from t_together_board b where login_id=#{login_id} order by tb_regdate DESC
+ 	</select>
+ 	<select id="myWriteImg" parameterType="String" resultType="kr.zw_board.entity.Board"> <!-- img_headline을 zw_file로 저장 -->
+   		select img_seq as zw_seq, img_title as zw_title, img_content as zw_content, img_headline as zw_file, img_regdate as zw_date, login_id, img_cnt as zw_cnt, img_likes as zw_likes, (select count(*) from t_img_comment c where c.img_seq=b.img_seq) as zw_cmtcnt from t_img_board b where login_id=#{login_id} order by img_regdate DESC
+ 	</select>
+ 	<select id="myComment" parameterType="String" resultType="kr.zw_comment.entity.zw_comment">
+   		select zw_cmt_seq as zw_cmt_seq, zw_seq as zw_seq, zw_cmt_content as zw_cmt_content, zw_cmt_date as zw_cmt_date, login_id from t_zero_waste_comment where login_id=#{login_id} order by zw_cmt_date DESC
+ 	</select>
+ 	<select id="myComVg" parameterType="String" resultType="kr.zw_comment.entity.zw_comment">
+   		select vb_cmt_seq as zw_cmt_seq, vb_cmt_seq as zw_seq, vb_cmt_content as zw_cmt_content, vb_cmt_date as zw_cmt_date, login_id from t_vegan_board_comment where login_id=#{login_id} order by vb_cmt_date DESC
+ 	</select>
+ 	<select id="myComTo" parameterType="String" resultType="kr.zw_comment.entity.zw_comment">
+   		select tb_cmt_seq as zw_cmt_seq, tb_seq as zw_seq, tb_cmt_content as zw_cmt_content, tb_cmt_date as zw_cmt_date, login_id from t_together_comment where login_id=#{login_id} order by tb_cmt_date DESC
+ 	</select>
+ 	<select id="myComImg" parameterType="String" resultType="kr.zw_comment.entity.zw_comment">
+   		select img_cmt_seq as zw_cmt_seq, img_seq as zw_seq, img_cmt_content as zw_cmt_content, img_cmt_date as zw_cmt_date, login_id from t_img_comment where login_id=#{login_id} order by img_cmt_date DESC
+ 	</select>
+ 	<select id="getById" parameterType="String" resultType="int">
+ 		select count(*) from t_login where login_id=#{login_id}
+ 	</select>
+ 	<select id="getByNic" parameterType="String" resultType="int">
+ 		select count(*) from t_login where u_nick=#{u_nick}
+ 	</select>
+ 	
+ 	<update id="memberUpdate1" parameterType="kr.login.entity.Member">
+  		update t_login set user_name=#{user_name}, u_nick=#{u_nick}, u_birthdate=#{u_birthdate}, u_addr=#{u_addr} where login_id=#{login_id}
+  	</update>
+  	<update id="memberUpdate2" parameterType="kr.login.entity.Member">
+  		update t_user set u_pw=#{u_pw} where login_id=#{login_id}
+  	</update>
+ 	<select id="memberView" parameterType="String" resultType="kr.login.entity.Member">	
+  		select * from t_login l, t_user u where l.login_id = u.login_id and l.login_id =#{login_id}  	
+  	</select>
+  	<delete id="memberDelete" parameterType="String">
+	  	begin
+	  	delete from t_user where login_id=#{login_id};
+	  	delete from t_login where login_id=#{login_id};
+	  	end; 
+  	</delete>
+  	
+  	<!-- 칼럼 -->
+  	<select id="allCal" resultType="kr.login.entity.Cal">
+		select * from cal_T
+	</select>
+	<select id="allCalListCount" resultType="int">
+		SELECT count(*) from cal_T
+	</select>
+	
+	<select id="someCalList" resultType="kr.login.entity.Cal" parameterType="kr.zw_board.entity.BoardPaging">
+    	select xx.* from (select rownum as r, x.* from (select * from cal_T) x) xx where xx.r between #{startCount} and #{endCount}
+  	</select>
+  	<!-- 주간인기게시판 -->
+  	<select id="zero_List" resultType="kr.weekly.entity.Weekly">
+ 		select * from zerowaste_search
+ 	</select>
+ 	<select id="plastic_List" resultType="kr.weekly.entity.Weekly">
+ 		select * from plastic_search
+ 	</select>
+ 	<select id="vegan_List" resultType="kr.weekly.entity.Weekly">
+ 		select * from vegan_search
+ 	</select>
+ 	<select id="allListCount" resultType="int">
+	SELECT count(*) from t_zw_board
+</select>
+
+<!-- 게시판 -->
+
+<select id="searchHeadCount" parameterType="String" resultType="int">
+	select count(*) from t_zw_board where zw_headline= ${headval}
+</select>
+<select id="searchListCount" parameterType="map" resultType ="int">
+	select count(*) from t_zw_board where ${val} like '%' ||#{text}||'%'
+</select>
+ <select id="allList" resultType="kr.zw_board.entity.Zw_Board">
+   select zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,zw_headline,(select count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as zw_cmtcnt from  t_zw_board b order by zw_seq desc
+ </select>
+ 
+ <select id="someList" resultType="kr.zw_board.entity.Zw_Board" parameterType="kr.zw_board.entity.BoardPaging">
+    select xx.zw_seq, xx.zw_title, xx.zw_content,xx.zw_file, xx.zw_date, xx.login_id, xx.zw_cnt,xx.zw_likes,xx.zw_headline,xx.zw_cmtcnt from (select rownum as r, x.* from (select zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,zw_headline,(select count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as zw_cmtcnt from  t_zw_board b order by zw_seq DESC) x) xx where xx.r between #{startCount} and #{endCount}
+  </select>
+  
+  <select id="searchList" resultType="kr.zw_board.entity.Zw_Board" parameterType="map">
+    select xx.zw_seq, xx.zw_title, xx.zw_content,xx.zw_file, xx.zw_date, xx.login_id, xx.zw_cnt,xx.zw_likes,xx.zw_headline,xx.zw_cmtcnt from (select rownum as r, x.* from (select zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,zw_headline,(select count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as zw_cmtcnt from  t_zw_board b where  ${val} like '%' ||#{text}||'%' order by zw_seq DESC) x) xx where xx.r between #{board.startCount} and #{board.endCount}  
+  </select>
+  
+<!--  <select id="memberLogin" parameterType="String" resultType="kr.zw_board.entity.Member">
+ 	select * from t_login where login_id=#{id}
+ </select> -->
+ 
+ <select id="allComment" parameterType="int" resultType="kr.zw_comment.entity.zw_comment">
+ 	select * from t_zero_waste_comment where zw_seq=#{zw_seq} order by zw_cmt_seq
+ </select>
+ 
+ <select id ="likeCheck" parameterType="map" resultType="int">
+ 	select count(*) from likes where zw_seq = #{no} and login_id =#{id}
+ </select>
+
+ <select id ="likeCount" parameterType="int" resultType="int">
+ 	select count(*) from likes where zw_seq=#{zw_seq}
+ </select>
+ 
+ <update id ="updateLike" parameterType="map">
+ 	update t_zw_board set zw_likes = #{cnt} where zw_seq = #{zw_seq}
+ </update>
+ 
+ <insert id = "likeUpdate" parameterType="map">
+ 	insert into likes values(#{no},#{id})
+ </insert>
+ 
+ 
+ <insert id="boardWrite" parameterType="kr.zw_board.entity.Zw_Board">
+ 	insert into t_zw_board(zw_title, zw_content, zw_file, zw_date, login_id, zw_cnt, zw_likes) values(#{zw_title},#{zw_content},#{zw_file},SYSDATE,#{login_id},#{zw_cnt},#{zw_likes})
+ </insert>
+ 
+ <insert id="commentWrite" parameterType="kr.zw_comment.entity.zw_comment">
+    insert into t_zero_waste_comment(zw_seq,zw_cmt_content, zw_cmt_date, login_id) values(#{zw_seq},#{zw_cmt_content},sysdate,#{login_id})
+ </insert>
+ 
+ <delete id="boardDelete" parameterType="int">
+ 	delete from t_zw_board where zw_seq=#{zw_seq}
+ </delete>
+ 
+ <delete id="commentDelete" parameterType="int">
+ 	delete from t_zero_waste_comment where zw_cmt_seq=#{num}
+ </delete>
+ 
+ <delete id="commentDelete2" parameterType="int">
+ 	delete from t_zero_waste_comment where zw_seq=#{num}
+ </delete>
+ 
+ <delete id="likeDelete" parameterType="map">
+ 	delete from likes where zw_seq=#{no} and login_id=#{id}
+ </delete>
+ <select id="boardView" parameterType="int" resultType="kr.zw_board.entity.Zw_Board">
+ 	select * from t_zw_board where zw_seq=#{zw_seq}
+ </select>
+ 
+ <update id="writePoint" parameterType="String">
+ 	update t_login set u_point=u_point+5 where login_id=#{login_id}
+ </update>
+ 
+ <update id="commentPoint" parameterType="String">
+ 	update t_login set u_point=u_point+3 where login_id=#{login_id}
+ </update>
+ <update id="deleteFile" parameterType="int">
+ 	update t_zw_board set zw_file = ' ' where zw_seq = #{zw_seq}
+ </update>
+ <update id="boardUpdate" parameterType="kr.zw_board.entity.Zw_Board">
+ 	update t_zw_board set zw_title=#{zw_title},zw_content=#{zw_content},zw_file=#{zw_file} where zw_seq=#{zw_seq}
+ </update>
+ 
+  <update id="boardUpdate2" parameterType="kr.zw_board.entity.Zw_Board">
+ 	update t_zw_board set zw_title=#{zw_title},zw_content=#{zw_content} where zw_seq=#{zw_seq}
+ </update>
+ 
+ <update id="commentUpdate" parameterType="kr.zw_comment.entity.zw_comment">
+ 	update t_zero_waste_comment set zw_cmt_content=#{zw_cmt_content} where zw_cmt_seq=#{zw_cmt_seq}
+ </update>
+ 
+ <update id="countUpdate" parameterType="int">
+ 	update t_zw_board set zw_cnt=zw_cnt+1 where zw_seq=#{zw_seq}
+ </update>
+ 	<!-- 공지 -->
+ <update id="updateNotice" parameterType="int">
+	update t_zw_board set notice = noticeseq.nextval where zw_seq=#{zw_seq}
+ </update>
+ 
+ <update id="deleteNotice" parameterType="int">
+ 	update t_zw_board set notice = null where zw_seq=#{zw_seq}
+ </update>
+ 
+ <select id="noticeList" resultType="kr.zw_board.entity.Zw_Board">
+ 	select * from (select a.*, ROWNUM from t_zw_board a where notice is not null order by notice desc) where ROWNUM &lt;= 3
+ </select> 
+ 	
+</mapper>
