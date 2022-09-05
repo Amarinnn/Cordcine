@@ -3,6 +3,7 @@ package kr.login.frontController;
 import java.util.HashMap;
 
 
+
 import kr.admin.controller.AdminDeleteController;
 import kr.admin.controller.MemberListController;
 import kr.admin.controller.NoticeListController;
@@ -37,6 +38,24 @@ import kr.grade_comment.controller.GradeCommentUpdateController;
 import kr.grade_comment.controller.GradeCommentWriteController;
 import kr.imgboard.controller.ImgHeadSearchController;
 import kr.imgboard.controller.ImgLikeController;
+import kr.buy_board.controller.BuyBoardDeleteController;
+import kr.buy_board.controller.BuyBoardUpdateController;
+import kr.buy_board.controller.BuyBoardUpdateFormController;
+import kr.buy_board.controller.BuyBoardViewController;
+import kr.buy_board.controller.BuyBoardWriteController;
+import kr.buy_board.controller.BuyBoardWriteFormController;
+import kr.buy_board.controller.BuyFileDeleteController;
+import kr.buy_board.controller.BuyLikeController;
+import kr.buy_board.controller.BuyPageListController;
+import kr.buy_board.controller.BuySearchListController;
+import kr.buy_comm_form.controller.BCommFormDelCtrl;
+import kr.buy_comm_form.controller.BCommFormListCtrl;
+import kr.buy_comm_form.controller.BCommFormUpdateCtrl;
+import kr.buy_comm_form.controller.BCommFormWriteCtrl;
+import kr.buy_comment.controller.BuyCommentDeleteController;
+import kr.buy_comment.controller.BuyCommentListController;
+import kr.buy_comment.controller.BuyCommentUpdateController;
+import kr.buy_comment.controller.BuyCommentWriteController;
 import kr.join.controller.CalListController;
 import kr.join.controller.IdCheckController;
 import kr.join.controller.MemberDeleteController;
@@ -91,6 +110,7 @@ import kr.zw_comment.controller.CommentDeleteController;
 import kr.zw_comment.controller.CommentListController;
 import kr.zw_comment.controller.CommentUpdateController;
 import kr.zw_comment.controller.CommentWriteController;
+
 
 public class HandlerMapping {
 	private HashMap<String,Controller> mappings;
@@ -214,6 +234,31 @@ public class HandlerMapping {
 
 		//유튜브
 		mappings.put("/youtubelist.do", new YoutubeListController());
+
+		//공동구매 게시판
+		mappings.put("/buylike.do", new BuyLikeController());
+		
+		mappings.put("/buyWriteForm.do", new BuyBoardWriteFormController());
+		mappings.put("/buyWrite.do", new BuyBoardWriteController());
+		mappings.put("/buyDelete.do", new BuyBoardDeleteController());
+		mappings.put("/buyboardView.do", new BuyBoardViewController());
+		mappings.put("/buyUpdate.do", new BuyBoardUpdateController());
+		mappings.put("/buyUpdateForm.do", new BuyBoardUpdateFormController());
+		mappings.put("/buyCommentWrite.do", new BuyCommentWriteController());
+		mappings.put("/buyCommentList.do", new BuyCommentListController() );
+		mappings.put("/buyCommentUpdate.do", new BuyCommentUpdateController());
+		mappings.put("/buyCommentDelete.do", new BuyCommentDeleteController());
+		mappings.put("/buylist.do", new BuyPageListController());
+		mappings.put("/buySearch.do", new BuySearchListController());
+		mappings.put("/buyfileDelete.do", new BuyFileDeleteController());
+			//공동구매게시판 댓글 폼
+		mappings.put("/buyCommFormList.do", new BCommFormListCtrl());
+		mappings.put("/buyCommFormWrite.do", new BCommFormWriteCtrl());
+		mappings.put("/buyCommFormDelete.do", new BCommFormDelCtrl());
+		mappings.put("/buyCommFormUpdate.do", new BCommFormUpdateCtrl());
+		
+		
+		
 	}
 	public Controller getController(String command) {
 		return mappings.get(command);

@@ -218,6 +218,7 @@ $(document).ready(function(){
         <jsp:include page="../../footer/footer.jsp" />
   </div>
   </div>
-
+</div>
+</div>
 </body>
 </html>

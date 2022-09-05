@@ -241,7 +241,7 @@ $(document).ready(function(){
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2></br>
+                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2>
               </div>
             </div>
           </div>
@@ -286,10 +286,26 @@ $(document).ready(function(){
   				
     			
     			<td colspan="4" align="right">
-    			<c:if test="${vo.login_id  eq mvo.login_id}">
-    				<button class="btn btn-outline-success w-5" onclick="goUpdate(${vo.zw_seq})">수정</button>
-    				<button class="btn btn-outline-danger w-5" onclick="goDel(${vo.zw_seq})">삭제</button>
-    			</c:if>
+    			<c:choose>
+	    			<c:when test="${mvo.u_type eq 'admin' }">
+	    				<c:choose>
+			    			<c:when test="${vo.notice eq 0 }">
+			    				<button class="btn btn-sm btn-warning" onclick="goNotice(${vo.grade_seq})">공지</button>
+			    			</c:when>
+			    			<c:otherwise>
+			    				<button class="btn btn-sm btn-warning" onclick="delNotice(${vo.grade_seq})">공지 제거</button>
+			    			</c:otherwise>
+	    				</c:choose>
+	    				<button class="btn btn-sm btn-warning" onclick="goUpdate(${vo.grade_seq})">수정</button>
+	    				<button class="btn btn-sm btn-danger" onclick="goDel(${vo.grade_seq})">삭제</button>
+	    			</c:when>
+	    			
+	    			<c:when test="${vo.login_id  eq mvo.login_id}">
+	    				<button class="btn btn-sm btn-warning" onclick="goUpdate(${vo.grade_seq})">수정</button>
+	    				<button class="btn btn-sm btn-danger" onclick="goDel(${vo.grade_seq})">삭제</button>
+	    			</c:when>
+	    		</c:choose>
+
     			<button class="btn btn-outline-primary w-5" onclick="goList()">목록</button>
     			</td>
     		</tr>
@@ -378,6 +394,7 @@ $(document).ready(function(){
         <jsp:include page="../../footer/footer.jsp" />
   </div>
   </div>
-
+</div>
+</div>
 </body>
 </html>
