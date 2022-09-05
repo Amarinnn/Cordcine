@@ -18,11 +18,7 @@ public class MypageController implements Controller {
 		
 		HttpSession session = request.getSession();
 		Member vo = (Member)session.getAttribute("mvo");
-		MemberMyBatisDAO dao= new MemberMyBatisDAO();
-		int cmw =dao.myWriteCount(vo.getLogin_id());
-	    session.setAttribute("cmw", cmw);
-	    int cmc =dao.myWriteCount(vo.getLogin_id());
-	    session.setAttribute("cmc", cmc);
+		
 		
 		return "mypage/mypage";
 	}

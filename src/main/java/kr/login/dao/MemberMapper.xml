@@ -38,6 +38,7 @@
 	<select id="myWriteCount" parameterType="String" resultType="int">
 		select (select count(*) from T_ZW_BOARD where login_id=#{login_id}) + (select count(*) from T_TOGETHER_BOARD where login_id=#{login_id}) + (select count(*) from T_img_BOARD where login_id=#{login_id}) from dual
 	</select>
+	
 	<select id="myCommentCount" parameterType="String" resultType="int">
 		select (select count(*) from t_together_comment where login_id=#{login_id}) + (select count(*) from t_zero_waste_comment where login_id=#{login_id}) + (select count(*) from t_buy_comment where login_id=#{login_id})+ (select count(*) from t_buy_comment where login_id=#{login_id})+ (select count(*) from t_buy_comment where login_id=#{login_id}) from dual
 	</select>

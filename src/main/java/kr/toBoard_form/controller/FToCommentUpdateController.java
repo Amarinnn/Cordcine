@@ -21,6 +21,7 @@ public class FToCommentUpdateController implements Controller {
 		int tb_seq = Integer.parseInt(request.getParameter("tb_seq"));
 		String user_name = request.getParameter("user_name");
 		String user_phone = request.getParameter("user_phone");
+		
 		HttpSession session = request.getSession();
 		Member vo = (Member)session.getAttribute("mvo");
 		String login_id=vo.getLogin_id();
