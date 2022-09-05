@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import kr.board.dao.BoardMyBatisDAO;
+import kr.imgboard.dao.ImgBoardMyBatisDAO;
 import kr.login.controller.Controller;
 import kr.login.entity.Member;
 
@@ -35,7 +36,6 @@ public class LikeController implements Controller {
 		BoardMyBatisDAO dao = new BoardMyBatisDAO();
 		
 		int result = dao.likeCheck(m);
-
 		if(result==0) {
 			dao.likeUpdate(m);
 		}else {

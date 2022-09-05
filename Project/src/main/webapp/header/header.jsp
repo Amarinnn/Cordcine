@@ -13,7 +13,7 @@
         <div class="container-xl">
           <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
             <a href=".">
-              <img src="./static/logo.svg" width="110" height="32" alt="Logo" class="navbar-brand-image">
+              <img src="" width="110" height="32" alt="Logo" class="navbar-brand-image">
             </a>
           </h1>
           <div class="navbar-nav flex-row order-md-last">
@@ -149,7 +149,6 @@
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-              
                  <a href="${cpath}/mypageWrite.do" class="dropdown-item">My account</a>
                 <a href="${cpath}/logout.do" class="dropdown-item">Logout</a>
               </div>

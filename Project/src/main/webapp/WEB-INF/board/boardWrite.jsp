@@ -9,12 +9,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>empty
+  <title>FOR THE URTH
   </title>
   <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-   <script src="${cpath }/js/summernote/summernote-lite.js"></script>
-<script src="${cpath }/js/summernote/lang/summernote-ko-KR.js"></script>
+   
 
 <link rel="stylesheet" href="${cpath }/css/summernote/summernote-lite.css">
 
@@ -33,7 +32,11 @@
 
   <!-- my -->
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">
-<title>Bootstrap Example</title>
+    <link rel="stylesheet" href="${cpath }/css/my/dy.css">
+      <link rel="stylesheet" href="${cpath }/css/my/reply.css">
+    
+  
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
 
@@ -58,10 +61,12 @@
     	});
  	 })
 	function checkForm(){
-		change.innerHTML="<input type ="
-		var title = $('#title').val();
+		var text = $('#title').val();
+		
+		console.log(text)
+		
 		var content = $('#tinymce-default').val();
-		if(title == ""){
+		if(text == ""){
 			alert("제목을 입력하세요")
 			$('#title').focus();
 			return false
@@ -72,6 +77,7 @@
 			$('#tinymce-default').focus();
 			return false
 		}
+		
 		
 		return true
 	}
@@ -102,7 +108,7 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                </h2>
+                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2></br>
               </div>
             </div>
           </div>
@@ -114,19 +120,29 @@
     		<table class="table table-bordered">
     			<tr>
     				<input type="hidden" name="writer" value="${mvo.login_id }">
+    				<td class="bal">
+                <div>
+                      <select type="text" class="form-select " name ="headval" placeholder="Select" id="headline-tags" value="">
+                        <option value="제로웨이스트">제로웨이스트</option>
+                        <option value="비건">비건</option>
+                        
+                      </select>
+                      
+                    </div>
+                </td>
     				<td><input type="text" id="title" name="title" class="form-control"/></td>
     			</tr>
     			<tr>
     				
-    				<td><textarea  rows="10" name="content" class="form-control" id="tinymce-default"></textarea></td>
+    				<td colspan="2"><textarea  rows="10" name="content" class="form-control" id="tinymce-default"></textarea></td>
     			</tr>
     			<tr>
-    				<Td><input type="file" name = "filename1"></Td>
+    				<Td colspan="2"><input type="file" name = "filename"></Td>
     			</tr>
     			<tr>
-    				<Td colspan="2">
-    				<button type="submit" class="btn btn-success btn-sm">등록</button>
-    				<button type="button" class ="btn btn-warning btn-sm" onclick="location.href='${cpath }/zwlist.do'">취소</button>
+    				<Td colspan="2" align="right">
+    				<button type="submit" class="btn btn-outline-success w-5">등록</button>
+    				<button type="button" class ="btn btn-outline-danger w-5" onclick="location.href='${cpath }/zwlist.do'">취소</button>
     				</Td>
     			</tr>
     		</table>

@@ -9,8 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-
-
 import kr.admin.entity.AdminPaging;
 import kr.login.entity.Cal;
 import kr.login.entity.Kakao_member;
@@ -312,9 +310,7 @@ public class MemberMyBatisDAO {
 			return list;
 		}
 		
-
-
-		//관리자페이지
+		//게시판
 		public List<Member> adminList() {
 			AdminPaging paging = new AdminPaging();
 			
@@ -368,7 +364,6 @@ public class MemberMyBatisDAO {
 		
 		
 		public int noticeList() {
-
 			SqlSession session = sqlSessionFactory.openSession();
 			int count = session.selectOne("adminnoticeList");
 			session.close();
@@ -389,7 +384,16 @@ public class MemberMyBatisDAO {
 			return list;
 			
 		}
-		
+
+
+
+
+
+
+
+
+
+
 		
 		
 		

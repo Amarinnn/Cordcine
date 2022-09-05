@@ -2,6 +2,7 @@ package kr.login.frontController;
 
 import java.util.HashMap;
 
+
 import kr.admin.controller.AdminDeleteController;
 import kr.admin.controller.MemberListController;
 import kr.admin.controller.NoticeListController;
@@ -21,6 +22,21 @@ import kr.grade_comment.controller.GradeCommentDeleteController;
 import kr.grade_comment.controller.GradeCommentListController;
 import kr.grade_comment.controller.GradeCommentUpdateController;
 import kr.grade_comment.controller.GradeCommentWriteController;
+import kr.img_comment.controller.ImgCmtDeleteController;
+import kr.img_comment.controller.ImgCmtListController;
+import kr.img_comment.controller.ImgCmtUpdateController;
+import kr.img_comment.controller.ImgCmtWriteController;
+import kr.imgboard.controller.ImgBoardDeleteController;
+import kr.imgboard.controller.ImgBoardUpdateController;
+import kr.imgboard.controller.ImgBoardUpdateFormController;
+import kr.imgboard.controller.ImgBoardViewController;
+import kr.imgboard.controller.ImgBoardWriteController;
+import kr.imgboard.controller.ImgBoardWriteFormController;
+import kr.imgboard.controller.ImgFileDeleteController;
+import kr.imgboard.controller.ImgHeadSearchController;
+import kr.imgboard.controller.ImgLikeController;
+import kr.imgboard.controller.ImgListController;
+import kr.imgboard.controller.ImgSearchListController;
 import kr.join.controller.CalListController;
 import kr.join.controller.IdCheckController;
 import kr.join.controller.MemberDeleteController;
@@ -59,6 +75,7 @@ import kr.zw_board.controller.BoardViewController;
 import kr.zw_board.controller.BoardWriteController;
 import kr.zw_board.controller.BoardWriteFormController;
 import kr.zw_board.controller.FileDeleteController;
+import kr.zw_board.controller.HeadSearchController;
 import kr.zw_board.controller.LikeController;
 import kr.zw_board.controller.PageListController;
 import kr.zw_board.controller.SearchListController;
@@ -136,6 +153,7 @@ public class HandlerMapping {
 		mappings.put("/zwlist.do", new PageListController());
 		mappings.put("/zwSearch.do", new SearchListController());
 		mappings.put("/fileDelete.do", new FileDeleteController());
+		mappings.put("/hlSearch.do", new HeadSearchController());
 		
 		//지도페이지
 		mappings.put("/searchpaging.do", new MapSearchPageController());
@@ -174,6 +192,24 @@ public class HandlerMapping {
 		mappings.put("/gfileDelete.do", new GradeFileDeleteController());
 		mappings.put("/gradeNotice.do", new GradeNoticeController());
 		mappings.put("/gradeDelNotice.do", new GradeDeleteNoticeController());
+		
+		// 이미지 게시판
+		mappings.put("/imgBoardWriteForm.do", new ImgBoardWriteFormController());
+		mappings.put("/imglike.do", new ImgLikeController());
+		
+		mappings.put("/imgBoardWrite.do", new ImgBoardWriteController());
+		mappings.put("/imgBoardDelete.do", new ImgBoardDeleteController());
+		mappings.put("/imgBoardView.do", new ImgBoardViewController());
+		mappings.put("/imgBoardUpdate.do", new ImgBoardUpdateController());
+		mappings.put("/imgBoardUpdateForm.do", new ImgBoardUpdateFormController());
+		mappings.put("/imgCommentWrite.do", new ImgCmtWriteController());
+		mappings.put("/imgCommentList.do", new ImgCmtListController() );
+		mappings.put("/imgCommentUpdate.do", new ImgCmtUpdateController());
+		mappings.put("/imgCommentDelete.do", new ImgCmtDeleteController());
+		mappings.put("/imgList.do", new ImgListController());
+		mappings.put("/imgSearch.do", new ImgSearchListController());
+		mappings.put("/imgfileDelete.do", new ImgFileDeleteController());
+		mappings.put("/imgHlSearch.do", new ImgHeadSearchController());
 		
 	}
 	public Controller getController(String command) {

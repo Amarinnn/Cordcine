@@ -13,7 +13,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>empty
+  <title>FOR THE URTH
   </title>
   <!-- CSS files -->
   <link href="${cpath}/css/tabler.css" rel="stylesheet" />
@@ -29,7 +29,7 @@
   <!-- my -->
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">
   <link rel="stylesheet" href="${cpath}/css/my/dy.css">
-<title>Bootstrap Example</title>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
 <script
@@ -212,14 +212,6 @@ $(document).ready(function(){
   	
   	}
   	
-  	//공지
-  	function goNotice(num){
-  		location.href="${cpath}/boardNotice.do?num="+ num;
-  	}
-  	function delNotice(num){
-  		location.href="${cpath}/delNotice.do?num="+num;
-  	}
-  	
   	
   	</script>
   	
@@ -237,7 +229,7 @@ $(document).ready(function(){
       <div class="cover-wrap">
         <div class="container">
           <div class="cover">
-            게시판
+            제로웨이스트/비건
           </div>
         </div>
       </div>
@@ -249,8 +241,7 @@ $(document).ready(function(){
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                  
-                </h2>
+                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2></br>
               </div>
             </div>
           </div>
@@ -261,7 +252,12 @@ $(document).ready(function(){
             <table class="table mb-0" id="view">
     		<tr>
     			<td class="text-muted">제목</td>
-    			<Td>${vo.zw_title }</Td>
+    			<Td>
+    			<c:if test="${vo.notice eq '' }">
+    			<span class="text-green">[${vo.zw_headline}]<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 21c.5 -4.5 2.5 -8 7 -10"></path><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z"></path></svg></span>
+    			</c:if>
+    			${vo.zw_title }</Td>
+    			
     			<td  class="text-muted">조회수</td>
     			<td>${vo.zw_cnt }</td>
     		</tr>
@@ -287,27 +283,13 @@ $(document).ready(function(){
     			
     		</Tr>
     		<tr>
+  				
+    			
     			<td colspan="4" align="right">
-    			<c:choose>
-	    			<c:when test="${mvo.u_type eq 'admin' }">
-	    				<c:choose>
-			    			<c:when test="${vo.notice eq 0 }">
-			    				
-			    				<button class="btn btn-sm btn-warning" onclick="goNotice(${vo.zw_seq})">공지</button>
-			    			</c:when>
-			    			<c:otherwise>
-			    				<button class="btn btn-sm btn-warning" onclick="delNotice(${vo.zw_seq})">공지 제거</button>
-			    			</c:otherwise>
-	    				</c:choose>
-	    				<button class="btn btn-sm btn-warning" onclick="goUpdate(${vo.zw_seq})">수정</button>
-	    				<button class="btn btn-sm btn-danger" onclick="goDel(${vo.zw_seq})">삭제</button>
-	    			</c:when>
-	    			
-	    			<c:when test="${vo.login_id  eq mvo.login_id}">
-	    				<button class="btn btn-sm btn-warning" onclick="goUpdate(${vo.zw_seq})">수정</button>
-	    				<button class="btn btn-sm btn-danger" onclick="goDel(${vo.zw_seq})">삭제</button>
-	    			</c:when>
-	    		</c:choose>
+    			<c:if test="${vo.login_id  eq mvo.login_id}">
+    				<button class="btn btn-outline-success w-5" onclick="goUpdate(${vo.zw_seq})">수정</button>
+    				<button class="btn btn-outline-danger w-5" onclick="goDel(${vo.zw_seq})">삭제</button>
+    			</c:if>
     			<button class="btn btn-outline-primary w-5" onclick="goList()">목록</button>
     			</td>
     		</tr>
@@ -315,17 +297,20 @@ $(document).ready(function(){
     		</table>
 	    		<div class="row mt-3 mb-2">
 	            <div class="col"></div>
-	            <div class="col " id="likebtn" > 
-	            <button type="button"  onclick="return goLike()" id="likebtn2" class="btn btn-info w-20">
+	            <div class="col" id="likebtn" >
+	            <button type="button"  onclick="return goLike()" id="likebtn2" class="btn btn-outline-info w-10">
 	              <c:choose>
 	                <c:when test="${likecheck eq 0 }">
-	                  <i id ="l" class="xi-heart-o"></i>&nbsp;
+	                  <i id ="l" class="xi-heart-o"></i>
 	                </c:when>
 	                <c:when test="${likecheck eq 1 }">
-	                  <i id = "l" class="xi-heart"></i>&nbsp;
+	                  <i id = "l" class="xi-heart"></i>
 	                </c:when>
+	                <c:otherwise>
+	                <i id ="l" class="xi-heart-o"></i>
+	   				</c:otherwise>
 	              </c:choose>
-	              <span id="likes">&nbsp;${likes}</span>
+	              <span id="likes">&nbsp;${vo.zw_likes}</span>
 	              </button></div>
 	            <div class="col"></div>
 

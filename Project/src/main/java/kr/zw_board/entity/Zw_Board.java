@@ -9,11 +9,16 @@ public class Zw_Board {
 	private String login_id;
 	private int zw_cnt;
 	private int zw_likes;
-	private int zw_cmtcnt;
 	private int notice;
+	private int zw_cmtcnt;
+	private String zw_headline;
 	
-	
-	
+	public String getZw_headline() {
+		return zw_headline;
+	}
+	public void setZw_headline(String zw_headline) {
+		this.zw_headline = zw_headline;
+	}
 	public int getNotice() {
 		return notice;
 	}

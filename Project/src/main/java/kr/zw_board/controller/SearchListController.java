@@ -38,7 +38,7 @@ public class SearchListController implements Controller {
 		BoardPaging board = new BoardPaging(); 
 		
 		board.setAllPageCount(dao.searchListCount(m));
-		System.out.println(dao.searchListCount(m));
+		
 		board.calculatePageCount();
 		board.startCount(Integer.parseInt(p));
 		board.endCount(Integer.parseInt(p));
@@ -48,7 +48,8 @@ public class SearchListController implements Controller {
 		m.put("board", board);
 		
 		List<Zw_Board> list=dao.searchList(m);
-		System.out.println(list.size());
+		List<Zw_Board> notice_list =dao.noticeList();
+		request.setAttribute("notice", notice_list);
 		request.setAttribute("list2", list);
 		request.setAttribute("board2", board);
 		request.setAttribute("val", val);
