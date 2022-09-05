@@ -52,3 +52,10 @@ input::-webkit-inner-spin-button {
 #upimg {
 	width : 100px;
 }
+
+.bal{
+	width : 15% !important;
+}
+#s{
+	height: 100px;
+}

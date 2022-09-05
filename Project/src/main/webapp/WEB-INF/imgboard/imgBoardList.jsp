@@ -9,7 +9,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>empty
+  <title>FOR THE URTH
   </title>
   <!-- CSS files -->
   <link href="${cpath}/css/tabler.css" rel="stylesheet" />
@@ -25,7 +25,7 @@
   <!-- my -->
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">
   <link rel="stylesheet" href="${cpath}/css/my/image.css">
-<title>Bootstrap Example</title>
+  <link rel="stylesheet" href="${cpath}/css/my/dy.css">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
 <script
@@ -77,8 +77,23 @@
       <div class="container">
         <br>
         
-        <h2>목록(List)</h2>
-        <hr>
+        <h2 class="page-title">
+                <a href="${cpath }/imgList.do">이미지 게시판</a> </h2><br>
+        <form action="${cpath }/imgHlSearch.do" method="get" id="searchForm" >
+                  <select type="text" class="from-select" name="headval" id="headline-tags" value="말머리검색">
+                    	<option value="이벤트참여">이벤트참여</option>
+                        <option value="일상">일상</option>
+                        <option value="추천">추천</option>
+                    </select>
+                    <button type="submit" class="btn btn-icon" value="Submit" ><svg xmlns="http://www.w3.org/2000/svg"
+                          class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24"
+                          stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                          stroke-linejoin="round">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                          <circle cx="10" cy="10" r="7"></circle>
+                          <line x1="21" y1="21" x2="15" y2="15"></line>
+                        </svg></button>
+                  </form>
 
         <div class="row g-2">
         
@@ -108,8 +123,11 @@
               <div class="card-body">
                 <p class="text-green">[${vo.img_headline}]<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 21c.5 -4.5 2.5 -8 7 -10"></path><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z"></path></svg></p>
               
-                <a href="${cpath }/imgBoardView.do?num=${vo.img_seq}&p=${board.currentPage}" class="text-reset"><h3 class="card-title">${vo.img_title }<span class="text-orange">&nbsp;[${vo.img_cmtcnt }]</span></h3></a>
-                <p class="text-muted">${vo.img_content }</p>
+                <a href="${cpath }/imgBoardView.do?num=${vo.img_seq}&p=${board.currentPage}" class="text-reset">
+                <h3 class="card-title">${vo.img_title }<span class="text-orange">&nbsp;[${vo.img_cmtcnt }]</span></h3></a>
+                <div class="text-truncate" id="s">
+                	<div class="text-muted text-truncate">${vo.img_content }</div>
+                </div>
                 <hr class="mb-3 mt-2">
                 <div class="d-flex align-items-center">
     

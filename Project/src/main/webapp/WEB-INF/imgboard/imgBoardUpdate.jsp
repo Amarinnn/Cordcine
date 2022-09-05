@@ -9,7 +9,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>empty
+  <title>FOR THE URTH
   </title>
   <!-- CSS files -->
   <link href="${cpath}/css/tabler.css" rel="stylesheet" />
@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">
   <link rel="stylesheet" href="${cpath }/css/my/dy.css">
   <link rel="stylesheet" href="${cpath }/css/my/reply.css">
-<title>Bootstrap Example</title>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
 <script
@@ -64,6 +64,33 @@
 		error : function(){alert("Error");}
 		});
 	}
+	
+	function check(){
+		var content = $('#tinymce-default').val();
+		var title = $('#img_title').val();
+		var file1 = $('#file1').val();
+		var file2 = $('#file2').val();
+		var file3 = $('#file3').val();
+		var file4 = $('#file4').val();
+		var file5 = $('#file5').val();
+		var filetd = $('#filetd').text();
+		console.log(filetd);
+		
+		if(title == ""){
+			alert("제목을 입력하세요");
+			return false
+		}else if(content == ""){
+			alert("내용을 입력하세요");
+			return false
+		}
+		if(file1 == "" && file2 == "" && file3 == "" && file4 == "" && file5 == "" && filetd == ""){
+			alert("이미지를 첨부하세요");
+			return false
+		}
+		var del = confirm("수정하시겠습니까");
+		if(del == true){ return true}
+		else{return false}
+	}
 </script>
 </head>
 <body>
@@ -89,7 +116,7 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                  글 수정
+                  <a href="${cpath }/imgList.do">이미지 게시판</a><br>
                 </h2>
               </div>
             </div>
@@ -99,23 +126,30 @@
           <div class="container-xl">
             <div class="row row-cards">
             <div class="panel-body">
-    	<form action="${cpath }/imgBoardUpdate.do" method="post" enctype="multipart/form-data">
+    	<form action="${cpath }/imgBoardUpdate.do" method="post" enctype="multipart/form-data" onsubmit="return check()">
     		
     		<table class="table table-bordered">
     			<input type ="hidden" name ="login_id" value="${mvo.login_id }"/>
     			<input type="hidden" name ="img_seq" value="${imgvo.img_seq }"/>
     			<tr>
     				
-    				<td>제목</td>
-    				<td><input type="text" name="img_title" class="form-control" value="${imgvo.img_title }"></td>
+    				<td>말머리/제목</td>
+    				<td class="bal">
+    					<select type="text" class="form-select " name ="imghead" placeholder="Select" id="selectheadline" value="">
+                        <option value="이벤트참여">이벤트참여</option>
+                        <option value="일상">일상</option>
+                        <option value="추천">추천</option>
+                      </select>
+    				</td>
+    				<td><input type="text" name="img_title" class="form-control" id="img_title" value="${imgvo.img_title }"></td>
     			</tr>
     			<tr>
     				<td>내용</td>
-    				<td><textarea rows="10" name="img_content" class="form-control" id="tinymce-default">${imgvo.img_content }</textarea></td>
+    				<td colspan="2"><textarea rows="10" name="img_content" class="form-control" id="tinymce-default">${imgvo.img_content }</textarea></td>
     			</tr>
     			<tr>
     				<td>첨부파일</td>
-    				<td><div id="img_file1">${imgvo.img_file1}<c:if test="${imgvo.img_file1 != ' ' }"><img id="upimg" src="${cpath}/upload/${imgvo.img_file1}">
+    				<td colspan="2" id="filetd"><div id="img_file1">${imgvo.img_file1}<c:if test="${imgvo.img_file1 != ' ' }"><img id="upimg" src="${cpath}/upload/${imgvo.img_file1}">
     			<button type="button" class ="btn btn-sm btn-warning" onclick ="fileDelete(${imgvo.img_seq },'${imgvo.img_file1 }','img_file1')">X</button>
     			</c:if></div>
     			<div id="img_file2">${imgvo.img_file2}<c:if test="${imgvo.img_file2 != ' ' }"><img id="upimg" src="${cpath}/upload/${imgvo.img_file2}">
@@ -133,33 +167,33 @@
     			
     				<div id="pro-1">
                             <div class="fl-l w-75">
-                              <input type="file" class="form-control form-control-rounded mb-2 w-100"
+                              <input type="file" id="file1" class="form-control form-control-rounded mb-2 w-100"
                                 name="file1" >
                             </div>
                             <button type="button" class="fl-l btn btn-outline ms-3" id="plus">+</button>
                           </div>
                           <div id="pro-2">
                             <div class="fl-l w-75">
-                              <input type="file" class="form-control form-control-rounded mb-2 w-100"
+                              <input type="file" id="file2" class="form-control form-control-rounded mb-2 w-100"
                                 name="file2" >
                             </div>
                             <button type="button" class="fl-l btn btn-outline ms-3" id="min1">-</button>
                           </div>
                           <div id="pro-3">
                             <div class="fl-l w-75">
-                              <input type="file" class="form-control form-control-rounded mb-2 w-100"
+                              <input type="file" id="file3" class="form-control form-control-rounded mb-2 w-100"
                                 name="file3">
                             </div>
                           </div>
                           <div id="pro-4">
                             <div class="fl-l w-75">
-                              <input type="file" class="form-control form-control-rounded mb-2 w-100"
+                              <input type="file" id="file4" class="form-control form-control-rounded mb-2 w-100"
                                 name="file4" >
                             </div>
                           </div>
                           <div id="pro-5">
                             <div class="fl-l w-75">
-                              <input type="file" class="form-control form-control-rounded mb-2 w-100"
+                              <input type="file" id="file5" class="form-control form-control-rounded mb-2 w-100"
                                 name="file5" >
                             </div>
                           </div>
@@ -167,10 +201,10 @@
     				
     			</tr>
     			<tr>
-    				<td colspan="2" align="right">
-    					<button type="submit" class="btn btn-sm btn-primary" >수정 </button>
-    					<button type="button" class="btn btn-sm btn-warning" onclick="location.href='${cpath}/imgBoardView.do?num=${imgvo.img_seq }'">취소 </button>
-    					<button type="button" class="btn btn-sm btn-info" onclick="location.href='${cpath }/imgList.do'">리스트</button>
+    				<td colspan="3" align="right">
+    					<button type="submit" class="btn btn-outline-success w-5" >수정 </button>
+    					<button type="button" class="btn btn-outline-danger w-5" onclick="location.href='${cpath}/imgBoardView.do?num=${imgvo.img_seq }'">취소 </button>
+    					<button type="button" class="btn btn-outline-primary w-5" onclick="location.href='${cpath }/imgList.do'">리스트</button>
     				</td>
     			</tr>
     		</table>

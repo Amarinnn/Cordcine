@@ -35,6 +35,8 @@ import kr.grade_comment.controller.GradeCommentDeleteController;
 import kr.grade_comment.controller.GradeCommentListController;
 import kr.grade_comment.controller.GradeCommentUpdateController;
 import kr.grade_comment.controller.GradeCommentWriteController;
+import kr.imgboard.controller.ImgHeadSearchController;
+import kr.imgboard.controller.ImgLikeController;
 import kr.join.controller.CalListController;
 import kr.join.controller.IdCheckController;
 import kr.join.controller.MemberDeleteController;
@@ -65,6 +67,7 @@ import kr.login.controller.MypageToController;
 import kr.login.controller.MypageVgController;
 import kr.login.controller.MypageWriteController;
 import kr.weekly.controller.WeeklyViewController;
+import kr.youtube.controller.YoutubeListController;
 import kr.zw_board.controller.BoardDeleteController;
 import kr.zw_board.controller.BoardNoticeController;
 import kr.zw_board.controller.BoardUpdateController;
@@ -193,7 +196,7 @@ public class HandlerMapping {
 		
 		// 이미지 게시판
 		mappings.put("/imgBoardWriteForm.do", new ImgBoardWriteFormController());
-		mappings.put("/imglike.do", new LikeController());
+		mappings.put("/imglike.do", new ImgLikeController());
 		
 		mappings.put("/imgBoardWrite.do", new ImgBoardWriteController());
 		mappings.put("/imgBoardDelete.do", new ImgBoardDeleteController());
@@ -207,6 +210,10 @@ public class HandlerMapping {
 		mappings.put("/imgList.do", new ImgListController());
 		mappings.put("/imgSearch.do", new ImgSearchListController());
 		mappings.put("/imgfileDelete.do", new ImgFileDeleteController());
+		mappings.put("/imgHlSearch.do", new ImgHeadSearchController());
+
+		//유튜브
+		mappings.put("/youtubelist.do", new YoutubeListController());
 	}
 	public Controller getController(String command) {
 		return mappings.get(command);

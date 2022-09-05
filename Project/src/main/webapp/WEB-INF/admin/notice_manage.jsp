@@ -112,174 +112,192 @@
 </head>
 <body>
 
-	<div class="page">
-		<div class="page-main">
-			<jsp:include page="../../header/header.jsp" />
-			<!-- 헤더끝 -->
-			<!------------여기부터 입력----------->
-			<div class="page-wrapper">
-			<div class="row">
+	<!-- WEB-INF폴더에서 사용시 page="../header/header.jsp"로 변경 -->
+	<jsp:include page="../../header/header.jsp" />
+	<!------------여기부터 입력----------->
+	<div class="container-xl">
+		<div class="page-header mb-3">
+			<div class="row align-items-center mw-100 mt-4">
+				<div class="col">
+					<div class="mb-1"></div>
+
+				</div>
+
 			</div>
-				<div class="page-body">
-					<div class="container-xl">
-					<div class="page-header mb-3">
-					</div>
-					<div class="row gx-lg-5">
-					<div class="d-none d-lg-block col-lg-3">
-						<ul class="nav nav-pills nav-vertical">
-			               <li class="nav-item">
-			                 <a href="${cpath }/memberlist.do" class="nav-link">
-			                      사용자 관리 </a>
-			               </li>
-			               <li class="nav-item">
-		                     <a href="${cpath }/adminNotice.do" class="nav-link">
-		                      공지사항 관리</a>
-		                   </li>
-	                  	</ul>
-	                </div>
-					<div class="col-lg-9">
-						
-						<div class="card card-lg">
-							<div class="card-body">
-							<div class="d-flex mb-3">
-							<h1 classs="m-0">공지사항</h1>
+		</div>
+		<div class="row">
+			<div class="col-12 col-md-3 px-4 ">
+				<div class="list-group list-group-transparent mb-3 ml-3  theme-light mb-5">
+					<a class="list-group-item list-group-item-action d-flex align-items-center"
+						href="${cpath }/memberlist.do"> 사용자 관리 </a> 
+					<a class="list-group-item list-group-item-action d-flex align-items-center"
+						href="${cpath }/adminNotice.do"> 공지사항 관리 </a>
+				</div>
+			</div>
+			<div class="col-12 col-md-9">
+				<div class="row">
+					<div class="col-12">
+						<!-- 게시판-->
+						<div class="ms-1 mb-3 mt-3">
+							<h1>공지사항 관리</h1>
 						</div>
-							<div class="bg-light border-y">
-								<div class="table-responsive">
-									<table class="table table-vcenter table-hover">
-						                  <thead>
-						                    <tr>
-						                      <th>번호</th>
-						                      <th class="w-50">제목</th>
-						                      <th class="w-20">글쓴이</th>
-						                      <th class="w-20">등록일</th>
-						                      <th>조회</th>
-						                      <th>추천</th>
-						                    </tr>
-						                  </thead>
-						                  <tbody id="list">
-						                  	<c:forEach  var="vo" items="${list }"> 
-						    					<tr>
-									    			<td class ="text-center">${vo.seq }</td>
-									    			<td><a href="${cpath }/boardView.do?num=${vo.seq}&p=${board.currentPage}&login_id=${mvo.login_id}" class="text-reset">${vo.title }<span class="text-orange">&nbsp;[${vo.cmtcnt }]</span></a></td>
-									    			<td class="text-muted text-center"><img src="#" alt="icon">${vo.login_id }</td>
-									    			<td class="text-muted text-center">${vo.day }</td>
-									    			<td class="text-muted  text-center">${vo.cnt }</td>
-									    			<td class="text-muted text-center">${vo.likes }</td>
-									    		</tr>
-						    				</c:forEach>
-						                  </tbody>
-						                </table>
-									<div class="card-footer d-flex align-items-center py-2">
-									<ul class="pagination m-0 m-auto">
-										<c:choose>
-											<c:when test="${paging.start_page eq 1 }">
-												<li class="page-item disabled">
-												<a class="page-link" tabindex="-1" aria-disabled="false">
-												<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-												<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-												<polyline points="15 6 9 12 15 18" /></svg> prev</a></li>
-											</c:when>
-											<c:otherwise>
-												<li class="page-item"><a class="page-link" href="${cpath}/memberlist.do?num=${paging.start_page-1}"
-													tabindex="-1" aria-disabled="false"> <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"	stroke-width="2" stroke="currentColor" fill="none"
-															stroke-linecap="round" stroke-linejoin="round">
-												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-												<polyline points="15 6 9 12 15 18" /></svg> prev</a></li>
-											</c:otherwise>
-										</c:choose>
-										<c:forEach var="i" begin="${paging.start_page }" end="${paging.end_page }">
-											<c:choose>
-												<c:when test="${paging.current_page eq i }">
-													<li class="page-item active"><a class="page-link">${i}</a></li>
-												</c:when>
-												<c:otherwise>
-													<li class="page-item"><a class="page-link" href="${cpath}/memberlist.do?num=${i}">${i}</a></li>
-												</c:otherwise>
-											</c:choose>
-										</c:forEach>
-										<c:choose>
-											<c:when test="${paging.end_page % 5 eq 0 }">
-												<li class="page-item"><a class="page-link" href="${cpath}/memberlist.do?num=${pagping.end_page+1}">next
-														<svg xmlns="http://www.w3.org/2000/svg" class="icon"
-															width="24" height="24" viewBox="0 0 24 24"
-															stroke-width="2" stroke="currentColor" fill="none"
-															stroke-linecap="round" stroke-linejoin="round">
-												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-												<polyline points="9 6 15 12 9 18" />
-												</svg>
-												</a></li>
-											</c:when>
-											<c:otherwise>
-												<li class="page-item disabled"><a class="page-link">next
-														<svg xmlns="http://www.w3.org/2000/svg" class="icon"
-															width="24" height="24" viewBox="0 0 24 24"
-															stroke-width="2" stroke="currentColor" fill="none"
-															stroke-linecap="round" stroke-linejoin="round">
-												<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-												<polyline points="9 6 15 12 9 18" />
-												</svg>
-												</a></li>
-											</c:otherwise>
-										</c:choose>
-									</ul>
-								</div>
-							</div>
-							<form >
-								<div class="card-footer">
-									<div class="row m-auto mb-3">
-										<div class="col-3"></div>
-										<div class="col-auto">
-											<select type="text" class="form-select"
-												placeholder="Select a date" id="select-tags" value="${paging.option }">
-												<option value="user_id">아이디</option>
-												<option value="user_nick">닉네임</option>
-											</select>
-										</div>
-										<div class="col-4">
-											<div class="input-group">
-											<c:choose>
-											<c:when test="${paing.search ne null }">
-												<input type="text" class="form-control" aria-label="Text input with dropdown button" id="search" value="${paging.search }">
-											</c:when>
-											<c:otherwise>
-												<input type="text" class="form-control" aria-label="Text input with dropdown button" id="search">
-											</c:otherwise>
-											</c:choose>
-												
+						<div class="col-12 mt-1 mb-5">
+							<!-- tab -->
+							<div class="card">
+								
+								<div class="card-body">
+									<div class="tab-content">
+										<div class="tab-pane active snow" id="tabs-home-14"
+											role="tabpanel">
+											<div>
+												<div class="bg-light border-y">
+													<div class="table-responsive">
+														<table class="table table-vcenter table-hover">
+										                  <thead>
+										                    <tr>
+										                      <th>번호</th>
+										                      <th class="w-50">제목</th>
+										                      <th class="w-20">글쓴이</th>
+										                      <th class="w-20">등록일</th>
+										                      <th>조회</th>
+										                      <th>추천</th>
+										                    </tr>
+										                  </thead>
+										                  <tbody id="list">
+										                  	<c:forEach  var="vo" items="${list }"> 
+										    					<tr>
+													    			<td class ="text-center">${vo.seq }</td>
+													    			<td class="text-muted " ><a href="${cpath }/boardView.do?num=${vo.seq}&p=${board.currentPage}&login_id=${mvo.login_id}" class="text-reset"><span class="text-green">[${vo.headline}]<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 21c.5 -4.5 2.5 -8 7 -10"></path><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z"></path></svg></span>
+			    																${vo.title }<span class="text-orange">&nbsp;[${vo.cmtcnt }]</span></a></td>
+													    			<td class="text-muted text-center"><img src="#" alt="icon">${vo.login_id }</td>
+													    			<td class="text-muted text-center">${vo.day }</td>
+													    			<td class="text-muted  text-center">${vo.cnt }</td>
+													    			<td class="text-muted text-center">${vo.likes }</td>
+													    		</tr>
+										    				</c:forEach>
+										                  </tbody>
+										                </table>
+														<div class="card-footer d-flex align-items-center py-2">
+															<ul class="pagination m-0 m-auto">
+																<c:choose>
+																	<c:when test="${paging.start_page eq 1 }">
+																		<li class="page-item disabled">
+																		<a class="page-link" tabindex="-1" aria-disabled="false">
+																		<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+																		<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+																		<polyline points="15 6 9 12 15 18" /></svg> prev</a></li>
+																	</c:when>
+																	<c:otherwise>
+																		<li class="page-item"><a class="page-link" href="${cpath}/memberlist.do?num=${paging.start_page-1}"
+																			tabindex="-1" aria-disabled="false"> <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"	stroke-width="2" stroke="currentColor" fill="none"
+																					stroke-linecap="round" stroke-linejoin="round">
+																		<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+																		<polyline points="15 6 9 12 15 18" /></svg> prev</a></li>
+																	</c:otherwise>
+																</c:choose>
+																<c:forEach var="i" begin="${paging.start_page }" end="${paging.end_page }">
+																	<c:choose>
+																		<c:when test="${paging.current_page eq i }">
+																			<li class="page-item active"><a class="page-link">${i}</a></li>
+																		</c:when>
+																		<c:otherwise>
+																			<li class="page-item"><a class="page-link" href="${cpath}/memberlist.do?num=${i}">${i}</a></li>
+																		</c:otherwise>
+																	</c:choose>
+																</c:forEach>
+																<c:choose>
+																	<c:when test="${paging.end_page % 5 eq 0 }">
+																		<li class="page-item"><a class="page-link" href="${cpath}/memberlist.do?num=${pagping.end_page+1}">next
+																				<svg xmlns="http://www.w3.org/2000/svg" class="icon"
+																					width="24" height="24" viewBox="0 0 24 24"
+																					stroke-width="2" stroke="currentColor" fill="none"
+																					stroke-linecap="round" stroke-linejoin="round">
+																		<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+																		<polyline points="9 6 15 12 9 18" />
+																		</svg>
+																		</a></li>
+																	</c:when>
+																	<c:otherwise>
+																		<li class="page-item disabled"><a class="page-link">next
+																				<svg xmlns="http://www.w3.org/2000/svg" class="icon"
+																					width="24" height="24" viewBox="0 0 24 24"
+																					stroke-width="2" stroke="currentColor" fill="none"
+																					stroke-linecap="round" stroke-linejoin="round">
+																		<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+																		<polyline points="9 6 15 12 9 18" />
+																		</svg>
+																		</a></li>
+																	</c:otherwise>
+																</c:choose>
+															</ul>
+														</div>
+														<form >
+															<div class="card-footer">
+																<div class="row m-auto mb-3">
+																	<div class="col-3"></div>
+																	<div class="col-auto">
+																		<select type="text" class="form-select"
+																			placeholder="Select a date" id="select-tags" value="${paging.option }">
+																			<option value="user_id">아이디</option>
+																			<option value="user_nick">닉네임</option>
+																		</select>
+																	</div>
+																	<div class="col-4">
+																		<div class="input-group">
+																		<c:choose>
+																		<c:when test="${paing.search ne null }">
+																			<input type="text" class="form-control" aria-label="Text input with dropdown button" id="search" value="${paging.search }">
+																		</c:when>
+																		<c:otherwise>
+																			<input type="text" class="form-control" aria-label="Text input with dropdown button" id="search">
+																		</c:otherwise>
+																		</c:choose>
+																			
+																		</div>
+																	</div>
+																	<div class="col-1">
+																		<button type="button" class="btn btn-icon"
+																			onclick="javascript:searching(1)">
+																			<svg xmlns="http://www.w3.org/2000/svg"
+																				class="icon icon-tabler icon-tabler-search" width="24"
+																				height="24" viewBox="0 0 24 24" stroke-width="2"
+																				stroke="currentColor" fill="none" stroke-linecap="round"
+																				stroke-linejoin="round">
+										                          <path stroke="none" d="M0 0h24v24H0z"
+																					fill="none"></path>
+										                          <circle cx="10" cy="10" r="7"></circle>
+										                          <line x1="21" y1="21" x2="15" y2="15"></line>
+										                        </svg>
+																		</button>
+																		</a>
+																	</div>
+																</div>
+															</div>
+														</form>
+													</div>
+												</div>
 											</div>
-										</div>
-										<div class="col-1">
-											<button type="button" class="btn btn-icon"
-												onclick="javascript:searching(1)">
-												<svg xmlns="http://www.w3.org/2000/svg"
-													class="icon icon-tabler icon-tabler-search" width="24"
-													height="24" viewBox="0 0 24 24" stroke-width="2"
-													stroke="currentColor" fill="none" stroke-linecap="round"
-													stroke-linejoin="round">
-			                          <path stroke="none" d="M0 0h24v24H0z"
-														fill="none"></path>
-			                          <circle cx="10" cy="10" r="7"></circle>
-			                          <line x1="21" y1="21" x2="15" y2="15"></line>
-			                        </svg>
-											</button>
-											</a>
 										</div>
 									</div>
 								</div>
-							</form>
-						</div>
-						</div>
-						</div>
-						</div>
+							</div>
+							<!-- tab끝 -->
 						</div>
 					</div>
 				</div>
-
-				</div>
-
-				<jsp:include page="../../footer/footer.jsp" />
 			</div>
 		</div>
+
+	</div>
+	</div>
+	<!-- footer -->
+	<!-- WEB-INF폴더에서 사용시 page="../footer/footer.jsp"로 변경 -->
+	<jsp:include page="../../footer/footer.jsp" />
+	</div>
+	</div>
+
+
+
+	</script>
 </body>
 </html>

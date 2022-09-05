@@ -64,6 +64,17 @@ public class ImgBoardMyBatisDAO {
 			
 			
 		}
+		
+		
+		public List<Img_Board> imgHlSearchList(Map<String,Object> m ){
+			
+			SqlSession session = sqlSessionFactory.openSession();
+			List<Img_Board> list=session.selectList("imgHlSearchList",m);
+			session.close();//반납
+			return list;
+			
+			
+		}
 		public List<Img_comment> imgallComment(int num){
 			SqlSession session =sqlSessionFactory.openSession();
 			List<Img_comment> list =session.selectList("imgallComment",num);
@@ -234,6 +245,14 @@ public class ImgBoardMyBatisDAO {
 			session.commit();
 			session.close();
 		}
+		public int imgHlsearchListCount(Map<String,Object> m) {
+			
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt=session.selectOne("imgHlsearchListCount", m);
+			session.close();//반납
+			return cnt;
+		}
+		
 		
 		
 		

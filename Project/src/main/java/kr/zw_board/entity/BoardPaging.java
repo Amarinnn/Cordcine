@@ -24,10 +24,10 @@ public class BoardPaging {
 		this.allPageCount = allPageCount;
 	}
 	public void calculatePageCount() {
-		numPageCount = allPageCount/pagePerCount;
-		if(allPageCount%pagePerCount!=0) {
-			numPageCount+=6;
-		}
+		numPageCount = (int)Math.ceil((double)allPageCount)/pagePerCount;
+//		if(allPageCount%pagePerCount!=0) {
+//			numPageCount+=6;
+//		}
 	}
 	public void startCount(int pageNum) {
 		startCount=(pageNum-1)*pagePerCount+1;
@@ -69,11 +69,15 @@ public class BoardPaging {
 		
 		display = (int)Math.ceil((pageNum-1)/pagingPerCount);
 		if(allPageCount/pagePerCount <((pagingPerCount * display) + 5)) {
-			end_page = (int) Math.ceil(allPageCount/pagePerCount);
+			end_page = (int) Math.ceil((double)allPageCount/pagePerCount);
 		}else {
 			end_page = (pagingPerCount * display) + pagingPerCount;
 
 		}
+	}
+	
+	public void numPage() {
+		this.numPageCount = allPageCount/pagePerCount;
 	}
 	
 	

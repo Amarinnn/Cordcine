@@ -24,27 +24,28 @@ public class LikeController implements Controller {
 	@Override
 	public String requestProcessor(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int img_seq = Integer.parseInt(request.getParameter("img_seq"));
+		int zw_seq = Integer.parseInt(request.getParameter("zw_seq"));
 		/* String login_id = request.getParameter("login_id"); */
 		HttpSession session = request.getSession();
 		Member mo = (Member)session.getAttribute("mvo");
 		String login_id =mo.getLogin_id();
 		
 		Map<String,Object> m = new HashMap<>();
-		m.put("no",img_seq);
+		m.put("no",zw_seq);
 		m.put("id",login_id);
 		ImgBoardMyBatisDAO dao = new ImgBoardMyBatisDAO();
 		
-		int result = dao.imglikeCheck(m);
+		BoardMyBatisDAO dao = new BoardMyBatisDAO();
+		int result = dao.likeCheck(m);
 		if(result==0) {
-			dao.imglikeUpdate(m);
+			dao.likeUpdate(m);
 		}else {
-			dao.imglikeDelete(m);
+			dao.likeDelete(m);
 		}
 		
-		int likes = dao.imglikeCount(img_seq);
+		int likes = dao.likeCount(zw_seq);
 		PrintWriter out = response.getWriter();
-		result = dao.imglikeCheck(m);
+		result = dao.likeCheck(m);
 		Map<String,Object> m2 = new HashMap<>();
 		m2.put("likes", likes);
 		m2.put("result", result);

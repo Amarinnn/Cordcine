@@ -34,8 +34,7 @@ public class ImgLikeController implements kr.login.controller.Controller {
 		ImgBoardMyBatisDAO dao = new ImgBoardMyBatisDAO();
 		
 		int result = dao.imglikeCheck(m);
-		System.out.println(result);
-		System.out.println(img_seq+login_id);
+		
 		if(result==0) {
 			dao.imglikeUpdate(m);
 		}else {

@@ -19,7 +19,11 @@
     <mapper resource="kr/login/dao/MemberMapper.xml"/>
 	<mapper resource="kr/login/dao/MapMapper.xml"/>
 	<mapper resource="kr/login/dao/AdminMapper.xml"/>
+<<<<<<< HEAD
 	<mapper resource="kr/imgboard/dao/ImgBoardMapper.xml"/>
+=======
+>>>>>>> 0d66ed30ff5ba26b20f879eb5fa601b196f13c3d
 	<mapper resource="kr/login/dao/GradeMapper.xml"/>
+	<mapper resource="kr/imgboard/dao/ImgBoardMapper.xml"/>
   </mappers>
 </configuration>

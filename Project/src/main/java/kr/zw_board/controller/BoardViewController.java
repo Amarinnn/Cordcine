@@ -43,15 +43,16 @@ public class BoardViewController implements Controller {
 		if (p==null || p=="0") {
 			p = "1";
 		}
-		List<zw_comment> list = dao.allComment(num);
-		
-		request.setAttribute("comlist", list);
+//		List<zw_comment> list = dao.allComment(num);
+//		
+//		request.setAttribute("comlist", list);
 		vo = dao.boardView(num);
 		dao.countUpdate(num);
+		System.out.println(vo.getNotice());
 		request.setAttribute("vo", vo);
-		int likes = dao.likeCount(num);
-		System.out.println(likes);
-		request.setAttribute("likes", likes);
+//		int likes = dao.likeCount(num);
+//		System.out.println(likes);
+//		request.setAttribute("likes", likes);
 		
 		request.setAttribute("p", Integer.parseInt(p));
 		return "board/boardView";

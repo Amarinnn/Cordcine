@@ -99,7 +99,7 @@
 <!-- 게시판 -->
 
 <select id="searchHeadCount" parameterType="String" resultType="int">
-	select count(*) from t_zw_board where zw_headline= ${headval}
+	select count(*) from t_zw_board where zw_headline= #{headval}
 </select>
 <select id="searchListCount" parameterType="map" resultType ="int">
 	select count(*) from t_zw_board where ${val} like '%' ||#{text}||'%'
@@ -114,6 +114,10 @@
   
   <select id="searchList" resultType="kr.zw_board.entity.Zw_Board" parameterType="map">
     select xx.zw_seq, xx.zw_title, xx.zw_content,xx.zw_file, xx.zw_date, xx.login_id, xx.zw_cnt,xx.zw_likes,xx.zw_headline,xx.zw_cmtcnt from (select rownum as r, x.* from (select zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,zw_headline,(select count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as zw_cmtcnt from  t_zw_board b where  ${val} like '%' ||#{text}||'%' order by zw_seq DESC) x) xx where xx.r between #{board.startCount} and #{board.endCount}  
+  </select>
+  
+  <select id="HdSearchList" resultType="kr.zw_board.entity.Zw_Board" parameterType="map">
+    select xx.zw_seq, xx.zw_title, xx.zw_content,xx.zw_file, xx.zw_date, xx.login_id, xx.zw_cnt,xx.zw_likes,xx.zw_headline,xx.zw_cmtcnt from (select rownum as r, x.* from (select zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,zw_headline,(select count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as zw_cmtcnt from  t_zw_board b where  zw_headline=#{headval} order by zw_seq DESC) x) xx where xx.r between #{board.startCount} and #{board.endCount}  
   </select>
   
 <!--  <select id="memberLogin" parameterType="String" resultType="kr.zw_board.entity.Member">
@@ -142,7 +146,7 @@
  
  
  <insert id="boardWrite" parameterType="kr.zw_board.entity.Zw_Board">
- 	insert into t_zw_board(zw_title, zw_content, zw_file, zw_date, login_id, zw_cnt, zw_likes) values(#{zw_title},#{zw_content},#{zw_file},SYSDATE,#{login_id},#{zw_cnt},#{zw_likes})
+ 	insert into t_zw_board(zw_title, zw_content, zw_file, zw_date, login_id, zw_cnt, zw_likes,zw_headline) values(#{zw_title},#{zw_content},#{zw_file},SYSDATE,#{login_id},#{zw_cnt},#{zw_likes},#{zw_headline})
  </insert>
  
  <insert id="commentWrite" parameterType="kr.zw_comment.entity.zw_comment">
@@ -183,7 +187,7 @@
  </update>
  
   <update id="boardUpdate2" parameterType="kr.zw_board.entity.Zw_Board">
- 	update t_zw_board set zw_title=#{zw_title},zw_content=#{zw_content} where zw_seq=#{zw_seq}
+ 	update t_zw_board set zw_title=#{zw_title},zw_content=#{zw_content},zw_headline=#{zw_headline} where zw_seq=#{zw_seq}
  </update>
  
  <update id="commentUpdate" parameterType="kr.zw_comment.entity.zw_comment">
@@ -197,13 +201,19 @@
  <update id="updateNotice" parameterType="int">
 	update t_zw_board set notice = noticeseq.nextval where zw_seq=#{zw_seq}
  </update>
- 
  <update id="deleteNotice" parameterType="int">
  	update t_zw_board set notice = null where zw_seq=#{zw_seq}
  </update>
- 
  <select id="noticeList" resultType="kr.zw_board.entity.Zw_Board">
  	select * from (select a.*, ROWNUM from t_zw_board a where notice is not null order by notice desc) where ROWNUM &lt;= 3
  </select> 
+
+ <!-- 유튜브게시판 -->
+ <select id="allyoutubecount" resultType="int">
+ 	select count(*) from youtube
+ </select>
+ <select id="youtubeSomeList" parameterType="kr.youtube.entity.YoutubePaging" resultType="kr.youtube.entity.Youtube">
+ 	   select xx.* from (select rownum as r, x.* from (select name,content,video,logo from youtube) x) xx where xx.r between #{startCount} and #{endCount}
+ </select>
  	
 </mapper>

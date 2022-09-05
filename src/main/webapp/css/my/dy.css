@@ -1,0 +1,29 @@
+#l{
+    color: red;
+}
+
+#view  tr:nth-child(-n+4)  td:nth-child(odd){
+    background-color: #d9ebf9;
+    width: 150px !important;
+    
+}
+#view {
+	border-collapse: separate !important;
+    border-radius: 10px;
+    border-style: hidden;
+    
+}
+
+#likebtn{
+    text-align: center;
+}
+
+#likebtn2{
+    border: 0px;
+    font-size: 15px;
+}
+
+#comment{
+	overflow:hidden;
+	height:auto;
+}

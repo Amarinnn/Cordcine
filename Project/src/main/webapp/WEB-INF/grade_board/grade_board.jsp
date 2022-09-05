@@ -114,7 +114,8 @@
                   <c:forEach  var="vo" items="${notice}"> 
     					<tr class="bg-yellow-lt">
 			    			<td class ="text-center">공지</td>
-			    			<td><a href="${cpath }/gradeView.do?num=${vo.grade_seq}&p=${board.currentPage}&login_id=${mvo.login_id}" class="text-reset">${vo.grade_title }<span class="text-orange">&nbsp;[${vo.grade_cmtcnt }]</span></a></td>
+			    			<td class="text-muted " ><a href="${cpath }/gradeView.do?num=${vo.grade_seq}&p=${board.currentPage}&login_id=${mvo.login_id}" class="text-reset"><span class="text-green">[${vo.grade_headline}]<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 21c.5 -4.5 2.5 -8 7 -10"></path><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z"></path></svg></span>
+			    			${vo.grade_title }<span class="text-orange">&nbsp;[${vo.grade_cmtcnt }]</span></a></td>
 			    			<td class="text-muted text-center"><img src="#" alt="icon">${vo.login_id }</td>
 			    			<td class="text-muted text-center">${vo.grade_regdate }</td>
 			    			<td class="text-muted  text-center">${vo.grade_cnt }</td>
@@ -124,7 +125,8 @@
                   	<c:forEach  var="vo" items="${list }"> 
     					<tr>
 			    			<td class ="text-center">${vo.grade_seq }</td>
-			    			<td><a href="${cpath }/gradeView.do?num=${vo.grade_seq}&p=${board.currentPage}&login_id=${mvo.login_id}" class="text-reset">[${vo.grade_headline}] ${vo.grade_title }<span class="text-orange">&nbsp;[${vo.grade_cmtcnt }]</span></a></td>
+			    			<td class="text-muted " ><a href="${cpath }/gradeView.do?num=${vo.grade_seq}&p=${board.currentPage}&login_id=${mvo.login_id}" class="text-reset"><span class="text-green">[${vo.grade_headline}]<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 21c.5 -4.5 2.5 -8 7 -10"></path><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z"></path></svg></span>
+			    			${vo.grade_title }<span class="text-orange">&nbsp;[${vo.grade_cmtcnt }]</span></a></td>
 			    			<td class="text-muted text-center"><img src="#" alt="icon">${vo.login_id }</td>
 			    			<td class="text-muted text-center">${vo.grade_regdate }</td>
 			    			<td class="text-muted  text-center">${vo.grade_cnt }</td>

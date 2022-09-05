@@ -48,6 +48,7 @@ public class ImgBoardUpdateController implements kr.login.controller.Controller 
 		int img_seq = Integer.parseInt(multi.getParameter("img_seq"));
 		String img_title = multi.getParameter("img_title");
 		String img_content = multi.getParameter("img_content");
+		String imghead = multi.getParameter("imghead");
 		String file1 = multi.getFilesystemName("file1");
 		String file2 = multi.getFilesystemName("file2");
 		String file3 = multi.getFilesystemName("file3");
@@ -141,7 +142,7 @@ public class ImgBoardUpdateController implements kr.login.controller.Controller 
 			
 			dao.imgboardUpdatefile5(vo);
 		}
-		 
+		vo.setImg_headline(imghead);
 		vo.setImg_seq(img_seq);
 		vo.setImg_title(img_title);
 		vo.setImg_content(img_content); 
