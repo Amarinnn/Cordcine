@@ -34,9 +34,6 @@ ResultSet rs = ps.executequery();
  -->
 
 
- user_id=user_id.trim();
- if(user_id.length)
- 
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +57,7 @@ ResultSet rs = ps.executequery();
 <br><br>
 <%
 if(${cnt}==0){
-	out.print("사용 가능한 아이디입니다.")
+	out.print("사용 가능한 아이디입니다.");
 %>
 <script>
 	opener.document.frm.chk.value="1"; //opener 부모창
