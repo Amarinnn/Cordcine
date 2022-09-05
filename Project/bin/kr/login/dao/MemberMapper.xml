@@ -3,28 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  <!-- dtd ... 스키마 : xml안에서 사용할 태그들이 정의되어있는 문서 -->
   <mapper namespace="kr.login.dao.MemberMapper"> <!-- 이 파일이 있는 패키지이름.xml파일 이름 -->
+  
 	<select id="login" parameterType="kr.login.entity.Member"
 		resultType="kr.login.entity.Member">
 		select * from t_login where login_id=(select login_id from
 		t_user where
 		login_id=#{login_id} and u_pw=#{u_pw})
 	</select>
+	
 	<insert id="join1" parameterType="kr.login.entity.Member">
 		insert into
 		t_login(login_id,login_type,user_name,joindate,u_birthdate,post,u_addr,u_nick)
 		values(#{login_id},'m',#{user_name},sysdate,#{u_birthdate},#{post},#{u_addr},#{u_nick})
-
 	</insert>
+	
 	<insert id="join2" parameterType="kr.login.entity.Member">
 		insert into
 		t_user(login_id,u_pw) values (#{login_id},#{u_pw})
 	</insert>
+	
 	<select id="KakaoLogin"
 		parameterType="kr.login.entity.Kakao_member"
 		resultType="kr.login.entity.Member">
 		select * from t_login where login_id=(select login_id from
 		t_outer_login where login_id=#{login_id})
 	</select>
+	
 	<insert id="KakaoJoin1"
 		parameterType="kr.login.entity.Kakao_member">
 		insert into
@@ -151,19 +155,6 @@
 	<select id="someCalList" resultType="kr.login.entity.Cal" parameterType="kr.zw_board.entity.BoardPaging">
     	select xx.* from (select rownum as r, x.* from (select * from cal_T) x) xx where xx.r between #{startCount} and #{endCount}
   	</select>
-  	<!-- 주간인기게시판 -->
-  	<select id="zero_List" resultType="kr.weekly.entity.Weekly">
- 		select * from zerowaste_search
- 	</select>
- 	<select id="plastic_List" resultType="kr.weekly.entity.Weekly">
- 		select * from plastic_search
- 	</select>
- 	<select id="vegan_List" resultType="kr.weekly.entity.Weekly">
- 		select * from vegan_search
- 	</select>
- 	<select id="allListCount" resultType="int">
-	SELECT count(*) from t_zw_board
-</select>
 
 <!-- 게시판 -->
 
@@ -266,16 +257,6 @@
  <update id="countUpdate" parameterType="int">
  	update t_zw_board set zw_cnt=zw_cnt+1 where zw_seq=#{zw_seq}
  </update>
- 	<!-- 공지 -->
- <update id="updateNotice" parameterType="int">
-	update t_zw_board set notice = noticeseq.nextval where zw_seq=#{zw_seq}
- </update>
- <update id="deleteNotice" parameterType="int">
- 	update t_zw_board set notice = null where zw_seq=#{zw_seq}
- </update>
- <select id="noticeList" resultType="kr.zw_board.entity.Zw_Board">
- 	select * from (select a.*, ROWNUM from t_zw_board a where notice is not null order by notice desc) where ROWNUM &lt;= 3
- </select> 
 
  <!-- 유튜브게시판 -->
  <select id="allyoutubecount" resultType="int">
@@ -286,12 +267,6 @@
  </select>
  	
 
-	<select id="someCalList" resultType="kr.login.entity.Cal"
-		parameterType="kr.zw_board.entity.BoardPaging">
-		select xx.* from (select rownum as r, x.* from (select *
-		from cal_T) x) xx
-		where xx.r between #{startCount} and #{endCount}
-	</select>
 	<!-- 주간인기게시판 -->
 	<select id="zero_List" resultType="kr.weekly.entity.Weekly">
 		select * from zerowaste_search
@@ -308,146 +283,6 @@
 		t_zw_board
 	</select>
 
-	<!-- 게시판 -->
-	<select id="searchListCount" parameterType="map"
-		resultType="int">
-		select count(*) from t_zw_board where ${val} like '%'
-		||#{text}||'%'
-	</select>
-	<select id="allList" resultType="kr.zw_board.entity.Zw_Board">
-		select
-		zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,(select
-		count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as
-		zw_cmtcnt from t_zw_board b order by zw_seq desc
-	</select>
-
-	<select id="someList" resultType="kr.zw_board.entity.Zw_Board" parameterType="kr.zw_board.entity.BoardPaging">
-    select xx.zw_seq, xx.zw_title, xx.zw_content,xx.zw_file, xx.zw_date, xx.login_id, xx.zw_cnt,xx.zw_likes,xx.zw_cmtcnt from (select rownum as r, x.* from (select zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,(select count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as zw_cmtcnt from  t_zw_board b order by zw_seq DESC) x) xx where xx.r between #{startCount} and #{endCount}
-  </select>
-
-	<select id="searchList" resultType="kr.zw_board.entity.Zw_Board"
-		parameterType="map">
-		select xx.zw_seq, xx.zw_title, xx.zw_content,xx.zw_file,
-		xx.zw_date,
-		xx.login_id, xx.zw_cnt,xx.zw_likes,xx.zw_cmtcnt from
-		(select rownum as
-		r, x.* from (select
-		zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,(select
-		count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as
-		zw_cmtcnt from t_zw_board b where ${val} like '%' ||#{text}||'%' order
-		by zw_seq DESC) x) xx where xx.r between #{board.startCount} and
-		#{board.endCount}
-	</select>
-
-	<!-- <select id="memberLogin" parameterType="String" resultType="kr.zw_board.entity.Member"> 
-		select * from t_login where login_id=#{id} </select> -->
-
-	<select id="allComment" parameterType="int"
-		resultType="kr.zw_comment.entity.zw_comment">
-		select * from t_zero_waste_comment where zw_seq=#{zw_seq}
-		order by
-		zw_cmt_seq
-	</select>
-
-	<select id="likeCheck" parameterType="map" resultType="int">
-		select
-		count(*) from likes where zw_seq = #{no} and login_id =#{id}
-	</select>
-
-	<select id="likeCount" parameterType="int" resultType="int">
-		select
-		count(*) from likes where zw_seq=#{zw_seq}
-	</select>
-
-	<update id="updateLike" parameterType="map">
-		update t_zw_board set
-		zw_likes = #{cnt} where zw_seq = #{zw_seq}
-	</update>
-
-	<insert id="likeUpdate" parameterType="map">
-		insert into likes
-		values(#{no},#{id})
-	</insert>
-
-
-	<insert id="boardWrite"
-		parameterType="kr.zw_board.entity.Zw_Board">
-		insert into t_zw_board(zw_title, zw_content, zw_file,
-		zw_date, login_id,
-		zw_cnt, zw_likes)
-		values(#{zw_title},#{zw_content},#{zw_file},SYSDATE,#{login_id},#{zw_cnt},#{zw_likes})
-	</insert>
-
-	<insert id="commentWrite"
-		parameterType="kr.zw_comment.entity.zw_comment">
-		insert into t_zero_waste_comment(zw_seq,zw_cmt_content,
-		zw_cmt_date,
-		login_id)
-		values(#{zw_seq},#{zw_cmt_content},sysdate,#{login_id})
-	</insert>
-
-	<delete id="boardDelete" parameterType="int">
-		delete from t_zw_board
-		where zw_seq=#{zw_seq}
-	</delete>
-
-	<delete id="commentDelete" parameterType="int">
-		delete from
-		t_zero_waste_comment where zw_cmt_seq=#{num}
-	</delete>
-
-	<delete id="commentDelete2" parameterType="int">
-		delete from
-		t_zero_waste_comment where zw_seq=#{num}
-	</delete>
-
-	<delete id="likeDelete" parameterType="map">
-		delete from likes where
-		zw_seq=#{no} and login_id=#{id}
-	</delete>
-	<select id="boardView" parameterType="int"
-		resultType="kr.zw_board.entity.Zw_Board">
-		select * from t_zw_board where zw_seq=#{zw_seq}
-	</select>
-
-	<update id="writePoint" parameterType="String">
-		update t_login set
-		u_point=u_point+5 where login_id=#{login_id}
-	</update>
-
-	<update id="commentPoint" parameterType="String">
-		update t_login set
-		u_point=u_point+3 where login_id=#{login_id}
-	</update>
-	<update id="deleteFile" parameterType="int">
-		update t_zw_board set
-		zw_file = ' ' where zw_seq = #{zw_seq}
-	</update>
-	<update id="boardUpdate"
-		parameterType="kr.zw_board.entity.Zw_Board">
-		update t_zw_board set
-		zw_title=#{zw_title},zw_content=#{zw_content},zw_file=#{zw_file} where
-		zw_seq=#{zw_seq}
-	</update>
-
-	<update id="boardUpdate2"
-		parameterType="kr.zw_board.entity.Zw_Board">
-		update t_zw_board set
-		zw_title=#{zw_title},zw_content=#{zw_content} where
-		zw_seq=#{zw_seq}
-	</update>
-
-	<update id="commentUpdate"
-		parameterType="kr.zw_comment.entity.zw_comment">
-		update t_zero_waste_comment set
-		zw_cmt_content=#{zw_cmt_content} where
-		zw_cmt_seq=#{zw_cmt_seq}
-	</update>
-
-	<update id="countUpdate" parameterType="int">
-		update t_zw_board set
-		zw_cnt=zw_cnt+1 where zw_seq=#{zw_seq}
-	</update>
 
 	<!-- 공지 -->
 	<update id="updateNotice" parameterType="int">
@@ -631,30 +466,25 @@
 	</select>
 
 	
-<insert id="BCommFormWrite" parameterType="kr.buy_comm_form.entity.BCommForm">
-BEGIN
-	INSERT INTO t_buy_board_form (login_id, user_name, user_phone, user_addr, user_amount, buy_seq) VALUES (#{login_id},#{user_name},#{user_phone},#{user_addr},#{user_amount},#{buy_seq});
-  insert into t_buy_board_form_goods (goods_name,goods_cnt,bf_seq) VALUES (#{goods_name},0,(select max(bf_seq) from t_buy_board_form));
-END;
+	<insert id="BCommFormWrite" parameterType="kr.buy_comm_form.entity.BCommForm">
+	BEGIN
+		INSERT INTO t_buy_board_form (login_id, user_name, user_phone, user_addr, user_amount, buy_seq) VALUES (#{login_id},#{user_name},#{user_phone},#{user_addr},#{user_amount},#{buy_seq});
+	  insert into t_buy_board_form_goods (goods_name,goods_cnt,bf_seq) VALUES (#{goods_name},0,(select max(bf_seq) from t_buy_board_form));
+	END;
 	</insert>
-<update id="BCommFormUpdate1" parameterType="kr.buy_comm_form.entity.BCommForm">
+	<update id="BCommFormUpdate1" parameterType="kr.buy_comm_form.entity.BCommForm">
 	Update t_buy_board_form set user_name=#{user_name}, user_phone=#{user_phone}, user_addr=#{user_addr}, user_amount=#{user_amount} where login_id=#{login_id} and buy_seq=#{buy_seq}
 	</update>
 	<update id="BCommFormUpdate2" parameterType="kr.buy_comm_form.entity.BCommForm">
-  Update t_buy_board_form_goods set goods_name=#{goods_name},goods_cnt=0 where bf_seq=#{bf_seq}
+ 		 Update t_buy_board_form_goods set goods_name=#{goods_name},goods_cnt=0 where bf_seq=#{bf_seq}
 	</update>
 	
-<delete id="BCommFormDelete1" parameterType="kr.buy_comm_form.entity.BCommForm">
-
+	<delete id="BCommFormDelete1" parameterType="kr.buy_comm_form.entity.BCommForm">
 		delete from t_buy_board_form where login_id=#{login_id} and buy_seq=#{buy_seq}
-		
-
 	</delete>
-<delete id="BCommFormDelete2" parameterType="kr.buy_comm_form.entity.BCommForm">
 
-		
+	<delete id="BCommFormDelete2" parameterType="kr.buy_comm_form.entity.BCommForm">
 		delete from t_buy_board_form_goods where bf_seq=#{bf_seq}
-	
 	</delete>
 	
 	<select id="selectseq" resultType="int" parameterType="kr.buy_comm_form.entity.BCommForm">

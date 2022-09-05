@@ -108,7 +108,7 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2></br>
+                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2>
                   글작성
                 </h2>
               </div>

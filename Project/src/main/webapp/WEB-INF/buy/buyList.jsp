@@ -211,9 +211,11 @@
             </div>
           </div>
         </div>
+        </div>
         <jsp:include page="../../footer/footer.jsp" />
   </div>
   </div>
-
+</div>
+</div>
 </body>
 </html>
