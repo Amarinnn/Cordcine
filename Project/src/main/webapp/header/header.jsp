@@ -149,7 +149,14 @@
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                 <a href="${cpath}/mypageWrite.do" class="dropdown-item">My account</a>
+                <c:choose>
+	              <c:when test="${mvo.u_grade == 'admin' }">
+                 	 <a href="${cpath}/memberlist.do?" class="dropdown-item">Admin Page</a>
+                 </c:when>
+                 <c:otherwise>
+                	 <a href="${cpath}/mypage.do?" class="dropdown-item">My account</a>
+                 </c:otherwise>
+                 </c:choose>
                 <a href="${cpath}/logout.do" class="dropdown-item">Logout</a>
               </div>
             </div>
@@ -180,6 +187,13 @@
                       </span>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="${cpath}/youtubelist.do">
+                      <span class="nav-link-title">
+                        Youtube Archive
+                      </span>
+                    </a>
+                  </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
                     <span class="nav-link-title">
@@ -192,17 +206,11 @@
                         <a class="dropdown-item" href="${cpath }/zwlist.do">
                           제로웨이스트
                         </a>
-                        <a class="dropdown-item" href="./gallery.html">
-                          Gallery
-                        </a>
                         <a class="dropdown-item" href="${cpath }/imgList.do">
-                          이미지게시판
+                          Gallery
                         </a>
                         <a class="dropdown-item" href="#">
                           함께해요
-                        </a>
-                        <a class="dropdown-item" href="#">
-                          실천해요
                         </a>
                         <a class="dropdown-item" href="${cpath }/gradeList.do">
                           등급제게시판
@@ -226,21 +234,6 @@
                         </a>
                         <a class="dropdown-item" href="./layout-boxed.html">
                           Boxed
-                        </a>
-                        <a class="dropdown-item" href="./layout-vertical.html">
-                          Vertical
-                        </a>
-                        <a class="dropdown-item" href="./layout-vertical-transparent.html">
-                          Vertical transparent
-                        </a>
-                        <a class="dropdown-item" href="./layout-vertical-right.html">
-                          Right vertical
-                        </a>
-                        <a class="dropdown-item active" href="./layout-condensed.html">
-                          Condensed
-                        </a>
-                        <a class="dropdown-item" href="./layout-combo.html">
-                          Combined
                         </a>
                       </div>
                     </div>

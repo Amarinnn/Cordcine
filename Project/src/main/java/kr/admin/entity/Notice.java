@@ -13,6 +13,7 @@ public class Notice {
 	private int likes;
 	private int cmtcnt; 
 	private int notice;
+	private String headline;
 	
 //	private int zw_seq;
 //	private String zw_title;

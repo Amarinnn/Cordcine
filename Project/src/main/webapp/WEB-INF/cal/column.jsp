@@ -42,7 +42,7 @@
        <div class="container">
         <br>
         
-        <h2>목록(List)</h2>
+        <h2>칼럼 게시판</h2>
         <hr>
         <c:forEach var="cal_T" items="${list}" >
         <div class="row mt-2">
