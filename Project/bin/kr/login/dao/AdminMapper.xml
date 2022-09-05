@@ -13,26 +13,15 @@
 	</select>
 	
 	<select id="nickList" resultType="kr.login.entity.Member">
-<<<<<<< HEAD
-	select * from t_login join t_user using(login_id) where u_nick like '%' || #{search} || '%' order by joindate desc 
-=======
 	select * from t_login join t_user using(login_id) where u_nick like '%' || #{search} || '%' order by joindate desc
->>>>>>> 0d66ed30ff5ba26b20f879eb5fa601b196f13c3d
 	</select>
 	
 	<select id="adminpageList" parameterType="kr.admin.entity.AdminPaging" resultType="kr.login.entity.Member">
 	select * from (select a.*, ROWNUM as rn from (select * from t_login join t_user using(login_id) order by joindate desc) a where ROWNUM &lt;= #{list_end}) where rn &gt;= #{list_start}
 	</select>
-<<<<<<< HEAD
-
-	<select id="idSearchList" parameterType="kr.admin.entity.AdminPaging" resultType="kr.login.entity.Member">
-	select * from (select a.*, ROWNUM as rn from (select * from t_login join t_user using(login_id) where login_id like '%' || #{search} || '%' order by joindate desc) a where ROWNUM &lt;= #{list_end}) where rn &gt;= #{list_start}
-	</select> 
-=======
 	<select id="idSearchList" parameterType="kr.admin.entity.AdminPaging" resultType="kr.login.entity.Member">
 	select * from (select a.*, ROWNUM as rn from (select * from t_login join t_user using(login_id) where login_id like '%' || #{search} || '%' order by joindate desc) a where ROWNUM &lt;= #{list_end}) where rn &gt;= #{list_start}
 	</select>
->>>>>>> 0d66ed30ff5ba26b20f879eb5fa601b196f13c3d
 	
 	<select id="nickSearchList" parameterType="kr.admin.entity.AdminPaging" resultType="kr.login.entity.Member">
 	select * from (select a.*, ROWNUM as rn from (select * from t_login join t_user using(login_id) where u_nick like '%' || #{search} || '%' order by joindate desc) a where ROWNUM &lt;= #{list_end}) where rn &gt;= #{list_start}

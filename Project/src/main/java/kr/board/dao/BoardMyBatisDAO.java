@@ -435,11 +435,4 @@ public class BoardMyBatisDAO {
 			session.close();
 		}
 	
-		//headline search
-		public int searchheadCount(String headval) {
-			SqlSession session = sqlSessionFactory.openSession();
-			int cnt=session.selectOne("searchHeadCount", headval);
-			session.close();//반납
-			return cnt;
-		}
 }
