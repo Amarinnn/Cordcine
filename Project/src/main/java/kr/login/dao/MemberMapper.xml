@@ -207,5 +207,13 @@
  <select id="noticeList" resultType="kr.zw_board.entity.Zw_Board">
  	select * from (select a.*, ROWNUM from t_zw_board a where notice is not null order by notice desc) where ROWNUM &lt;= 3
  </select> 
- 
+
+ <!-- 유튜브게시판 -->
+ <select id="allyoutubecount" resultType="int">
+ 	select count(*) from youtube
+ </select>
+ <select id="youtubeSomeList" parameterType="kr.youtube.entity.YoutubePaging" resultType="kr.youtube.entity.Youtube">
+ 	   select xx.* from (select rownum as r, x.* from (select name,content,video,logo from youtube) x) xx where xx.r between #{startCount} and #{endCount}
+ </select>
+ 	
 </mapper>

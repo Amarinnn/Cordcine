@@ -201,9 +201,16 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="${cpath}/weeklyView.do">
+                  <a class="nav-link" href="${cpath}/weeklyView.do">
                       <span class="nav-link-title">
                         주간인기검색어
+                      </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="${cpath}/youtubelist.do">
+                      <span class="nav-link-title">
+                        Youtube Archive
                       </span>
                     </a>
                   </li>
