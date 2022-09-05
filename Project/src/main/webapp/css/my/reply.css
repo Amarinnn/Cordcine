@@ -12,9 +12,11 @@ input::-webkit-inner-spin-button {
 #pro-3,
 #pro-4,
 #pro-5 {
+	}
+#pro-4 {
     display: none;
 }
-
 .w-40 {
     width: 45% !important;
 }
+
