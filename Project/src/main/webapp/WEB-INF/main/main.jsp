@@ -36,8 +36,8 @@
         <header class="navbar navbar-expand-md">
           <div class="container">
             <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-              <a href=".">
-                <img src="./static/logo.svg" width="110" height="32" alt="Logo" class="navbar-brand-image">
+              <a href="#">
+                <img src="${cpath }/img/my/logo.png"  alt="Logo"  width="90rem" height="auto" >
               </a>
             </h1>
 			<!-- 로그인 했음 -->
@@ -255,7 +255,7 @@
                         <a class="dropdown-item" href="${cpath}/callist.do">
                           칼럼 Archive
                         </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="${cpath}/buylist.do">
                           공동구매
                         </a>
                         

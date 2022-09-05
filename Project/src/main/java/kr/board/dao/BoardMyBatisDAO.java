@@ -11,6 +11,10 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import kr.buy_board.entity.Buy_Board;
+import kr.buy_comm_form.entity.BCommForm;
+import kr.buy_comm_form_gds.entity.BCommFormGds;
+import kr.buy_comment.entity.buy_comment;
 import kr.zw_board.entity.BoardPaging;
 import kr.zw_board.entity.Member;
 import kr.zw_board.entity.Zw_Board;
@@ -202,7 +206,7 @@ public class BoardMyBatisDAO {
 		}
 		
 		
-		//공지
+		//제로웨이스트공지
 		public void updateNotice(int zw_seq) {
 			SqlSession session =sqlSessionFactory.openSession();
 			session.update("updateNotice", zw_seq);
@@ -224,5 +228,250 @@ public class BoardMyBatisDAO {
 			return list;
 		}
 		
+		//공동구매게시판
+		
+		public List<Buy_Board> buyallList() {
+			SqlSession session =sqlSessionFactory.openSession();
+			List<Buy_Board> list =session.selectList("buyallList");
+			session.close();
+			return list;
+			
+	}
+		
+		public int buyallListCount() {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt=session.selectOne("buyallListCount");
+			session.close();//반납
+			return cnt;
+		}
+	
+		public List<Buy_Board> buysomeList(BoardPaging page) {
+			SqlSession session = sqlSessionFactory.openSession();
+			List<Buy_Board> list=session.selectList("buysomeList",page);
+			session .close();//반납
+			return list;
+	}
+		
+		public List<Buy_Board> buysearchList(Map<String,Object> m ){
+			
+			SqlSession session = sqlSessionFactory.openSession();
+			List<Buy_Board> list=session.selectList("buysearchList",m);
+			session.close();//반납
+			return list;
+			
+			
+		}
+		public List<buy_comment> buyallComment(int num){
+			SqlSession session =sqlSessionFactory.openSession();
+			List<buy_comment> list =session.selectList("buyallComment",num);
+			session.close();
+			return list;
+		}
+		public int buyboardWrite(Buy_Board vo) {
+			SqlSession session =sqlSessionFactory.openSession();
+			int cnt =session.insert("buyboardWrite",vo);
+			String login_id = vo.getLogin_id();
+			session.update("buywritePoint", login_id);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
+		public int buycommentWrite(buy_comment comm) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt = session.insert("buycommentWrite",comm);
+			String login_id = comm.getLogin_id();
+			session.update("buycommentPoint", login_id);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
+		public int buyboardDelete(int num) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.delete("buycommentDelete2", num);
+			int cnt =session.delete("buyboardDelete",num);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
+		public int buycommentDelete(int num) {
+			SqlSession session =sqlSessionFactory.openSession();
+			int cnt =session.delete("buycommentDelete",num);
+			System.out.println("buymbdelete");
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
+		public Buy_Board buyboardView(int num) {
+			SqlSession session = sqlSessionFactory.openSession();
+			Buy_Board vo =session.selectOne("buyboardView", num);
+			session.close();
+			return vo;
+		}
+		
+		public int buyboardUpdate(Buy_Board vo) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt = session.update("buyboardUpdate", vo);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		public int buyboardUpdate2(Buy_Board vo) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt = session.update("buyboardUpdate2", vo);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
+		public void buycountUpdate(int num) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt= session.update("buycountUpdate", num);
+			session.commit();
+			session.close();
+		}
+		
+		/*
+		 * public Member memberLogin(String id) { SqlSession session =
+		 * sqlSessionFactory.openSession(); Member mvo =
+		 * session.selectOne("memberLogin",id); session.close(); return mvo; }
+		 */
+		
+		public void buycommentUpdate(buy_comment comm) {
+			SqlSession session = sqlSessionFactory.openSession();
+			session.update("buycommentUpdate", comm);
+			session.commit();
+			session.close();
+		}
+		
+		public int buylikeCheck(Map<String,Object> m ) {
+			SqlSession session =sqlSessionFactory.openSession();
+			int cnt =session.selectOne("buylikeCheck",m);
+			session.close();
+			return cnt;
+		}
+		
+		public void buylikeUpdate(Map<String,Object> m ) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.update("buylikeUpdate",m);
+			session.commit();
+			session.close();
+			
+			
+		}
+		
+		public void buylikeDelete(Map<String,Object> m ) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.delete("buylikeDelete",m);
+			session.commit();
+			session.close();
+		}
+		
+		public int buylikeCount(int buy_seq) {
+			
+			SqlSession session =sqlSessionFactory.openSession();
+			int cnt =session.selectOne("buylikeCount",buy_seq);
+			Map<String,Object> m = new HashMap<>();
+			m.put("cnt", cnt);
+			m.put("buy_seq", buy_seq);
+			session.update("buyupdateLike", m);
+			session.commit();
+			session.close();
+			return cnt;
+			
+		}
+
+		public int buysearchListCount(Map<String,Object> m) {
+			System.out.println(m.get("text"));
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt=session.selectOne("buysearchListCount", m);
+			session.close();//반납
+			return cnt;
+		}
+
+		public void buydeleteFile(int buy_seq) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.update("buydeleteFile", buy_seq);
+			session.commit();
+			session.close();
+		}
+		
+		
+		//공지
+		public void buyupdateNotice(int buy_seq) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.update("buyupdateNotice", buy_seq);
+			session.commit();
+			session.close();
+		}
+		
+		public void buydeleteNotice(int buy_seq) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.update("buydeleteNotice", buy_seq);
+			session.commit();
+			session.close();
+		}
+		
+		public List<Buy_Board> buynoticeList() {
+			SqlSession session =sqlSessionFactory.openSession();
+			List<Buy_Board> list =session.selectList("buynoticeList");
+			session.close();
+			return list;
+		}
+		///공동구매 댓글폼
+		public List<BCommForm> BCommFormList(BCommForm bcf){
+			SqlSession session =sqlSessionFactory.openSession();
+			List<BCommForm> list =session.selectList("BCommFormList",bcf);
+			session.close();
+			return list;
+		}
+		public int BCommFormWrite(BCommForm comm) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt = session.insert("BCommFormWrite",comm);
+//			int cnt2 = session.insert("BCommFormWriteGds",comm);
+			String login_id = comm.getLogin_id();
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		public int BCommFormDelete(BCommForm vo) {
+			SqlSession session =sqlSessionFactory.openSession();
+			int bf_seq=session.selectOne("selectseq",vo);
+			session.delete("BCommFormDelete2",bf_seq);
+			int cnt =session.delete("BCommFormDelete1",vo);
+			System.out.println("BCommFormDelete");
+			session.commit();
+			session.close();
+			return cnt;
+		}
+
+		public int BCommFormUpdate(BCommForm cb) {
+			SqlSession session = sqlSessionFactory.openSession();
+			cb.setBf_seq(session.selectOne("selectseq",cb));
+			session.update("BCommFormUpdate2",cb);
+			int cnt =session.update("BCommFormUpdate1",cb);
+			System.out.println("BCommFormUpdate");
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
+//		public List<BCommFormGds> BCommFormListGds (int num){
+//			SqlSession session =sqlSessionFactory.openSession();
+//			List<BCommFormGds> list =sessiV4 selectList("BCommFormListGds",num);
+//			session.close();
+//			return list;
+//		}
+//		public int  BCommFormWriteGds (BCommFormGds gs) {
+//			SqlSession session = sqlSessionFactory.openSession();
+//			int cnt = session.insert("BCommFormWriteGds",gs);
+//			session.commit();
+//			session.close();
+//			return cnt;
+//		}
+//		
 		
 }
