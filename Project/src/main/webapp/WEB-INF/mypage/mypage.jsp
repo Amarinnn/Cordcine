@@ -118,16 +118,11 @@
 			</div>
 		</div>
 
-	</div>
-	</div>
 	<!-- footer -->
 	<!-- WEB-INF폴더에서 사용시 page="../footer/footer.jsp"로 변경 -->
 	<jsp:include page="../../footer/footer.jsp" />
-	</div>
-	</div>
 
 
 
-	</script>
 </body>
 </html>

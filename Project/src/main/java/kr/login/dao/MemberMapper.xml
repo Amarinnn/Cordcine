@@ -55,6 +55,7 @@
 		as zw_cmtcnt from t_zw_board b where login_id=#{login_id} order by
 		zw_date DESC
 	</select>
+	
 	<select id="myWriteVg" parameterType="String"
 		resultType="kr.zw_board.entity.Board">
 		select vb_seq as zw_seq, vb_title as zw_title, vb_content as zw_content,
