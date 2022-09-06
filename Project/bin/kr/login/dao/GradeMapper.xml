@@ -13,7 +13,7 @@
   </select>
   
  <select id="gradeAllComment" parameterType="int" resultType="kr.grade_comment.entity.Grade_comment">
- 	select * from t_grade_comment where grade_seq=#{grade_seq} order by grade_cmt_seq
+ 	select c.*, (select u_grade from t_login t where t.login_id=c.login_id) as u_grade from t_grade_comment c where grade_seq=#{grade_seq} order by grade_cmt_seq
  </select>
  
  <select id ="gradeLikeCheck" parameterType="map" resultType="int">
@@ -93,7 +93,7 @@
  </update>
  
  <select id="gradeNoticeList" resultType="kr.grade.entity.grade_Board">
- 	select * from (select a.*, ROWNUM from t_grade_board a where notice is not null order by notice desc) where ROWNUM &lt;= 3
+	select * from (select a.*, (select count(*) from t_grade_comment c where c.grade_seq = a.grade_seq) as grade_cmtcnt, ROWNUM from t_grade_board a where notice is not null order by notice desc) a where ROWNUM &lt;= 3
  </select> 
  
  
@@ -103,7 +103,7 @@
  </select> 
  	
  <select id="gradeList" resultType="kr.grade.entity.grade_Board">
- 	select * from (select a.*, (select count(grade_cmt_seq) from t_grade_comment ) as grade_cmtcnt, ROWNUM as rn from t_grade_board a order by a.grade_seq desc) where rn between #{startCount} and #{endCount}
+ 	select * from (select a.*, (select count(*) from t_grade_comment c where c.grade_seq = a.grade_seq) as grade_cmtcnt, (select u_grade from t_login t where t.login_id= a.login_id) as u_grade, ROWNUM as rn from t_grade_board a order by a.grade_seq desc) where rn between #{startCount} and #{endCount}
  </select> 	
  	
  	

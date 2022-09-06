@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.board.dao.BoardMyBatisDAO;
+import kr.grade.entity.grade_Board;
 import kr.login.controller.Controller;
 import kr.toBoard.entity.ToBoard;
 import kr.zw_board.entity.BoardPaging;
@@ -42,7 +43,6 @@ public class ToPageListController implements Controller {
 		board.end_Page(Integer.parseInt(p));
 		board.setCurrentPage(Integer.parseInt(p));
 		List<ToBoard> list=dao.tosomeList(board);
-		String grade = "";
 		for (ToBoard to : list) {
 			if(to.getU_grade().equals("지구프랜즈")) {
 				to.setU_grade("/img/my/1.png");
@@ -57,10 +57,13 @@ public class ToPageListController implements Controller {
 				to.setU_grade("/img/my/4.png");
 			}
 			if(to.getU_grade().equals("admin")) {
-				to.setU_grade("/img/my/5.png");
+				to.setU_grade("/img/my/kf.png");
 			}
 		}
 		
+		List<ToBoard> notice_list =dao.toNoticeList();
+		
+		request.setAttribute("notice", notice_list);
 		request.setAttribute("list", list);
 		request.setAttribute("board", board);
 

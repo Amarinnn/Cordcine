@@ -13,7 +13,14 @@ public class ToBoard {
 	private int tb_cmtcnt;
 	private int tb_formcnt;
 	private String u_grade;
+	private int notice;
 	
+	public int getNotice() {
+		return notice;
+	}
+	public void setNotice(int notice) {
+		this.notice = notice;
+	}
 	public String getU_grade() {
 		return u_grade;
 	}

@@ -18,11 +18,11 @@ public class BoardDeleteNoticeController implements Controller {
 		
 		
 		int num = Integer.parseInt(request.getParameter("num"));
-		
+		System.out.println("notice delete1");
 		BoardMyBatisDAO dao = new BoardMyBatisDAO();
 		
 		dao.deleteNotice(num);
-		System.out.println("notice delete");
+		System.out.println("notice delete2");
 		
 		return "redirect:/zwlist.do";
 

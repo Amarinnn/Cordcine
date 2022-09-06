@@ -55,14 +55,7 @@
 		as zw_cmtcnt from t_zw_board b where login_id=#{login_id} order by
 		zw_date DESC
 	</select>
-	<select id="myWriteVg" parameterType="String"
-		resultType="kr.zw_board.entity.Board">
-		select vb_seq as zw_seq, vb_title as zw_title, vb_content as zw_content,
-		vb_file as zw_file, vb_date as zw_date, login_id, vb_cnt as zw_cnt,
-		vb_likes as zw_likes, (select count(*) from t_vegan_board_comment c
-		where c.vb_seq=b.vb_seq) as zw_cmtcnt from t_vegan_board b where
-		login_id=#{login_id} order by vb_date DESC
-	</select>
+	
 	<select id="myWriteTo" parameterType="String"
 		resultType="kr.zw_board.entity.Board">
 		select tb_seq as zw_seq, tb_title as zw_title, tb_content as zw_content,
@@ -161,7 +154,7 @@
  </select>
  
  <select id="someList" resultType="kr.zw_board.entity.Zw_Board" parameterType="kr.zw_board.entity.BoardPaging">
-    select xx.zw_seq, xx.zw_title, xx.zw_content,xx.zw_file, xx.zw_date, xx.login_id, xx.zw_cnt,xx.zw_likes,xx.zw_headline,xx.zw_cmtcnt from (select rownum as r, x.* from (select zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,zw_headline,(select count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as zw_cmtcnt from  t_zw_board b order by zw_seq DESC) x) xx where xx.r between #{startCount} and #{endCount}
+    select xx.zw_seq, xx.zw_title, xx.zw_content, xx.zw_file, xx.zw_date, xx.login_id, xx.zw_cnt, xx.zw_likes, xx.zw_headline, xx.zw_cmtcnt, xx.u_grade from (select rownum as r, x.* from (select zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,zw_headline,(select count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as zw_cmtcnt , (select u_grade from t_login t where t.login_id= b.login_id) as u_grade from  t_zw_board b order by zw_seq DESC) x) xx where xx.r between #{startCount} and #{endCount}
   </select>
   
   <select id="searchList" resultType="kr.zw_board.entity.Zw_Board" parameterType="map">
@@ -177,7 +170,8 @@
  </select> -->
  
  <select id="allComment" parameterType="int" resultType="kr.zw_comment.entity.zw_comment">
- 	select * from t_zero_waste_comment where zw_seq=#{zw_seq} order by zw_cmt_seq
+ 	select c.*, (select u_grade from t_login t where t.login_id=c.login_id) as u_grade from t_zero_waste_comment c where zw_seq=#{zw_seq} order by zw_cmt_seq
+ 	
  </select>
  
  <select id ="likeCheck" parameterType="map" resultType="int">
@@ -526,7 +520,7 @@
 
 	<select id="toallComment" parameterType="int"
 		resultType="kr.toBoard.entity.to_comment">
-		select * from t_together_comment where tb_seq=#{tb_seq} order by
+		select c.*, (select u_grade from t_login t where t.login_id=c.login_id) as u_grade from t_together_comment c where tb_seq=#{tb_seq} order by
 		tb_cmt_seq
 	</select>
 
@@ -607,6 +601,20 @@
 		update t_together_board set tb_cnt=tb_cnt+1 where tb_seq=#{tb_seq}
 	</update>
 	
+	 <select id="toNoticeList" resultType="kr.toBoard.entity.ToBoard">
+ 		select * from (select a.*, (select count(*) from t_together_comment c where c.tb_seq = a.tb_seq) as tb_cmtcnt, ROWNUM from t_together_board a where notice is not null order by notice desc) a where ROWNUM &lt;= 3
+	 </select> 
+	
+	<update id="toUpdateNotice" parameterType="int">
+		update t_together_board set
+		notice = noticeseq.nextval where tb_seq=#{tb_seq}
+	</update>
+
+	<update id="toDeleteNotice" parameterType="int">
+		update t_together_board set
+		notice = null where tb_seq=#{tb_seq}
+	</update>
+	
 	<!-- 함께해요폼 -->
 	
 	<insert id="ftocommentWrite" parameterType="kr.toBoard.entity.to_form">
@@ -630,4 +638,19 @@
 	<update id="ftocommentCheck" parameterType="kr.toBoard.entity.to_form">
 		update t_together_form set attedancy_check=#{attedancy_check} where tb_seq=#{tb_seq} and login_id=#{login_id}
 	</update>
+	
+	<select id="zwBoardBest" resultType="kr.zw_board.entity.Zw_Board">
+	select xx.* from (select rownum as r, x.* from  (select z.*,zw_likes+zw_cnt from T_ZW_BOARD z order by zw_likes+zw_cnt desc) x) xx where r = 1
+	 </select>
+	 <select id="imgBoardBest" resultType="kr.imgboard.entity.Img_Board">
+		select xx.* from (select rownum as r, x.* from  (select z.*,img_likes+img_cnt from t_img_board z order by img_likes+img_cnt desc) x) xx where r = 1
+	 </select>
+	   <select id="toBoardBest" resultType="kr.toBoard.entity.ToBoard">
+		select xx.* from (select rownum as r, x.* from  (select z.*,tb_likes+tb_cnt from t_together_board z order by tb_likes+tb_cnt desc) x) xx where r = 1
+	 </select>
+	 <select id="buyBoardBest" resultType="kr.buy_board.entity.Buy_Board">
+		select xx.* from (select rownum as r, x.* from  (select z.*,buy_likes+buy_cnt from t_buy_board z order by buy_likes+buy_cnt desc) x) xx where r = 1
+	 </select>
+	
+	
 </mapper>

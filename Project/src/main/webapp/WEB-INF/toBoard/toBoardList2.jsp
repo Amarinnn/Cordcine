@@ -108,10 +108,21 @@
                     </tr>
                   </thead>
                   <tbody id="list">
+                  <c:forEach  var="vo" items="${notice}"> 
+    					<tr class="bg-yellow-lt">
+			    			<td class ="text-center">공지</td>
+			    			<td><a href="${cpath }/toboardView.do?num=${vo.tb_seq}&p=${board.currentPage}&login_id=${mvo.login_id}" class="text-reset"><span class="text-green">[${vo.tb_headline}]<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 21c.5 -4.5 2.5 -8 7 -10"></path><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z"></path></svg></span>${vo.tb_title }<span class="text-orange">&nbsp;[${vo.tb_cmtcnt }]</span></a></td>
+			    			<td class="text-muted text-center"><img src="${cpath}${vo.u_grade}" alt="icon">${vo.login_id }</td>
+			    			<td class="text-muted text-center">${vo.tb_regdate }</td>
+			    			<td class="text-muted  text-center">${vo.tb_cnt }</td>
+			    			<td class="text-muted text-center">${vo.tb_likes }</td>
+			    		</tr>
+    				</c:forEach>
+    				
                   	<c:forEach  var="vo" items="${list }"> 
     					<tr>
 			    			<td class ="text-center">${vo.tb_seq }</td>
-			    			<td><a href="${cpath }/toboardView.do?num=${vo.tb_seq}&p=${board.currentPage}&login_id=${mvo.login_id}" class="text-reset">[${vo.tb_headline}]&nbsp;${vo.tb_title }<span class="text-orange">&nbsp;[${vo.tb_cmtcnt }]</span></a></td>
+			    			<td><a href="${cpath }/toboardView.do?num=${vo.tb_seq}&p=${board.currentPage}&login_id=${mvo.login_id}" class="text-reset"><span class="text-green">[${vo.tb_headline}]<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M5 21c.5 -4.5 2.5 -8 7 -10"></path><path d="M9 18c6.218 0 10.5 -3.288 11 -12v-2h-4.014c-9 0 -11.986 4 -12 9c0 1 0 3 2 5h3z"></path></svg></span>${vo.tb_title }<span class="text-orange">&nbsp;[${vo.tb_cmtcnt }]</span></a></td>
 			    			<td class="text-muted text-center"><img src="${cpath}${vo.u_grade}" alt="icon">${vo.login_id }</td>
 			    			<td class="text-muted text-center">${vo.tb_regdate }</td>
 			    			<td class="text-muted  text-center">${vo.tb_cnt }</td>
@@ -214,6 +225,8 @@
         <jsp:include page="../../footer/footer.jsp" />
   </div>
   </div>
+</div>
+</div>
 
 </body>
 </html>

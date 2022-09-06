@@ -21,7 +21,6 @@
   <!-- Tabler Core -->
   <script src="${cpath}/js/tabler.min.js" defer></script>
 
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2224da2e91e9de7689142f9c3f2f1635&libraries=services"></script>
 
   <!-- my -->
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">

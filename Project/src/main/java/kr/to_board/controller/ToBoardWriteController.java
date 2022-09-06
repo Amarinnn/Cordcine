@@ -1,5 +1,6 @@
 package kr.to_board.controller;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -26,12 +27,20 @@ public class ToBoardWriteController implements Controller{
 		
 		String savePath = request.getSession().getServletContext().getRealPath("/upload");
 		
+		File Folder = new File(savePath);
+		if (!Folder.exists()) {
+			try {
+				Folder.mkdir();
+			}catch (Exception e){
+				e.printStackTrace();
+			}
+		}
+		
 		try{
 			multi=new MultipartRequest(request, savePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		String filename = multi.getFilesystemName("filename1");
 		String title = multi.getParameter("title");
 		String writer = multi.getParameter("writer");

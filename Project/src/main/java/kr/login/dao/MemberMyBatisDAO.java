@@ -1,8 +1,9 @@
 package kr.login.dao;
 
 import java.io.InputStream;
-
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import org.apache.ibatis.io.Resources;
@@ -11,14 +12,18 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import kr.admin.entity.AdminPaging;
+import kr.buy_board.entity.Buy_Board;
+import kr.imgboard.entity.Img_Board;
 import kr.login.entity.Cal;
 import kr.login.entity.Kakao_member;
 import kr.login.entity.Member;
 import kr.map.entity.MapPaging;
 import kr.map.entity.Mapvo;
+import kr.toBoard.entity.ToBoard;
 import kr.weekly.entity.Weekly;
 import kr.zw_board.entity.Board;
 import kr.zw_board.entity.BoardPaging;
+import kr.zw_board.entity.Zw_Board;
 import kr.zw_comment.entity.zw_comment;
 
 public class MemberMyBatisDAO {
@@ -39,6 +44,22 @@ public class MemberMyBatisDAO {
 	 * userMapper.getUserByEmail(user.getEmail()); if(savedUser == null) {
 	 * userMapper.addUser(user); } return savedUser; }
 	 */
+	
+	
+	public Map<String,Object> BoardBest() {
+		SqlSession session =sqlSessionFactory.openSession();
+		Map<String,Object> m = new HashMap<String,Object>();
+		Zw_Board zw = session.selectOne("zwBoardBest");
+		Img_Board img = session.selectOne("imgBoardBest");
+		ToBoard to =  session.selectOne("toBoardBest");
+		Buy_Board buy = session.selectOne("buyBoardBest");
+		m.put("zw", zw);
+		m.put("img", img);
+		m.put("to", to);
+		m.put("buy", buy);
+		session.close();
+		return m;
+	}	
 	
 		
 		//게시판

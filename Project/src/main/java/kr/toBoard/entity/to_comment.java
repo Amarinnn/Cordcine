@@ -7,6 +7,7 @@ private String tb_cmt_content ;
 private String tb_cmt_date ;
 private String login_id ;
 private String u_grade;
+
 public String getU_grade() {
 	return u_grade;
 }

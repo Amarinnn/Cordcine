@@ -141,19 +141,19 @@ function imgList() {
 
 				<div class="card-body text-center mb-4">
 					<c:if test="${mvo.u_grade eq '지구프랜즈'}">
-					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/kf.gif)"></span>
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p1.jpg)"></span>
 					</c:if>
 					<c:if test="${mvo.u_grade eq '지구지킴단'}">
-					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/kf2.jpg)"></span>
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p2.jpg)"></span>
 					</c:if>
 					<c:if test="${mvo.u_grade eq '지구특공대'}">
-					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(../../img/my/kf2.jpg)"></span>
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p3.jpg)"></span>
 					</c:if>
 					<c:if test="${mvo.u_grade eq '지구어벤져스'}">
-					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(../../img/my/K-002.jpg)"></span>
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p4.jpg)"></span>
 					</c:if>
 					<c:if test="${mvo.u_grade eq 'admin'}">
-					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(../../img/my/K-004.jpg)"></span>
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/kf.gif)"></span>
 					</c:if>
 					<h3 class="m-0 mb-1">
 						<a href="#">${mvo.u_nick }</a>
@@ -173,7 +173,7 @@ function imgList() {
 					</div>
 				</div>
 				<p class="text-center">
-					<small>다음 등급까지 ${100-mvo.u_point} 포인트</small>
+					<small>다음 등급까지<span class="text-orange strong">${100-mvo.u_point}</span> 포인트</small>
 				</p>
 				<div
 					class="list-group list-group-transparent mb-3 ml-3  theme-light mb-5">
@@ -181,10 +181,10 @@ function imgList() {
 						class="list-group-item list-group-item-action d-flex align-items-center"
 						href="${cpath}/memberView.do"> 내 프로필 수정 </a> <a
 						class="list-group-item list-group-item-action d-flex align-items-center"
-						href="${cpath}/mypageWrite.do"> 내가 쓴 글 <small class="text-muted ms-auto">${cmw}</small>
+						href="${cpath}/mypageWrite.do"> 내가 쓴 글 <small class="text-muted ms-auto">${cmw} </small>
 					</a> <a
 						class="list-group-item list-group-item-action d-flex align-items-center"
-						href="${cpath}/mypageComment.do"> 내가 쓴 댓글 <small class="text-muted ms-auto">${cmc }</small>
+						href="${cpath}/mypageComment.do"> 내가 쓴 댓글 <small class="text-muted ms-auto">${cmc} </small>
 					</a>
 				</div>
 			</div>

@@ -323,26 +323,17 @@
                 </div>
               </div>
               <div class="row">
-
               </div>
-
             </div>
             <div class="row mb-3">
-              <div class="col-md-3">
+             <div class="col-md-3">
                 <div class="card">
                   <div class="card-status-start bg-blue"></div>
                   <div class="card-body">
-                    <h3 class="card-title text-truncate"><a href="#" class="text-truncate">Card with side status
-                        orem
-                        ipsum d</a>
+                    <h3 class="card-title text-truncate"><a href="#" class="text-truncate">${zw.zw_title }</a>
                     </h3>
-                    <div class="text-muted mb-1 hei">Lorem ipsum dolor sit amet, consectetur adipisicing
-                      elit.
-                      Aperiam deleniti
-                      fugit incidunt,
-                      iste, itaque minima
-                      neque pariatur perferendis sed suscipit velit vitae voluptatem.</div>
-                    <p class="text-muted text-end"><small>2022-01-01</small></p>
+                    <div class="text-muted mb-1 hei">${zw.zw_content }</div>
+                    <p class="text-muted text-end"><small>${zw.zw_date }</small></p>
                   </div>
                 </div>
               </div>
@@ -350,17 +341,10 @@
                 <div class="card">
                   <div class="card-status-start bg-blue"></div>
                   <div class="card-body">
-                    <h3 class="card-title text-truncate"><a href="#" class="text-truncate">Card with side status
-                        orem
-                        ipsum d</a>
+                    <h3 class="card-title text-truncate"><a href="#" class="text-truncate">${img.img_title }</a>
                     </h3>
-                    <div class="text-muted mb-1 hei">Lorem ipsum dolor sit amet, consectetur adipisicing
-                      elit.
-                      Aperiam deleniti
-                      fugit incidunt,
-                      iste, itaque minima
-                      neque pariatur perferendis sed suscipit velit vitae voluptatem.</div>
-                    <p class="text-muted text-end"><small>2022-01-01</small></p>
+                    <div class="text-muted mb-1 hei">${img.img_content }</div>
+                    <p class="text-muted text-end"><small>{img.img_regdate</small></p>
                   </div>
                 </div>
               </div>
@@ -368,17 +352,10 @@
                 <div class="card">
                   <div class="card-status-start bg-blue"></div>
                   <div class="card-body">
-                    <h3 class="card-title text-truncate"><a href="#" class="text-truncate">Card with side status
-                        orem
-                        ipsum d</a>
+                    <h3 class="card-title text-truncate"><a href="#" class="text-truncate">${to.tb_title }</a>
                     </h3>
-                    <div class="text-muted mb-1 hei">Lorem ipsum dolor sit amet, consectetur adipisicing
-                      elit.
-                      Aperiam deleniti
-                      fugit incidunt,
-                      iste, itaque minima
-                      neque pariatur perferendis sed suscipit velit vitae voluptatem.</div>
-                    <p class="text-muted text-end"><small>2022-01-01</small></p>
+                    <div class="text-muted mb-1 hei">${to.tb_content }</div>
+                    <p class="text-muted text-end"><small>${to.tb_regdate }</small></p>
                   </div>
                 </div>
               </div>
@@ -386,17 +363,10 @@
                 <div class="card">
                   <div class="card-status-start bg-blue"></div>
                   <div class="card-body">
-                    <h3 class="card-title text-truncate"><a href="#" class="text-truncate">Card with side status
-                        orem
-                        ipsum d</a>
+                    <h3 class="card-title text-truncate"><a href="#" class="text-truncate">${buy.buy_title}</a>
                     </h3>
-                    <div class="text-muted mb-1 hei">Lorem ipsum dolor sit amet, consectetur adipisicing
-                      elit.
-                      Aperiam deleniti
-                      fugit incidunt,
-                      iste, itaque minima
-                      neque pariatur perferendis sed suscipit velit vitae voluptatem.</div>
-                    <p class="text-muted text-end"><small>2022-01-01</small></p>
+                    <div class="text-muted mb-1 hei">${buy.buy_content }</div>
+                    <p class="text-muted text-end"><small>${buy.buy_regdate }</small></p>
                   </div>
                 </div>
               </div>

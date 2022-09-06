@@ -411,9 +411,29 @@ public class BoardMyBatisDAO {
 			List<ToBoard> list=session.selectList("tosearchList",m);
 			session.close();//반납
 			return list;
-			
-			
 		}
+		
+		public void toUpdateNotice(int notice) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.update("toUpdateNotice", notice);
+			session.commit();
+			session.close();
+		}
+		
+		public void toDeleteNotice(int notice) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.update("toDeleteNotice", notice);
+			session.commit();
+			session.close();
+		}
+		
+		public List<ToBoard> toNoticeList(){
+			SqlSession session =sqlSessionFactory.openSession();
+			List<ToBoard> list =session.selectList("toNoticeList");
+			session.close();
+			return list;
+		}
+		
 		public List<buy_comment> buyallComment(int num){
 			SqlSession session =sqlSessionFactory.openSession();
 			List<buy_comment> list =session.selectList("buyallComment",num);

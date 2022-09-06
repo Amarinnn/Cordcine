@@ -25,8 +25,6 @@
 <!-- Tabler Core -->
 <script src="${cpath}/js/tabler.min.js" defer></script>
 
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2224da2e91e9de7689142f9c3f2f1635&libraries=services"></script>
 
 <!-- my -->
 <link rel="stylesheet" href="${cpath}/css/my/sub.css">
@@ -55,7 +53,7 @@ $(document).ready(function(){
   		var del = confirm("글을 삭제하시겠습니까");
   		if(del == true){
   	  		location.href="${cpath}/toboardDelete.do?num="+ num;
-
+			reloadlist();
   		}else{
   			return false;
   		}
@@ -131,7 +129,6 @@ $(document).ready(function(){
   	  			type :"post",
   	  			data : fData,
   	  			success : reloadList,
-  	  			
   	  			error : function(){alert("goInserterror");}
   	  		});
   	  		$('#writer').val("");
@@ -155,7 +152,7 @@ $(document).ready(function(){
   					comm+="<div class='col-3 m-auto'>";
   					comm+="<div class='form-selectgroup-label-content d-flex align-items-center '>";
   					comm+="<span class='avatar avatar-m avatar-rounded  me-3'";
-  					comm+="style='background-image: url(./dist/img/my/sample2.jpg)'></span>";
+  					comm+="style='background-image: url(${cpath}"+obj.u_grade+")'></span>";
   					comm+="<div>"
   					comm+="<div class='font-weight-medium'>"+obj.login_id+"</div>";
   					comm+='<div class="text-muted"><small>'+obj.tb_cmt_date+'</small></div>';
@@ -464,8 +461,8 @@ $(document).ready(function(){
   					}
   					
   					//글쓴이도 아니고 댓글도 안달았을때
-                				/*  else{
-                					 comm+="<div id='tab-form' class='card tab-pane' role='tabpanel'>";
+                				 else{
+                					 /* comm+="<div id='tab-form' class='card tab-pane' role='tabpanel'>";
                 					 comm+="<form id='fwriteComment'>";
                 					 comm+=" <div class='card-body'>";
                 					 comm+=" <div class='row'>";
@@ -488,8 +485,33 @@ $(document).ready(function(){
                 					comm+=" </div>";
                 					comm+=" </div>";
                 					comm+="</form> ";
+                					comm+="</div>"; */
+                					 
+                					/* comm+="<div id='tab-form' class='card tab-pane' role='tabpanel'>";
+                					 comm+="<form id='fwriteComment'>";
+                					 comm+=" <div class='card-body'>";
+                					 comm+=" <div class='row'>";
+                					 comm+="<div class='col'>";
+                					 comm+=" <label class='form-label'>아이디</label>";
+                					 comm+=" <div>${mvo.login_id }</div>";
+                					comm+=" </div>";
+                					comm+="<div class='col'>";
+                					 comm+=" <input type='hidden' name='tb_seq' value='${vo.tb_seq }'>";
+                	    			comm+="<input type='hidden' name='login_id' value='${mvo.login_id }'>";
+                					comm+=" <label class='form-label'>이름/입금자명</label>";
+                					comm+=" <input type='text' class='form-control form-control-rounded mb-2' id='fcontent' name='user_name' placeholder='이름'>";
+                					comm+=" </div>";
+                					comm+=" <div class='col'>";
+                					 comm+=" <label class='form-label'>전화번호</label>";
+                					comm+=" <input type='text' id='fcontent1' name='user_phone' class='form-control' data-mask='000-0000-0000' data-mask-visible='true' placeholder='숫자만 입력해주세요' autocomplete='off'>";
                 					comm+="</div>";
-                				 } */
+                					 comm+=" <div class='col ps-4'>";
+                					comm+=" <button type='button' class='btn btn-primary w-40 ' onclick='fgoInsertComment()'>등록하기</button>";
+                					comm+=" </div>";
+                					comm+=" </div>";
+                					comm+="</form> ";
+                					comm+="</div>"; */
+                				 } 
   					});
 		  				
 		  				$('#fcomment').html(comm);
@@ -498,6 +520,13 @@ $(document).ready(function(){
   				
   			error : function(){alert("reloadList error");}
   		});
+  	}
+  	
+  	function goNotice(num){
+  		location.href="${cpath}/toNotice.do?num="+ num;
+  	}
+  	function delNotice(num){
+  		location.href="${cpath}/toDelNotice.do?num="+num;
   	}
   					
   	
@@ -565,13 +594,28 @@ $(document).ready(function(){
 								<tr>
 
 
-									<td colspan="4" align="right"><c:if
-											test="${vo.login_id  eq mvo.login_id}">
-											<button class="btn btn-outline-success w-5"
-												onclick="goUpdate(${vo.tb_seq})">수정</button>
-											<button class="btn btn-outline-danger w-5"
-												onclick="goDel(${vo.tb_seq})">삭제</button>
-										</c:if>
+									<td colspan="4" align="right">
+									<c:choose>
+					    			<c:when test="${mvo.u_type eq 'admin' }">
+					    				<c:choose>
+							    			<c:when test="${vo.notice eq 0 }">
+							    				
+							    				<button class="btn btn-sm btn-warning" onclick="goNotice(${vo.tb_seq})">공지</button>
+							    			</c:when>
+							    			<c:otherwise>
+							    				<button class="btn btn-sm btn-warning" onclick="delNotice(${vo.tb_seq})">공지 제거</button>
+							    			</c:otherwise>
+					    				</c:choose>
+					    				<button class="btn btn-sm btn-warning" onclick="goUpdate(${vo.tb_seq})">수정</button>
+					    				<button class="btn btn-sm btn-danger" onclick="goDel(${vo.tb_seq})">삭제</button>
+					    			</c:when>
+					    			
+					    			<c:when test="${vo.login_id  eq mvo.login_id}">
+					    				<button class="btn btn-sm btn-warning" onclick="goUpdate(${vo.tb_seq})">수정</button>
+					    				<button class="btn btn-sm btn-danger" onclick="goDel(${vo.tb_seq})">삭제</button>
+					    			</c:when>
+					    		</c:choose>
+
 										<button class="btn btn-outline-primary w-5" onclick="goList()">목록</button>
 									</td>
 								</tr>
@@ -626,7 +670,7 @@ $(document).ready(function(){
 															<div
 																class="form-selectgroup-label-content d-flex align-items-center ">
 																<span class="avatar avatar-m avatar-rounded  me-3"
-																	style="background-image: url(./dist/img/my/sample2.jpg)"></span>
+																	style="background-image: url(${cpath}${grade })"></span>
 																<div>
 																	<div class="font-weight-medium">${mvo.login_id }</div>
 																	<div class="text-muted">

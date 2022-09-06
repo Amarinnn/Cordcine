@@ -88,7 +88,7 @@
 					</div>
 				</div>
 				<p class="text-center">
-					<small>다음 등급까지 ${100-mvo.u_point} 포인트</small>
+					<small>다음 등급까지<span class="text-orange strong">${100-mvo.u_point}</span> 포인트</small>
 				</p>
 				<div
 					class="list-group list-group-transparent mb-3 ml-3  theme-light mb-5">
@@ -96,10 +96,10 @@
 						class="list-group-item list-group-item-action d-flex align-items-center"
 						href="${cpath}/memberView.do"> 내 프로필 수정 </a> <a
 						class="list-group-item list-group-item-action d-flex align-items-center"
-						href="${cpath}/mypageWrite.do"> 내가 쓴 글 <small class="text-muted ms-auto">${cmw }</small>
+						href="${cpath}/mypageWrite.do"> 내가 쓴 글 <small class="text-muted ms-auto">${cmw} </small>
 					</a> <a
 						class="list-group-item list-group-item-action d-flex align-items-center"
-						href="${cpath}/mypageComment.do"> 내가 쓴 댓글 <small class="text-muted ms-auto">${cmc }</small>
+						href="${cpath}/mypageComment.do"> 내가 쓴 댓글 <small class="text-muted ms-auto">${cmc} </small>
 					</a>
 				</div>
 			</div>

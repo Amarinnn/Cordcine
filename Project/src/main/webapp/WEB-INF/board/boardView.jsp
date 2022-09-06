@@ -151,7 +151,7 @@ $(document).ready(function(){
   					comm+="<div class='col-3 m-auto'>";
   					comm+="<div class='form-selectgroup-label-content d-flex align-items-center '>";
   					comm+="<span class='avatar avatar-m avatar-rounded  me-3'";
-  					comm+="style='background-image: url(./dist/img/my/sample2.jpg)'></span>";
+  					comm+="style='background-image: url(${cpath}"+obj.u_grade+")'></span>";
   					comm+="<div>"
   					comm+="<div class='font-weight-medium'>"+obj.login_id+"</div>";
   					comm+='<div class="text-muted"><small>'+obj.zw_cmt_date+'</small></div>';
@@ -208,7 +208,12 @@ $(document).ready(function(){
   		}
   	
   	}
-  	
+  	function goNotice(num){
+  		location.href="${cpath}/boardNotice.do?num="+ num;
+  	}
+  	function delNotice(num){
+  		location.href="${cpath}/delNotice.do?num="+num;
+  	}
   	
   	</script>
   	
@@ -287,19 +292,19 @@ $(document).ready(function(){
 	    			<c:when test="${mvo.u_type eq 'admin' }">
 	    				<c:choose>
 			    			<c:when test="${vo.notice eq 0 }">
-			    				<button class="btn btn-sm btn-warning" onclick="goNotice(${vo.grade_seq})">공지</button>
+			    				<button class="btn btn-sm btn-warning" onclick="goNotice(${vo.zw_seq})">공지</button>
 			    			</c:when>
 			    			<c:otherwise>
-			    				<button class="btn btn-sm btn-warning" onclick="delNotice(${vo.grade_seq})">공지 제거</button>
+			    				<button class="btn btn-sm btn-warning" onclick="delNotice(${vo.zw_seq})">공지 제거</button>
 			    			</c:otherwise>
 	    				</c:choose>
-	    				<button class="btn btn-sm btn-warning" onclick="goUpdate(${vo.grade_seq})">수정</button>
-	    				<button class="btn btn-sm btn-danger" onclick="goDel(${vo.grade_seq})">삭제</button>
+	    				<button class="btn btn-sm btn-warning" onclick="goUpdate(${vo.zw_seq})">수정</button>
+	    				<button class="btn btn-sm btn-danger" onclick="goDel(${vo.zw_seq})">삭제</button>
 	    			</c:when>
 	    			
 	    			<c:when test="${vo.login_id  eq mvo.login_id}">
-	    				<button class="btn btn-sm btn-warning" onclick="goUpdate(${vo.grade_seq})">수정</button>
-	    				<button class="btn btn-sm btn-danger" onclick="goDel(${vo.grade_seq})">삭제</button>
+	    				<button class="btn btn-sm btn-warning" onclick="goUpdate(${vo.zw_seq})">수정</button>
+	    				<button class="btn btn-sm btn-danger" onclick="goDel(${vo.zw_seq})">삭제</button>
 	    			</c:when>
 	    		</c:choose>
 
@@ -343,7 +348,7 @@ $(document).ready(function(){
                         <div class="col-3 m-auto">
                           <div class="form-selectgroup-label-content d-flex align-items-center ">
                             <span class="avatar avatar-m avatar-rounded  me-3"
-                              style="background-image: url(./dist/img/my/sample2.jpg)"></span>
+                              style="background-image: url(${cpath}${grade })"></span>
                             <div>
                               <div class="font-weight-medium">${mvo.login_id }</div>
                               <div class="text-muted"><small>grade</small></div>

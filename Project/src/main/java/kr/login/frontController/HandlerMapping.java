@@ -88,6 +88,7 @@ import kr.login.controller.MypageWriteController;
 import kr.weekly.controller.WeeklyViewController;
 import kr.youtube.controller.YoutubeListController;
 import kr.zw_board.controller.BoardDeleteController;
+import kr.zw_board.controller.BoardDeleteNoticeController;
 import kr.zw_board.controller.BoardNoticeController;
 import kr.login.controller.joinFormController;
 import kr.map.controller.MapController;
@@ -107,8 +108,10 @@ import kr.to_board.controller.ToBoardUpdateFormController;
 import kr.to_board.controller.ToBoardViewController;
 import kr.to_board.controller.ToBoardWriteController;
 import kr.to_board.controller.ToBoardWriteFormController;
+import kr.to_board.controller.ToDeleteNoticeController;
 import kr.to_board.controller.ToFileDeleteController;
 import kr.to_board.controller.ToLikeController;
+import kr.to_board.controller.ToNoticeController;
 import kr.to_board.controller.ToPageListController;
 import kr.to_board.controller.ToSearchListController;
 import kr.to_comment.controller.ToCommentDeleteController;
@@ -204,7 +207,7 @@ public class HandlerMapping {
 		
 		//공지사항
 		mappings.put("/boardNotice.do", new BoardNoticeController());
-		mappings.put("/delNotice.do", new BoardDeleteController());
+		mappings.put("/delNotice.do", new BoardDeleteNoticeController());
 		
 		
 		//관리자페이지
@@ -292,6 +295,8 @@ public class HandlerMapping {
 		mappings.put("/tocommentDelete.do", new ToCommentDeleteController());
 		mappings.put("/toSearch.do", new ToSearchListController());
 		mappings.put("/tofileDelete.do", new ToFileDeleteController());
+		mappings.put("/toNotice.do", new ToNoticeController());
+		mappings.put("/toDelNotice.do", new ToDeleteNoticeController());
 		
 		//함께해요 게시판 폼
 		mappings.put("/ftocommentWrite.do", new FToCommentWriteController());

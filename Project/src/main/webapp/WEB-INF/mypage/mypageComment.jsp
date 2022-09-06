@@ -137,8 +137,21 @@ function imgList() {
 				<!--프로필 시작-->
 
 				<div class="card-body text-center mb-4">
-					<span class="avatar avatar-xl mb-3 avatar-rounded"
-						style="background-image: url(https://img.freepik.com/premium-vector/illustration-of-earth-character-sprouts_279539-60.jpg?w=1060)"></span>
+				<c:if test="${mvo.u_grade eq '지구프랜즈'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p1.jpg)"></span>
+					</c:if>
+					<c:if test="${mvo.u_grade eq '지구지킴단'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p2.jpg)"></span>
+					</c:if>
+					<c:if test="${mvo.u_grade eq '지구특공대'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p3.jpg)"></span>
+					</c:if>
+					<c:if test="${mvo.u_grade eq '지구어벤져스'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p4.jpg)"></span>
+					</c:if>
+					<c:if test="${mvo.u_grade eq 'admin'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/kf.gif)"></span>
+					</c:if>
 					<h3 class="m-0 mb-1">
 						<a href="#">${mvo.u_nick }</a>
 					</h3>

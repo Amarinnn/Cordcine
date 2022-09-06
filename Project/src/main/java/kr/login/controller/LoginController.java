@@ -59,19 +59,19 @@ public class LoginController implements Controller {
 		}
 		
 		if(gd.equals("지구프랜즈")) {
-			grade="/img/my/1.png";
+			grade="/img/my/11.png";
 		}
 		if(gd.equals("지구지킴단")) {
-			grade="/img/my/2.png";
+			grade="/img/my/22.png";
 		}
 		if(gd.equals("지구특공대")) {
-			grade="/img/my/3.png";
+			grade="/img/my/33.png";
 		}
 		if(gd.equals("지구어벤져스")) {
-			grade="/img/my/4.png";
+			grade="/img/my/44.png";
 		}
 		if(gd.equals("admin")) {
-			grade="/img/my/5.png";
+			grade="/img/my/55.png";
 		}
 		System.out.println("grade=="+grade);
 		Member mvo = dao.login(vo);

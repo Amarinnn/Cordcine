@@ -16,14 +16,6 @@ primary key (user_num)
 );
 
 <<<<<<< HEAD
-create sequence user_num_seq
-select * from T_USER;
-select * from T_login;
-
-select * from userT where user_id='pipi1055' and pw='pipipipi';
-
-
-=======
 select * from t_together_comment where tb_seq=2 order by
 		tb_cmt_seq
 
@@ -445,6 +437,8 @@ VALUES
     (#{goods_name},0)
     From t_buy_board_form
     
+    select xx.zw_seq, xx.zw_title, xx.zw_content,xx.zw_file, xx.zw_date, xx.login_id, xx.zw_cnt,xx.zw_likes,xx.zw_headline,xx.zw_cmtcnt, (select u_grade from t_login t where t.login_id= b.login_id) as u_grade from (select rownum as r, x.* from (select zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,zw_headline,(select count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as zw_cmtcnt from  t_zw_board b order by zw_seq DESC) x) xx where xx.r between 2 and 3
+    
     
 select * from t_buy_board_form_goods
 
@@ -454,14 +448,28 @@ select f.bf_seq,f.login_id, f.user_name, f.user_phone,
     f.buy_seq,
     g.goods_name 
     from t_buy_board_form_goods g,  t_buy_board_form f
-    where login_id='1212' and buy_seq=20 and g.bf_seq=f.bf_seq
+    where login_id='1212' and buy_seq=20 and g.bf_seq=f.bf_seq;
+    
+select * from t_login
+    
 
->>>>>>> 0799c9b1c88cce4a776ba5b84dc6826fa3079fd6
-=======
+select xx.zw_seq, xx.zw_title, xx.zw_content, xx.zw_file, xx.zw_date, xx.login_id, xx.zw_cnt, xx.zw_likes, xx.zw_headline, xx.zw_cmtcnt, xx.u_grade from (select rownum as r, x.* from (select zw_seq,zw_title,zw_content,zw_file,zw_date,login_id,zw_cnt,zw_likes,zw_headline,(select count(*) from t_zero_waste_comment c where c.zw_seq = b.zw_seq) as zw_cmtcnt , (select u_grade from t_login t where t.login_id= b.login_id) as u_grade from  t_zw_board b order by zw_seq DESC) x) xx where xx.r between 255 and 260
 
 
-select xx.tb_seq, xx.tb_title, xx.tb_content,xx.tb_file, xx.tb_regdate, xx.login_id, xx.tb_cnt,xx.tb_likes,xx.tb_cmtcnt 
-	from (select rownum as r, x.* 
-		from (select tb_seq,tb_title,tb_content,tb_file,tb_regdate,login_id,tb_cnt,tb_likes, (select count(*) from t_together_comment c where c.tb_seq = b.tb_seq) as tb_cmtcnt 
-			from t_together_board b where ${val} like '%' ||#{text}||'%' order by tb_seq DESC) x) xx where xx.r between #{board.startCount} and #{board.endCount}
->>>>>>> a9aa297390baeee79bfc3fd88db4b4841527f1c4
+select * from t_together_comment
+
+select c.*, (select u_grade from t_login t where t.login_id=c.login_id) as u_grade 
+from t_img_comment c where img_seq=74 order by img_cmt_seq
+
+select * from  (select a.*,(select count(grade_cmt_seq) from t_grade_comment ) as grade_cmtcnt, ROWNUM from t_grade_board a where notice is not null order by notice desc) where ROWNUM <= 3
+
+select * from (select a.*, (select count(grade_cmt_seq) from t_grade_comment ) as grade_cmtcnt, ROWNUM from t_grade_board a where notice is not null order by notice desc) where ROWNUM <= 3
+
+select * from (select a.*,(select count(tb_cmt_seq) from t_together_comment where tb_seq=#{tb_seq} ) as tb_cmtcnt, ROWNUM from t_together_board a where notice is not null order by notice desc) where ROWNUM <= 3
+
+select * from (select a.*, (select count(*) from t_together_comment c where c.tb_seq = a.tb_seq) as tb_cmtcnt, ROWNUM from t_together_board a where notice is not null order by notice desc) a where ROWNUM <= 3
+
+select a.*, (select count(*) from t_together_comment c where c.tb_seq=a.tb_seq) as tb_cmtcnt from t_together_board a
+
+select * from (select a.*, (select count(*) from t_grade_comment c where c.grade_seq = a.grade_seq) as grade_cmtcnt, ROWNUM from t_grade_board a where notice is not null order by notice desc) a where ROWNUM <= 3
+
