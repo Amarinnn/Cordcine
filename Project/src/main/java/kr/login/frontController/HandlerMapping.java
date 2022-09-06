@@ -89,6 +89,32 @@ import kr.weekly.controller.WeeklyViewController;
 import kr.youtube.controller.YoutubeListController;
 import kr.zw_board.controller.BoardDeleteController;
 import kr.zw_board.controller.BoardNoticeController;
+import kr.login.controller.joinFormController;
+import kr.map.controller.MapController;
+import kr.map.controller.MapListController;
+import kr.map.controller.MapPageController;
+import kr.map.controller.MapPageListController;
+import kr.map.controller.MapSearchController;
+import kr.map.controller.MapSearchPageController;
+import kr.toBoard_form.controller.FToCommentDeleteController;
+import kr.toBoard_form.controller.FToCommentListController;
+import kr.toBoard_form.controller.FToCommentUpdateController;
+import kr.toBoard_form.controller.FToCommentWriteController;
+import kr.toBoard_form.controller.FToCommentcheckController;
+import kr.to_board.controller.ToBoardDeleteController;
+import kr.to_board.controller.ToBoardUpdateController;
+import kr.to_board.controller.ToBoardUpdateFormController;
+import kr.to_board.controller.ToBoardViewController;
+import kr.to_board.controller.ToBoardWriteController;
+import kr.to_board.controller.ToBoardWriteFormController;
+import kr.to_board.controller.ToFileDeleteController;
+import kr.to_board.controller.ToLikeController;
+import kr.to_board.controller.ToPageListController;
+import kr.to_board.controller.ToSearchListController;
+import kr.to_comment.controller.ToCommentDeleteController;
+import kr.to_comment.controller.ToCommentListController;
+import kr.to_comment.controller.ToCommentUpdateController;
+import kr.to_comment.controller.ToCommentWriteController;
 import kr.zw_board.controller.BoardUpdateController;
 import kr.zw_board.controller.BoardUpdateFormController;
 import kr.zw_board.controller.BoardViewController;
@@ -99,13 +125,6 @@ import kr.zw_board.controller.HeadSearchController;
 import kr.zw_board.controller.LikeController;
 import kr.zw_board.controller.PageListController;
 import kr.zw_board.controller.SearchListController;
-import kr.login.controller.joinFormController;
-import kr.map.controller.MapListController;
-import kr.map.controller.MapController;
-import kr.map.controller.MapSearchController;
-import kr.map.controller.MapPageController;
-import kr.map.controller.MapPageListController;
-import kr.map.controller.MapSearchPageController;
 import kr.zw_comment.controller.CommentDeleteController;
 import kr.zw_comment.controller.CommentListController;
 import kr.zw_comment.controller.CommentUpdateController;
@@ -157,7 +176,6 @@ public class HandlerMapping {
 		mappings.put("/myComTo.do",new MyComToController());
 		mappings.put("/myComImg.do",new MyComImgController());
 		
-		//게시판
 		/* mappings.put("/index.do", new IndexController()); */
 		mappings.put("/like.do", new LikeController());
 		
@@ -259,6 +277,28 @@ public class HandlerMapping {
 		
 		
 		
+		//함께해요 게시판
+		mappings.put("/tolist.do", new ToPageListController());
+		mappings.put("/tolike.do", new ToLikeController());
+		mappings.put("/toboardWriteForm.do", new ToBoardWriteFormController());
+		mappings.put("/toboardWrite.do", new ToBoardWriteController());
+		mappings.put("/toboardDelete.do", new ToBoardDeleteController());
+		mappings.put("/toboardView.do", new ToBoardViewController());
+		mappings.put("/toboardUpdate.do", new ToBoardUpdateController());
+		mappings.put("/toboardUpdateForm.do", new ToBoardUpdateFormController());
+		mappings.put("/tocommentWrite.do", new ToCommentWriteController());
+		mappings.put("/tocommentList.do", new ToCommentListController() );
+		mappings.put("/tocommentUpdate.do", new ToCommentUpdateController());
+		mappings.put("/tocommentDelete.do", new ToCommentDeleteController());
+		mappings.put("/toSearch.do", new ToSearchListController());
+		mappings.put("/tofileDelete.do", new ToFileDeleteController());
+		
+		//함께해요 게시판 폼
+		mappings.put("/ftocommentWrite.do", new FToCommentWriteController());
+		mappings.put("/ftocommentList.do", new FToCommentListController() );
+		mappings.put("/ftocommentUpdate.do", new FToCommentUpdateController());
+		mappings.put("/ftocommentDelete.do", new FToCommentDeleteController());
+		mappings.put("/ftocommentcheck.do", new FToCommentcheckController());
 	}
 	public Controller getController(String command) {
 		return mappings.get(command);

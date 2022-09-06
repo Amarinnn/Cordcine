@@ -26,6 +26,11 @@ public class MypageWriteController implements Controller {
 		List<Board> list=dao.myWriteZero(vo.getLogin_id());
 		System.out.println("list"+list);
 		request.setAttribute("list", list);
+		MemberMyBatisDAO a= new MemberMyBatisDAO();
+		int cmw =a.myWriteCount(vo.getLogin_id());
+	    session.setAttribute("cmw", cmw);
+	    int cmc =a.myWriteCount(vo.getLogin_id());
+	    session.setAttribute("cmc", cmc);
 		return "mypage/mypageWrite";
 	}
 

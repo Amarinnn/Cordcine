@@ -53,9 +53,9 @@
 				
 				html += "<tr>";
 				html += "<td class='text-center'>01</td>";
-				html += "<td><a href='#' class='text-reset '>" + obj.zw_cmt_content+"</a></td>";
+				html += "<td><a href='#' class='text-reset '>" + obj.buy_cmt_content+"</a></td>";
 				html += "<td class='text-muted  text-center'><img src='#' alt='icon'>" + obj.login_id+"</td>";
-				html += "<td class='text-muted  text-center'>" + obj.zw_cmt_date.split(' ')[0]+"</td>";
+				html += "<td class='text-muted  text-center'>" + obj.buy_cmt_date.split(' ')[0]+"</td>";
 				html += "</tr>";
 		})
 		$("#list").html(html);
@@ -144,20 +144,20 @@ function imgList() {
 					</h3>
 					<div class="text-muted">${mvo.login_id }</div>
 					<div class="mt-3">
-						<span class="badge bg-blue-lt">등급</span>
+						<span class="badge bg-blue-lt">${mvo.u_grade}</span>
 					</div>
 				</div>
 				<!-- 프로필 끝-->
 
 				<div class="progress mb-2">
-					<div class="progress-bar" style="width: 20%" role="progressbar"
+					<div class="progress-bar" style="width: ${mvo.u_point}%" role="progressbar"
 						aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"
 						aria-label="38% Complete">
 						<span class="visually-hidden">38% Complete</span>
 					</div>
 				</div>
 				<p class="text-center">
-					<small>포인트</small>
+					<small>다음 등급까지 ${100-mvo.u_point} 포인트</small>
 				</p>
 				<div
 					class="list-group list-group-transparent mb-3 ml-3  theme-light mb-5">
@@ -165,10 +165,10 @@ function imgList() {
 						class="list-group-item list-group-item-action d-flex align-items-center"
 						href="${cpath}/memberView.do"> 내 프로필 수정 </a> <a
 						class="list-group-item list-group-item-action d-flex align-items-center"
-						href="${cpath}/mypageWrite.do"> 내가 쓴 글 <small class="text-muted ms-auto">45</small>
+						href="${cpath}/mypageWrite.do"> 내가 쓴 글 <small class="text-muted ms-auto">${cmw} </small>
 					</a> <a
 						class="list-group-item list-group-item-action d-flex align-items-center"
-						href="${cpath}/mypageComment.do"> 내가 쓴 댓글 <small class="text-muted ms-auto">88</small>
+						href="${cpath}/mypageComment.do"> 내가 쓴 댓글 <small class="text-muted ms-auto">${cmc} </small>
 					</a>
 				</div>
 			</div>
@@ -187,10 +187,10 @@ function imgList() {
 									<li class="nav-item" role="presentation"><a
 										href="#tabs-home-14" class="nav-link active"
 										data-bs-toggle="tab" aria-selected="false" role="tab"
-										tabindex="-1">제로웨이스트</a></li>
+										tabindex="-1">제로웨이스트&비건</a></li>
 									<li class="nav-item" role="presentation" onclick="vgList()" >
 										<a class="nav-link" data-bs-toggle="tab" aria-selected="false"
-										role="tab" tabindex="-1" href="#tabs-profile-14">비건</a>
+										role="tab" tabindex="-1" href="#tabs-profile-14">공동구매</a>
 									</li>
 									<li class="nav-item" role="presentation" onclick="toList()"><a
 										href="#tabs-activity-14" class="nav-link" data-bs-toggle="tab"

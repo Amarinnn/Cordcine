@@ -91,7 +91,11 @@ public class pagingsearch {
 		
 		//목록 수를 15로 나눴을때의 값이 마지막 페이지보다 적으면 목록수/15값이 된다.
 		if(page_len/view_list <((display_page * display) + 5)) {
+<<<<<<< HEAD
 			end_page = (int) Math.ceil((double)page_len/view_list);
+=======
+			end_page = (int) Math.ceil(page_len/view_list)+1;
+>>>>>>> a9aa297390baeee79bfc3fd88db4b4841527f1c4
 		}else {
 			end_page = (display_page * display) + 5;
 		}

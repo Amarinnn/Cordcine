@@ -9,6 +9,7 @@ public class Zw_Board {
 	private String login_id;
 	private int zw_cnt;
 	private int zw_likes;
+<<<<<<< HEAD
 	private int notice;
 	private int zw_cmtcnt;
 	private String zw_headline;
@@ -25,6 +26,10 @@ public class Zw_Board {
 	public void setNotice(int notice) {
 		this.notice = notice;
 	}
+=======
+	private int zw_cmtcnt;
+	
+>>>>>>> a9aa297390baeee79bfc3fd88db4b4841527f1c4
 	public int getZw_seq() {
 		return zw_seq;
 	}

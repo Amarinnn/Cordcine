@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
     
@@ -9,6 +10,16 @@
 String user_id= request.getParameter("user_id");
 if(user_id==null){
 %>
+=======
+    
+<%--  <!-- 데이터 베이스 연결 -->
+ <%@ include file="../member/dbCon.jsp" %>
+<% 
+String user_id= request.getParameter("user_id");
+if(user_id==null){
+%>
+
+>>>>>>> a9aa297390baeee79bfc3fd88db4b4841527f1c4
 <script>
 	alert("잘못된 경로의 접근")
 	self.close();
@@ -17,6 +28,10 @@ if(user_id==null){
 	return; //jsp종료
 }
 user_id= user_id.trim();
+<<<<<<< HEAD
+=======
+
+>>>>>>> a9aa297390baeee79bfc3fd88db4b4841527f1c4
 if(user_id.length()<4 || user_id.length()>15){
 %>
 <script>
@@ -34,8 +49,7 @@ ResultSet rs = ps.executequery();
 
 
  user_id=user_id.trim();
- if(user_id.length);
- 
+ if(user_id.length)
  
 <!DOCTYPE html>
 <html>
@@ -52,6 +66,10 @@ ResultSet rs = ps.executequery();
 	vertical-align:middle;
 	line-height:2.0;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a9aa297390baeee79bfc3fd88db4b4841527f1c4
 </style>
 </head>
 <body>
@@ -59,7 +77,7 @@ ResultSet rs = ps.executequery();
 <br><br>
 <%
 if(${cnt}==0){
-	out.print("사용 가능한 아이디입니다.");
+	out.print("사용 가능한 아이디입니다.")
 %>
 <script>
 	opener.document.frm.chk.value="1"; //opener 부모창
@@ -69,7 +87,11 @@ if(${cnt}==0){
 	out.print("이미 사용중인 아이디입니다.");
 %>
 <script>
+<<<<<<< HEAD
 	opener.document.frm.chk.value="0";
+=======
+	opener.document.frm.chk.value="0"; 
+>>>>>>> a9aa297390baeee79bfc3fd88db4b4841527f1c4
 	</script>
 <%
 }

@@ -9,6 +9,7 @@ public class Board {
 	private String login_id;
 	private int zw_cnt;
 	private int zw_likes;
+<<<<<<< HEAD
 	private int notice;
 	private int zw_cmtcnt;  //댓글수
 	
@@ -19,6 +20,10 @@ public class Board {
 	public void setNotice(int notice) {
 		this.notice = notice;
 	}
+=======
+	private int zw_cmtcnt;  //댓글수
+	
+>>>>>>> a9aa297390baeee79bfc3fd88db4b4841527f1c4
 	public int getZw_seq() {
 		return zw_seq;
 	}

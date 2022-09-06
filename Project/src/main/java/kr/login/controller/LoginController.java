@@ -25,9 +25,56 @@ public class LoginController implements Controller {
 		vo.setLogin_id(login_id);
 		vo.setU_pw(u_pw);
 		System.out.println(vo);
-		Member mvo = dao.login(vo);
-		System.out.println(mvo);
+//		Member mvo = dao.login(vo);
+		
 		String nextpage;
+		Member mb=dao.memberView(login_id);
+		String gd=mb.getU_grade();
+		int pt=mb.getU_point();
+		
+		System.out.println(gd);
+		String grade="";
+		MemberMyBatisDAO m=new MemberMyBatisDAO();
+		Member v=new Member();
+		if(pt>=100 && gd.equals("지구프랜즈")) {
+			gd="지구지킴단";
+			v.setU_grade(gd);
+			v.setLogin_id(login_id);
+			v.setU_point(pt-100);
+			m.gradeUp(v);
+		}
+		else if(pt>=100 && gd.equals("지구지킴단")) {
+			gd="지구특공대";
+			v.setU_grade(gd);
+			v.setLogin_id(login_id);
+			v.setU_point(pt-100);
+			m.gradeUp(v);
+		}
+		else if(pt>=100 && gd.equals("지구특공대")) {
+			gd="지구어벤져스";
+			v.setU_grade(gd);
+			v.setLogin_id(login_id);
+			v.setU_point(pt-100);
+			m.gradeUp(v);
+		}
+		
+		if(gd.equals("지구프랜즈")) {
+			grade="/img/my/1.png";
+		}
+		if(gd.equals("지구지킴단")) {
+			grade="/img/my/2.png";
+		}
+		if(gd.equals("지구특공대")) {
+			grade="/img/my/3.png";
+		}
+		if(gd.equals("지구어벤져스")) {
+			grade="/img/my/4.png";
+		}
+		if(gd.equals("admin")) {
+			grade="/img/my/5.png";
+		}
+		System.out.println("grade=="+grade);
+		Member mvo = dao.login(vo);
 		if (mvo != null) {
 			// 로그인 성공
 			// 쿠키를 활용한 로그인 처리
@@ -39,7 +86,7 @@ public class LoginController implements Controller {
 
 			HttpSession session = request.getSession();
 		    session.setAttribute("mvo", mvo);
-
+		    session.setAttribute("grade", grade);
 			
 			// 로그인 성공하면 메인페이지로
 		    nextpage= "redirect:/main.do";

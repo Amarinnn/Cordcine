@@ -29,7 +29,6 @@
   <!-- my -->
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">
   <link rel="stylesheet" href="${cpath}/css/my/dy.css">
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
 <script
@@ -159,10 +158,8 @@ $(document).ready(function(){
   					comm+='</div>';
   					comm+='</div>';
   					comm+='</div>';
-					
-					
-					
-					if(obj.login_id=="${mvo.login_id}"){
+
+  					if(obj.login_id=="${mvo.login_id}"){
 						comm+='<div class="col-7 px-0" id="cmt'+obj.zw_cmt_seq+'">'+obj.zw_cmt_content.replace("\n","<br>")+'</div>';
 						comm+='<div class="col m-auto">';
 						comm+='<div class="row mt-2">';

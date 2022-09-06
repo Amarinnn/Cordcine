@@ -36,8 +36,8 @@
         <header class="navbar navbar-expand-md">
           <div class="container">
             <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-              <a href="#">
-                <img src="${cpath }/img/my/logo.png"  alt="Logo"  width="90rem" height="auto" >
+              <a href=".">
+                <img src="./static/logo.svg" width="110" height="32" alt="Logo" class="navbar-brand-image">
               </a>
             </h1>
 			<!-- 로그인 했음 -->
@@ -208,7 +208,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                  <a class="nav-link" href="${cpath}/weeklyView.do">
+                    <a class="nav-link" href="${cpath}/weeklyView.do">
                       <span class="nav-link-title">
                         주간인기검색어
                       </span>
@@ -236,8 +236,9 @@
                         <a class="dropdown-item" href="${cpath }/imgList.do">
                           Gallery
                         </a>
-                        <a class="dropdown-item" href="#">
-                          함께해요
+                       <a class="dropdown-item" href="${cpath }/tolist.do?page=1">
+                            함께해요
+                          </a>
                         </a>
                         <a class="dropdown-item" href="${cpath }/gradeList.do">
                           등급제게시판

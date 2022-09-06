@@ -65,9 +65,9 @@ function fn_view(login_id){
 					<span class="avatar avatar-xl mb-3 avatar-rounded"
 						style="background-image: url(https://img.freepik.com/premium-vector/illustration-of-earth-character-sprouts_279539-60.jpg?w=1060)"></span>
 					<h3 class="m-0 mb-1">
-						<a href="#">닉네임</a>
+						<a href="#">${mvo.u_nick }</a>
 					</h3>
-					<div class="text-muted">ID</div>
+					<div class="text-muted">${mvo.login_id }</div>
 					<div class="mt-3">
 						<span class="badge bg-blue-lt">등급</span>
 					</div>
@@ -75,7 +75,7 @@ function fn_view(login_id){
 				<!-- 프로필 끝-->
 
 				<div class="progress mb-2">
-					<div class="progress-bar" style="width: 20%" role="progressbar"
+					<div class="progress-bar" style="width: ${mvo.u_point}%" role="progressbar"
 						aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"
 						aria-label="38% Complete">
 						<span class="visually-hidden">38% Complete</span>

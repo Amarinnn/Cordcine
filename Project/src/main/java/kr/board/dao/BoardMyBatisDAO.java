@@ -3,6 +3,7 @@ package kr.board.dao;
 
 import java.io.InputStream;
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,9 @@ import kr.youtube.entity.YoutubePaging;
 import kr.buy_board.entity.Buy_Board;
 import kr.buy_comm_form.entity.BCommForm;
 import kr.buy_comment.entity.buy_comment;
+import kr.toBoard.entity.ToBoard;
+import kr.toBoard.entity.to_comment;
+import kr.toBoard.entity.to_form;
 import kr.zw_board.entity.BoardPaging;
 import kr.zw_board.entity.Zw_Board;
 import kr.zw_comment.entity.zw_comment;
@@ -37,6 +41,7 @@ public class BoardMyBatisDAO {
 			e.printStackTrace();
 		}
 	}	
+	//제로웨이스트
 		public List<Zw_Board> allList() {
 			SqlSession session =sqlSessionFactory.openSession();
 			List<Zw_Board> list =session.selectList("allList");
@@ -152,11 +157,6 @@ public class BoardMyBatisDAO {
 			session.close();
 		}
 		
-		/*
-		 * public Member memberLogin(String id) { SqlSession session =
-		 * sqlSessionFactory.openSession(); Member mvo =
-		 * session.selectOne("memberLogin",id); session.close(); return mvo; }
-		 */
 		
 		public void commentUpdate(zw_comment comm) {
 			SqlSession session = sqlSessionFactory.openSession();
@@ -380,6 +380,37 @@ public class BoardMyBatisDAO {
 			List<Buy_Board> list=session.selectList("buysearchList",m);
 			session.close();//반납
 			return list;
+		}
+			
+		//함께해요 게시판
+		public List<ToBoard> toallList() {
+			SqlSession session =sqlSessionFactory.openSession();
+			List<ToBoard> list =session.selectList("toallList");
+			session.close();
+			return list;
+			
+		}
+		
+		public int toallListCount() {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt=session.selectOne("toallListCount");
+			session.close();//반납
+			return cnt;
+		}
+		
+		public List<ToBoard> tosomeList(BoardPaging page) {
+			SqlSession session = sqlSessionFactory.openSession();
+			List<ToBoard> list=session.selectList("tosomeList",page);
+			session .close();//반납
+			return list;
+		}
+		
+		public List<ToBoard> tosearchList(Map<String,Object> m ){
+			
+			SqlSession session = sqlSessionFactory.openSession();
+			List<ToBoard> list=session.selectList("tosearchList",m);
+			session.close();//반납
+			return list;
 			
 			
 		}
@@ -399,11 +430,37 @@ public class BoardMyBatisDAO {
 			return cnt;
 		}
 		
+		public List<to_comment> toallComment(int num){
+			SqlSession session =sqlSessionFactory.openSession();
+			List<to_comment> list =session.selectList("toallComment",num);
+			session.close();
+			return list;
+		}
+		public int toboardWrite(ToBoard vo) {
+			SqlSession session =sqlSessionFactory.openSession();
+			int cnt =session.insert("toboardWrite",vo);
+			String login_id = vo.getLogin_id();
+			session.update("towritePoint", login_id);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
 		public int buycommentWrite(buy_comment comm) {
 			SqlSession session = sqlSessionFactory.openSession();
 			int cnt = session.insert("buycommentWrite",comm);
 			String login_id = comm.getLogin_id();
 			session.update("buycommentPoint", login_id);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
+		public int tocommentWrite(to_comment comm) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt = session.insert("tocommentWrite",comm);
+			String login_id = comm.getLogin_id();
+			session.update("tocommentPoint", login_id);
 			session.commit();
 			session.close();
 			return cnt;
@@ -418,10 +475,29 @@ public class BoardMyBatisDAO {
 			return cnt;
 		}
 		
+		public int toboardDelete(int num) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.delete("tocommentDelete2", num);
+			int cnt =session.delete("toboardDelete",num);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
 		public int buycommentDelete(int num) {
 			SqlSession session =sqlSessionFactory.openSession();
 			int cnt =session.delete("buycommentDelete",num);
 			System.out.println("buymbdelete");
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
+		
+		public int tocommentDelete(int num) {
+			SqlSession session =sqlSessionFactory.openSession();
+			int cnt =session.delete("tocommentDelete",num);
+			System.out.println("tombdelete");
 			session.commit();
 			session.close();
 			return cnt;
@@ -434,6 +510,13 @@ public class BoardMyBatisDAO {
 			return vo;
 		}
 		
+		public ToBoard toboardView(int num) {
+			SqlSession session = sqlSessionFactory.openSession();
+			ToBoard vo =session.selectOne("toboardView", num);
+			session.close();
+			return vo;
+		}
+		
 		public int buyboardUpdate(Buy_Board vo) {
 			SqlSession session = sqlSessionFactory.openSession();
 			int cnt = session.update("buyboardUpdate", vo);
@@ -441,9 +524,29 @@ public class BoardMyBatisDAO {
 			session.close();
 			return cnt;
 		}
+		
+		
+		public int toboardUpdate(ToBoard vo) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt = session.update("toboardUpdate", vo);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
+		
 		public int buyboardUpdate2(Buy_Board vo) {
 			SqlSession session = sqlSessionFactory.openSession();
 			int cnt = session.update("buyboardUpdate2", vo);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+
+		
+		public int toboardUpdate2(ToBoard vo) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt = session.update("toboardUpdate2", vo);
 			session.commit();
 			session.close();
 			return cnt;
@@ -456,15 +559,24 @@ public class BoardMyBatisDAO {
 			session.close();
 		}
 		
-		/*
-		 * public Member memberLogin(String id) { SqlSession session =
-		 * sqlSessionFactory.openSession(); Member mvo =
-		 * session.selectOne("memberLogin",id); session.close(); return mvo; }
-		 */
+		public void tocountUpdate(int num) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt= session.update("tocountUpdate", num);
+			session.commit();
+			session.close();
+		}
+		
 		
 		public void buycommentUpdate(buy_comment comm) {
 			SqlSession session = sqlSessionFactory.openSession();
 			session.update("buycommentUpdate", comm);
+			session.commit();
+			session.close();
+		}
+		
+		public void tocommentUpdate(to_comment comm) {
+			SqlSession session = sqlSessionFactory.openSession();
+			session.update("tocommentUpdate", comm);
 			session.commit();
 			session.close();
 		}
@@ -475,19 +587,38 @@ public class BoardMyBatisDAO {
 			session.close();
 			return cnt;
 		}
+
+		public int tolikeCheck(Map<String,Object> m ) {
+			SqlSession session =sqlSessionFactory.openSession();
+			int cnt =session.selectOne("tolikeCheck",m);
+			session.close();
+			return cnt;
+		}
 		
 		public void buylikeUpdate(Map<String,Object> m ) {
 			SqlSession session =sqlSessionFactory.openSession();
 			session.update("buylikeUpdate",m);
 			session.commit();
 			session.close();
-			
-			
+		}
+
+		public void tolikeUpdate(Map<String,Object> m ) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.update("tolikeUpdate",m);
+			session.commit();
+			session.close();
 		}
 		
 		public void buylikeDelete(Map<String,Object> m ) {
 			SqlSession session =sqlSessionFactory.openSession();
 			session.delete("buylikeDelete",m);
+			session.commit();
+			session.close();
+		}
+			
+		public void tolikeDelete(Map<String,Object> m ) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.delete("tolikeDelete",m);
 			session.commit();
 			session.close();
 		}
@@ -503,7 +634,18 @@ public class BoardMyBatisDAO {
 			session.commit();
 			session.close();
 			return cnt;
+		}
 			
+			public int tolikeCount(int tb_seq) {
+			SqlSession session =sqlSessionFactory.openSession();
+			int cnt =session.selectOne("tolikeCount",tb_seq);
+			Map<String,Object> m = new HashMap<>();
+			m.put("cnt", cnt);
+			m.put("tb_seq", tb_seq);
+			session.update("toupdateLike", m);
+			session.commit();
+			session.close();
+			return cnt;
 		}
 
 		public int buysearchListCount(Map<String,Object> m) {
@@ -537,6 +679,21 @@ public class BoardMyBatisDAO {
 			session.close();
 		}
 		
+		public int tosearchListCount(Map<String,Object> m) {
+			System.out.println(m.get("text"));
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt=session.selectOne("tosearchListCount", m);
+			session.close();//반납
+			return cnt;
+		}
+		
+		public void todeleteFile(int tb_seq) {
+			SqlSession session =sqlSessionFactory.openSession();
+			session.update("todeleteFile", tb_seq);
+			session.commit();
+			session.close();
+		}
+		
 		public List<Buy_Board> buynoticeList() {
 			SqlSession session =sqlSessionFactory.openSession();
 			List<Buy_Board> list =session.selectList("buynoticeList");
@@ -559,6 +716,23 @@ public class BoardMyBatisDAO {
 			session.close();
 			return cnt;
 		}
+		
+		//함께해요 게시판 폼
+		public List<to_form> ftoallComment(int num){
+			SqlSession session =sqlSessionFactory.openSession();
+			List<to_form> list =session.selectList("ftoallComment",num);
+			session.close();
+			return list;
+		}
+		public int ftocommentDelete(to_form vo) {
+			SqlSession session =sqlSessionFactory.openSession();
+			int cnt =session.delete("ftocommentDelete",vo);
+			System.out.println("ftombdelete");
+			session.commit();
+			session.close();
+			return cnt;
+		}
+
 		public int BCommFormDelete(BCommForm vo) {
 			SqlSession session =sqlSessionFactory.openSession();
 			int bf_seq=session.selectOne("selectseq",vo);
@@ -576,6 +750,14 @@ public class BoardMyBatisDAO {
 			session.close();
 			return cnt;
 		}
+		
+		public int ftocommentUpdate(to_form comm) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt=session.update("ftocommentUpdate", comm);
+			session.commit();
+			session.close();
+			return cnt;
+		}
 
 		public int BCommFormUpdate(BCommForm cb) {
 			SqlSession session = sqlSessionFactory.openSession();
@@ -588,6 +770,13 @@ public class BoardMyBatisDAO {
 			return cnt;
 		}
 		
+		public int ftocommentWrite(to_form comm) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt = session.insert("ftocommentWrite",comm);
+			session.commit();
+			session.close();
+			return cnt;
+		}
 		
 		public void gradeCountUpdate(int num) {
 			SqlSession session = sqlSessionFactory.openSession();
@@ -668,4 +857,21 @@ public class BoardMyBatisDAO {
 			session.close();
 		}
 	
+
+		public void ftoCommentCheck(to_form tf) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt = session.update("ftocommentCheck",tf);
+			String login_id = tf.getLogin_id();
+			session.update("tocommentPoint", login_id);
+			session.commit();
+			session.close();
+		}
+		public int ftoCommentPoint(String login_id) {
+			SqlSession session = sqlSessionFactory.openSession();
+			int cnt=session.update("ftocommentPoint", login_id);
+			session.commit();
+			session.close();
+			return cnt;
+		}
+		
 }

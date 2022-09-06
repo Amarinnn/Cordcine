@@ -14,6 +14,7 @@
           <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
             <a href=".">
               <img src="${cpath }/img/my/logo.png" alt="Logo"  width="90rem" height="auto" >
+              <img src="./static/logo.svg" width="110" height="32" alt="Logo" class="navbar-brand-image">
             </a>
           </h1>
           <div class="navbar-nav flex-row order-md-last">
@@ -206,10 +207,7 @@
                         <a class="dropdown-item" href="${cpath }/imgList.do">
                           Gallery
                          </a>
-                        <a class="dropdown-item" href="#">
-                          비건
-                        </a>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="${cpath }/tolist.do?page=1">
                           함께해요
                         </a>
                         <a class="dropdown-item" href="${cpath }/gradeList.do">
@@ -220,7 +218,7 @@
                     </div>
                   </div>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item active dropdown">
                   <a class="nav-link dropdown-toggle" href="#navbar-layout" role="button" aria-expanded="false">
                     <span class="nav-link-title ">
                       정보게시판
@@ -244,6 +242,5 @@
           </div>
         </div>
       </header>
-      
 </body>
 </html>

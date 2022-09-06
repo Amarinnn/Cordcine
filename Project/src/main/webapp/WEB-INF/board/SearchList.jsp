@@ -24,7 +24,6 @@
 
   <!-- my -->
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
 <script
@@ -73,7 +72,7 @@ $(document).ready(function(){
       <div class="cover-wrap">
         <div class="container">
           <div class="cover">
-            제로웨이스트
+            제로웨이스트/비건
           </div>
         </div>
       </div>
@@ -108,9 +107,7 @@ $(document).ready(function(){
           <div class="container-xl">
             <div class="row row-cards">
             <div class="col-lg-6">
-                
               </div>
-              
               <div class="col-12  mb-5">
             <div class="bg-light border-y">
               <div class="table-responsive">

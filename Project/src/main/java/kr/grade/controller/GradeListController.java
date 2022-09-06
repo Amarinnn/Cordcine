@@ -1,6 +1,7 @@
 package kr.grade.controller;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,7 +13,6 @@ import kr.grade.entity.grade_Board;
 import kr.login.controller.Controller;
 import kr.zw_board.entity.BoardPaging;
 import kr.zw_board.entity.Zw_Board;
-import oracle.net.aso.b;
 
 public class GradeListController implements Controller{
 

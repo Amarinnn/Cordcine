@@ -71,7 +71,6 @@
         <div class="container">
           <div class="cover">
             제로웨이스트/비건
-       
           </div>
         </div>
       </div>
@@ -198,16 +197,11 @@
                   </svg>
                   글쓰기</a>
               </div>
-              
+              <form action="${cpath }/zwSearch.do" method="get" id="searchForm" onsubmit="return checksearch()">
                 <div class="card-footer">
                   <div class="row m-auto mb-3">
-
-                    <div class="col-3">
-                    
-                    
-                    </div>
+                    <div class="col-3"></div>
                     <div class="col-auto">
-                    <form action="${cpath }/zwSearch.do" method="get" id="searchForm" onsubmit="return checksearch()">
                       <select type="text" class="form-select" name ="val" placeholder="Select a date" id="select-tags" value="">
                         <option value="zw_title">제목</option>
                         <option value="login_id">작성자</option>
@@ -229,7 +223,6 @@
                           <line x1="21" y1="21" x2="15" y2="15"></line>
                         </svg></button>
 
-                      </a>
                     </div>
                   </div>
                 </div>
@@ -240,6 +233,8 @@
           </div>
         </div>
         <jsp:include page="../../footer/footer.jsp" />
+  </div>
+  </div>
   </div>
   </div>
 

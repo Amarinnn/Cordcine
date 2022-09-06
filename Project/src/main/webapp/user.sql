@@ -15,6 +15,7 @@ primary key (user_num)
 
 );
 
+<<<<<<< HEAD
 create sequence user_num_seq
 select * from T_USER;
 select * from T_login;
@@ -22,11 +23,33 @@ select * from T_login;
 select * from userT where user_id='pipi1055' and pw='pipipipi';
 
 
+=======
+select * from t_together_comment where tb_seq=2 order by
+		tb_cmt_seq
+
+select * from t_login where login_id='5@naver.com'
+
+update t_login set u_point=130 where login_id='5@naver.com'
+update t_login set u_grade='지구지킴단' where login_id='5@naver.com'
+update t_login set u_point=130 where login_id='5@naver.com'
+select * from t_together_comment where tb_seq='5' order by
+		tb_cmt_seq
+
+select count(*) from likes
+
+create sequence user_num_seq
+select * from t_login;
+
+update t_login set u_grade='씨앗' where login_id='111@naver.com'
+
+select * from userT where user_id='pipi1055' and pw='pipipipi';
+>>>>>>> a9aa297390baeee79bfc3fd88db4b4841527f1c4
 
 insert into userT(user_num, username, pw, user_id) values(user_num_seq.nextval, '배수진', 'pipi', 'pipi1055'); 
 insert into userT(user_num, username, pw, user_id) values(user_num_seq.nextval, '최정윤', 'pipipipi', 'pipi1044'); 
 insert into userT(user_num, username, pw, user_id) values(user_num_seq.nextval, '배배배', 'pipipipi', 'pipi1033'); 
 
+<<<<<<< HEAD
 update userT set pw='pipipipi' where username='배수진';
 select count(*) from userT where user_id='pipi1055' and pw='pipipipi';
 
@@ -35,10 +58,59 @@ create table kakao_table (
     k_name varchar(20) not null,
     k_email varchar(50) not null,
     primary key(k_number)
+=======
+select (select count(*) from T_ZW_BOARD where login_id='login_id 07') + (select count(*) from T_TOGETHER_BOARD where login_id='login_id 07') + (select count(*) from T_img_BOARD where login_id='login_id 07') from dual
+
+update userT set pw='pipipipi' where username='배수진';
+select count(*) from userT where user_id='pipi1055' and pw='pipipipi';
+
+create table to_likes (
+	
+>>>>>>> a9aa297390baeee79bfc3fd88db4b4841527f1c4
 );
 
 select * from kakao_table where k_name='배수진' and k_email='sjpae1216@gmail.com';
 
+<<<<<<< HEAD
+=======
+CREATE TABLE buy_likes
+(
+    buy_seq      NUMBER(18, 0)    NOT NULL, 
+    login_id    VARCHAR2(30)     NOT NULL
+)
+/
+
+CREATE SEQUENCE to_likes_SEQ
+START WITH 1
+INCREMENT BY 1;
+/
+
+CREATE OR REPLACE TRIGGER to_likes_AI_TRG
+BEFORE INSERT ON to_likes 
+REFERENCING NEW AS NEW FOR EACH ROW 
+BEGIN 
+    SELECT to_likes_SEQ.NEXTVAL
+    INTO :NEW.to_seq
+    FROM DUAL;
+END;
+/
+
+select * from t_user
+select * from t_together_form
+delete from t_together_form where login_id='login_id 07'
+
+CREATE TABLE to_likes
+(
+    tb_seq      NUMBER(18, 0)    NOT NULL, 
+    login_id    VARCHAR2(30)     NOT NULL
+)
+
+drop table to_likes
+
+select * from t_login where login_id='1212';
+
+
+>>>>>>> a9aa297390baeee79bfc3fd88db4b4841527f1c4
 select * from kakao_table
 select * from t_outer_login
 select * from t_login
@@ -119,6 +191,17 @@ select zw_title, zw_content, zw_file, zw_date, login_id, zw_cnt, zw_likes, (sele
 
 select * from cal_T
 
+<<<<<<< HEAD
+=======
+select * from t_login where login_id='1@naver.com'
+
+update t_login set u_point=100 where login_id='1@naver.com'
+
+select b.tb_seq,b.tb_title,b.tb_headline,b.tb_content,b.tb_file,b.tb_regdate,b.login_id,tb_cnt,tb_likes,(select
+		count(*) from t_together_comment c where c.tb_seq = b.tb_seq) as
+		tb_cmtcnt, (select u_grade from t_login t where t.login_id= b.login_id) as u_grade from t_together_board b order by tb_seq desc 
+
+>>>>>>> a9aa297390baeee79bfc3fd88db4b4841527f1c4
 delete 
 
 select * from t_login l, t_user u where l.login_id = u.login_id and l.login_id ='login_id 07'
@@ -249,6 +332,7 @@ select img_cmt_seq as zw_cmt_seq, img_seq as zw_seq, img_cmt_content as zw_cmt_c
 as zw_cmt_seq,  as zw_seq,  as zw_cmt_content,  as zw_cmt_date, login_id
 
 
+<<<<<<< HEAD
 select count(notice) from t_zw_board where notice is not null
 
 
@@ -373,3 +457,11 @@ select f.bf_seq,f.login_id, f.user_name, f.user_phone,
     where login_id='1212' and buy_seq=20 and g.bf_seq=f.bf_seq
 
 >>>>>>> 0799c9b1c88cce4a776ba5b84dc6826fa3079fd6
+=======
+
+
+select xx.tb_seq, xx.tb_title, xx.tb_content,xx.tb_file, xx.tb_regdate, xx.login_id, xx.tb_cnt,xx.tb_likes,xx.tb_cmtcnt 
+	from (select rownum as r, x.* 
+		from (select tb_seq,tb_title,tb_content,tb_file,tb_regdate,login_id,tb_cnt,tb_likes, (select count(*) from t_together_comment c where c.tb_seq = b.tb_seq) as tb_cmtcnt 
+			from t_together_board b where ${val} like '%' ||#{text}||'%' order by tb_seq DESC) x) xx where xx.r between #{board.startCount} and #{board.endCount}
+>>>>>>> a9aa297390baeee79bfc3fd88db4b4841527f1c4
