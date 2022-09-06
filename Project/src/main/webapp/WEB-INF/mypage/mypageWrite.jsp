@@ -142,19 +142,19 @@ function imgList() {
 
 				<div class="card-body text-center mb-4">
 					<c:if test="${mvo.u_grade eq '지구프랜즈'}">
-					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/kf.gif)"></span>
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p1.jpg)"></span>
 					</c:if>
 					<c:if test="${mvo.u_grade eq '지구지킴단'}">
-					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/kf2.jpg)"></span>
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p2.jpg)"></span>
 					</c:if>
 					<c:if test="${mvo.u_grade eq '지구특공대'}">
-					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(../../img/my/kf2.jpg)"></span>
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p3.jpg)"></span>
 					</c:if>
 					<c:if test="${mvo.u_grade eq '지구어벤져스'}">
-					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(../../img/my/K-002.jpg)"></span>
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p4.jpg)"></span>
 					</c:if>
 					<c:if test="${mvo.u_grade eq 'admin'}">
-					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(../../img/my/K-004.jpg)"></span>
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/kf.gif)"></span>
 					</c:if>
 					
 					<h3 class="m-0 mb-1">
@@ -175,7 +175,7 @@ function imgList() {
 					</div>
 				</div>
 				<p class="text-center">
-					<small>다음 등급까지 ${100-mvo.u_point} 포인트</small>
+					<small>다음 등급까지 <span class="text-orange strong">${100-mvo.u_point}</span> 포인트</small>
 				</p>
 				<div
 					class="list-group list-group-transparent mb-3 ml-3  theme-light mb-5">
@@ -214,9 +214,9 @@ function imgList() {
 										href="#tabs-img-14" class="nav-link" data-bs-toggle="tab"
 										aria-selected="false" role="tab" tabindex="-1">이미지</a></li>
 								</ul>
-								<div class="card-body">
-									<div class="tab-content">
-										<div class="tab-pane active snow" id="tabs-home-14"
+								<div class="card" id="sche">
+									<div class="p-0 tab-content card-body card-body-scrollable card-body-scrollable-shadow" >
+										<div class="tab-pane active snow divide-y" id="tabs-home-14"
 											role="tabpanel">
 											<div>
 												<div class="bg-light border-y">
@@ -250,82 +250,12 @@ function imgList() {
 															</tbody>
 														</table>
 													</div>
-													<div class="card-footer d-flex align-items-center py-2">
-														<ul class="pagination m-0 m-auto">
-															<li class="page-item disabled"><a class="page-link"
-																href="#" tabindex="-1" aria-disabled="true"> <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-																	<svg xmlns="http://www.w3.org/2000/svg" class="icon"
-																		width="24" height="24" viewBox="0 0 24 24"
-																		stroke-width="2" stroke="currentColor" fill="none"
-																		stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"
-																			fill="none" />
-                        <polyline points="15 6 9 12 15 18" />
-                      </svg> prev
-															</a></li>
-															<li class="page-item"><a class="page-link" href="#">1</a></li>
-															<li class="page-item"><a class="page-link" href="#">2</a></li>
-															<li class="page-item"><a class="page-link" href="#">3</a></li>
-															<li class="page-item"><a class="page-link" href="#">4</a></li>
-															<li class="page-item"><a class="page-link" href="#">5</a></li>
-															<li class="page-item"><a class="page-link" href="#">
-																	next <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-																	<svg xmlns="http://www.w3.org/2000/svg" class="icon"
-																		width="24" height="24" viewBox="0 0 24 24"
-																		stroke-width="2" stroke="currentColor" fill="none"
-																		stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"
-																			fill="none" />
-                        <polyline points="9 6 15 12 9 18" />
-                      </svg>
-															</a></li>
-														</ul>
-
-													</div>
-													<form action="#" method="#">
-														<div class="card-footer">
-															<div class="row m-auto mb-3">
-
-																<div class="col-3"></div>
-																<div class="col-auto">
-																	<select type="text" class="form-select"
-																		placeholder="Select a date" id="select-tags" value="">
-																		<option value="title">제목</option>
-																		<option value="writer">작성자</option>
-																		<option value="content">내용</option>
-																	</select>
-																</div>
-																<div class="col-4">
-																	<div class="input-group">
-																		<input type="text" class="form-control"
-																			aria-label="Text input with dropdown button">
-																	</div>
-																</div>
-																<div class="col-1">
-																	<button type="submit" class="btn btn-icon"
-																		value="Submit">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			class="icon icon-tabler icon-tabler-search"
-																			width="24" height="24" viewBox="0 0 24 24"
-																			stroke-width="2" stroke="currentColor" fill="none"
-																			stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z"
-																				fill="none"></path>
-                          <circle cx="10" cy="10" r="7"></circle>
-                          <line x1="21" y1="21" x2="15" y2="15"></line>
-                        </svg>
-																	</button>
-
-																	</a>
-																</div>
-															</div>
-														</div>
-													</form>
+													
 												</div>
 											</div>
 										</div>
 										
-										<div class="tab-pane" id="tabs-activity-14" role="tabpanel">
+										<div class="tab-pane divide-y" id="tabs-activity-14" role="tabpanel">
 											<div>
 												<div class="bg-light border-y">
 													<div class="table-responsive">
@@ -346,81 +276,11 @@ function imgList() {
 															</tbody>
 														</table>
 													</div>
-													<div class="card-footer d-flex align-items-center py-2">
-														<ul class="pagination m-0 m-auto">
-															<li class="page-item disabled"><a class="page-link"
-																href="#" tabindex="-1" aria-disabled="true"> <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-																	<svg xmlns="http://www.w3.org/2000/svg" class="icon"
-																		width="24" height="24" viewBox="0 0 24 24"
-																		stroke-width="2" stroke="currentColor" fill="none"
-																		stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"
-																			fill="none" />
-                        <polyline points="15 6 9 12 15 18" />
-                      </svg> prev
-															</a></li>
-															<li class="page-item"><a class="page-link" href="#">1</a></li>
-															<li class="page-item"><a class="page-link" href="#">2</a></li>
-															<li class="page-item"><a class="page-link" href="#">3</a></li>
-															<li class="page-item"><a class="page-link" href="#">4</a></li>
-															<li class="page-item"><a class="page-link" href="#">5</a></li>
-															<li class="page-item"><a class="page-link" href="#">
-																	next <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-																	<svg xmlns="http://www.w3.org/2000/svg" class="icon"
-																		width="24" height="24" viewBox="0 0 24 24"
-																		stroke-width="2" stroke="currentColor" fill="none"
-																		stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"
-																			fill="none" />
-                        <polyline points="9 6 15 12 9 18" />
-                      </svg>
-															</a></li>
-														</ul>
-
-													</div>
-													<form action="#" method="#">
-														<div class="card-footer">
-															<div class="row m-auto mb-3">
-
-																<div class="col-3"></div>
-																<div class="col-auto">
-																	<select type="text" class="form-select"
-																		placeholder="Select a date" id="select-tags" value="">
-																		<option value="title">제목</option>
-																		<option value="writer">작성자</option>
-																		<option value="content">내용</option>
-																	</select>
-																</div>
-																<div class="col-4">
-																	<div class="input-group">
-																		<input type="text" class="form-control"
-																			aria-label="Text input with dropdown button">
-																	</div>
-																</div>
-																<div class="col-1">
-																	<button type="submit" class="btn btn-icon"
-																		value="Submit">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			class="icon icon-tabler icon-tabler-search"
-																			width="24" height="24" viewBox="0 0 24 24"
-																			stroke-width="2" stroke="currentColor" fill="none"
-																			stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z"
-																				fill="none"></path>
-                          <circle cx="10" cy="10" r="7"></circle>
-                          <line x1="21" y1="21" x2="15" y2="15"></line>
-                        </svg>
-																	</button>
-
-																	</a>
-																</div>
-															</div>
-														</div>
-													</form>
+													
 												</div>
 											</div>
 										</div>
-										<div class="tab-pane" id="tabs-img-14" role="tabpanel">
+										<div class="tab-pane divide-y" id="tabs-img-14" role="tabpanel">
 											<div>
 												<div class="bg-light border-y">
 													<div class="table-responsive">
@@ -440,77 +300,7 @@ function imgList() {
 															</tbody>
 														</table>
 													</div>
-													<div class="card-footer d-flex align-items-center py-2">
-														<ul class="pagination m-0 m-auto">
-															<li class="page-item disabled"><a class="page-link"
-																href="#" tabindex="-1" aria-disabled="true"> <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-																	<svg xmlns="http://www.w3.org/2000/svg" class="icon"
-																		width="24" height="24" viewBox="0 0 24 24"
-																		stroke-width="2" stroke="currentColor" fill="none"
-																		stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"
-																			fill="none" />
-                        <polyline points="15 6 9 12 15 18" />
-                      </svg> prev
-															</a></li>
-															<li class="page-item"><a class="page-link" href="#">1</a></li>
-															<li class="page-item"><a class="page-link" href="#">2</a></li>
-															<li class="page-item"><a class="page-link" href="#">3</a></li>
-															<li class="page-item"><a class="page-link" href="#">4</a></li>
-															<li class="page-item"><a class="page-link" href="#">5</a></li>
-															<li class="page-item"><a class="page-link" href="#">
-																	next <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-																	<svg xmlns="http://www.w3.org/2000/svg" class="icon"
-																		width="24" height="24" viewBox="0 0 24 24"
-																		stroke-width="2" stroke="currentColor" fill="none"
-																		stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"
-																			fill="none" />
-                        <polyline points="9 6 15 12 9 18" />
-                      </svg>
-															</a></li>
-														</ul>
-
-													</div>
-													<form action="#" method="#">
-														<div class="card-footer">
-															<div class="row m-auto mb-3">
-
-																<div class="col-3"></div>
-																<div class="col-auto">
-																	<select type="text" class="form-select"
-																		placeholder="Select a date" id="select-tags" value="">
-																		<option value="title">제목</option>
-																		<option value="writer">작성자</option>
-																		<option value="content">내용</option>
-																	</select>
-																</div>
-																<div class="col-4">
-																	<div class="input-group">
-																		<input type="text" class="form-control"
-																			aria-label="Text input with dropdown button">
-																	</div>
-																</div>
-																<div class="col-1">
-																	<button type="submit" class="btn btn-icon"
-																		value="Submit">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			class="icon icon-tabler icon-tabler-search"
-																			width="24" height="24" viewBox="0 0 24 24"
-																			stroke-width="2" stroke="currentColor" fill="none"
-																			stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z"
-																				fill="none"></path>
-                          <circle cx="10" cy="10" r="7"></circle>
-                          <line x1="21" y1="21" x2="15" y2="15"></line>
-                        </svg>
-																	</button>
-
-																	</a>
-																</div>
-															</div>
-														</div>
-													</form>
+													
 												</div>
 											</div>
 										</div>

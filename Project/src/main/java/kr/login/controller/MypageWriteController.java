@@ -29,7 +29,7 @@ public class MypageWriteController implements Controller {
 		MemberMyBatisDAO a= new MemberMyBatisDAO();
 		int cmw =a.myWriteCount(vo.getLogin_id());
 	    session.setAttribute("cmw", cmw);
-	    int cmc =a.myWriteCount(vo.getLogin_id());
+	    int cmc =a.myCommentCount(vo.getLogin_id());
 	    session.setAttribute("cmc", cmc);
 		return "mypage/mypageWrite";
 	}

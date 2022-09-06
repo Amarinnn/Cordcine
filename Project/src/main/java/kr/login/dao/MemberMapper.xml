@@ -320,7 +320,7 @@
 
 	<select id="toallComment" parameterType="int"
 		resultType="kr.toBoard.entity.to_comment">
-		select * from t_together_comment where tb_seq=#{tb_seq} order by
+		select c.*, (select u_grade from t_login t where t.login_id=c.login_id) as u_grade from t_together_comment c where tb_seq=#{tb_seq} order by
 		tb_cmt_seq
 	</select>
 

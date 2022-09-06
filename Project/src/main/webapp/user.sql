@@ -15,6 +15,9 @@ primary key (user_num)
 
 );
 
+select c.*, (select u_grade from t_login t where t.login_id=c.login_id) as u_grade from t_together_comment c where tb_seq=#{tb_seq} order by
+		tb_cmt_seq
+
 select * from t_together_comment where tb_seq=2 order by
 		tb_cmt_seq
 

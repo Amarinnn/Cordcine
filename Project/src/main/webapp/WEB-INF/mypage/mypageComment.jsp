@@ -11,7 +11,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-<title>empty</title>
+<title>FOR THE URTH</title>
 <!-- CSS files -->
 <link href="${cpath}/css/tabler.css" rel="stylesheet" />
 <link href="${cpath}/css/tabler-vendors.css" rel="stylesheet" />
@@ -26,7 +26,7 @@
 	href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <link rel="stylesheet" href="${cpath}/css/my/sub.css">
 <link rel="stylesheet" href="${cpath}/css/my/kakao.css">
-<title>Bootstrap Example</title>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"
 	viewport-fit=cover" >
@@ -52,7 +52,7 @@
 		$.each(data, function(index, obj) {
 				
 				html += "<tr>";
-				html += "<td class='text-center'>01</td>";
+				html += "<td class='text-center'></td>";
 				html += "<td><a href='#' class='text-reset '>" + obj.buy_cmt_content+"</a></td>";
 				html += "<td class='text-muted  text-center'><img src='#' alt='icon'>" + obj.login_id+"</td>";
 				html += "<td class='text-muted  text-center'>" + obj.buy_cmt_date.split(' ')[0]+"</td>";
@@ -80,7 +80,7 @@
 		$.each(data, function(index, obj) {
 			
 				html += "<tr>";
-				html += "<td class='text-center'>01</td>";
+			 	html += "<td class='text-center'></td>"; 
 				html += "<td><a href='#' class='text-reset '>" + obj.zw_cmt_content+"</a></td>";
 				html += "<td class='text-muted  text-center'><img src='#' alt='icon'>" + obj.login_id+"</td>";
 				html += "<td class='text-muted  text-center'>" + obj.zw_cmt_date.split(' ')[0]+"</td>";
@@ -108,7 +108,7 @@ function imgList() {
 		$.each(data, function(index, obj) {
 			
 				html += "<tr>";
-				html += "<td class='text-center'>01</td>";
+				html += "<td class='text-center'></td>";
 				html += "<td><a href='#' class='text-reset '>" + obj.zw_cmt_content+"</a></td>";
 				html += "<td class='text-muted  text-center'><img src='#' alt='icon'>" + obj.login_id+"</td>";
 				html += "<td class='text-muted  text-center'>" + obj.zw_cmt_date.split(' ')[0]+"</td>";
@@ -137,8 +137,22 @@ function imgList() {
 				<!--프로필 시작-->
 
 				<div class="card-body text-center mb-4">
-					<span class="avatar avatar-xl mb-3 avatar-rounded"
-						style="background-image: url(https://img.freepik.com/premium-vector/illustration-of-earth-character-sprouts_279539-60.jpg?w=1060)"></span>
+						<c:if test="${mvo.u_grade eq '지구프랜즈'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p1.jpg)"></span>
+					</c:if>
+					<c:if test="${mvo.u_grade eq '지구지킴단'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p2.jpg)"></span>
+					</c:if>
+					<c:if test="${mvo.u_grade eq '지구특공대'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p3.jpg)"></span>
+					</c:if>
+					<c:if test="${mvo.u_grade eq '지구어벤져스'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p4.jpg)"></span>
+					</c:if>
+					<c:if test="${mvo.u_grade eq 'admin'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/kf.gif)"></span>
+					</c:if>
+
 					<h3 class="m-0 mb-1">
 						<a href="#">${mvo.u_nick }</a>
 					</h3>
@@ -157,7 +171,7 @@ function imgList() {
 					</div>
 				</div>
 				<p class="text-center">
-					<small>다음 등급까지 ${100-mvo.u_point} 포인트</small>
+					<small>다음 등급까지<span class="text-orange strong">${100-mvo.u_point}</span> 포인트</small>
 				</p>
 				<div
 					class="list-group list-group-transparent mb-3 ml-3  theme-light mb-5">
@@ -199,18 +213,18 @@ function imgList() {
 										href="#tabs-img-14" class="nav-link" data-bs-toggle="tab"
 										aria-selected="false" role="tab" tabindex="-1">이미지</a></li>
 								</ul>
-								<div class="card-body">
-									<div class="tab-content">
-										<div class="tab-pane active snow" id="tabs-home-14"
+								<div class="card" id="sche">
+									<div class="p-0 tab-content card-body card-body-scrollable card-body-scrollable-shadow" >
+										<div class="tab-pane active divide-y" id="tabs-home-14"
 											role="tabpanel">
-											<div>
+											<div class="">
 												<div class="bg-light border-y">
 													<div class="table-responsive">
 														<table class="table table-vcenter table-hover">
 															<thead>
 																<tr>
 																	<!-- 제로웨이스트 -->
-																	<th>번호</th>
+																	<th></th>
 																	<th>내용</th>
 																	<th>ID</th>
 																	<th>등록일</th>
@@ -219,7 +233,7 @@ function imgList() {
 															<tbody>
 																<c:forEach var="vo" items="${list}">
 																	<tr>
-																		<td class="text-center">01</td>
+																		<td class="text-center"></td>
 																		<td><a href="#" class="text-reset ">${vo.zw_cmt_content}</a></td>
 																		<td class="text-muted  text-center"><img src="#"
 																			alt="icon">${vo.login_id}</td>
@@ -232,80 +246,11 @@ function imgList() {
 															</tbody>
 														</table>
 													</div>
-													<div class="card-footer d-flex align-items-center py-2">
-														<ul class="pagination m-0 m-auto">
-															<li class="page-item disabled"><a class="page-link"
-																href="#" tabindex="-1" aria-disabled="true"> <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-																	<svg xmlns="http://www.w3.org/2000/svg" class="icon"
-																		width="24" height="24" viewBox="0 0 24 24"
-																		stroke-width="2" stroke="currentColor" fill="none"
-																		stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"
-																			fill="none" />
-                        <polyline points="15 6 9 12 15 18" />
-                      </svg> prev
-															</a></li>
-															<li class="page-item"><a class="page-link" href="#">1</a></li>
-															<li class="page-item"><a class="page-link" href="#">2</a></li>
-															<li class="page-item"><a class="page-link" href="#">3</a></li>
-															<li class="page-item"><a class="page-link" href="#">4</a></li>
-															<li class="page-item"><a class="page-link" href="#">5</a></li>
-															<li class="page-item"><a class="page-link" href="#">
-																	next <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-																	<svg xmlns="http://www.w3.org/2000/svg" class="icon"
-																		width="24" height="24" viewBox="0 0 24 24"
-																		stroke-width="2" stroke="currentColor" fill="none"
-																		stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"
-																			fill="none" />
-                        <polyline points="9 6 15 12 9 18" />
-                      </svg>
-															</a></li>
-														</ul>
-
-													</div>
-													<form action="#" method="#">
-														<div class="card-footer">
-															<div class="row m-auto mb-3">
-
-																<div class="col-3"></div>
-																<div class="col-auto">
-																	<select type="text" class="form-select"
-																		placeholder="Select a date" id="select-tags" value="">
-																		<option value="content">내용</option>
-																		<option value="writer">작성자</option>
-																	</select>
-																</div>
-																<div class="col-4">
-																	<div class="input-group">
-																		<input type="text" class="form-control"
-																			aria-label="Text input with dropdown button">
-																	</div>
-																</div>
-																<div class="col-1">
-																	<button type="submit" class="btn btn-icon"
-																		value="Submit">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			class="icon icon-tabler icon-tabler-search"
-																			width="24" height="24" viewBox="0 0 24 24"
-																			stroke-width="2" stroke="currentColor" fill="none"
-																			stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z"
-																				fill="none"></path>
-                          <circle cx="10" cy="10" r="7"></circle>
-                          <line x1="21" y1="21" x2="15" y2="15"></line>
-                        </svg>
-																	</button>
-
-																	</a>
-																</div>
-															</div>
-														</div>
-													</form>
+													
 												</div>
 											</div>
 										</div>
-										<div class="tab-pane" id="tabs-profile-14" role="tabpanel">
+										<div class="tab-pane divide-y" id="tabs-profile-14" role="tabpanel">
 											<div>
 												<div class="bg-light border-y">
 													<div class="table-responsive">
@@ -313,7 +258,7 @@ function imgList() {
 															<thead>
 																<tr>
 																	<!-- 비건 -->
-																	<th>번호</th>
+																	<th></th>
 																	<th>내용</th>
 																	<th>ID</th>
 																	<th>등록일</th>
@@ -324,89 +269,19 @@ function imgList() {
 															</tbody>
 														</table>
 													</div>
-													<div class="card-footer d-flex align-items-center py-2">
-														<ul class="pagination m-0 m-auto">
-															<li class="page-item disabled"><a class="page-link"
-																href="#" tabindex="-1" aria-disabled="true"> <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-																	<svg xmlns="http://www.w3.org/2000/svg" class="icon"
-																		width="24" height="24" viewBox="0 0 24 24"
-																		stroke-width="2" stroke="currentColor" fill="none"
-																		stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"
-																			fill="none" />
-                        <polyline points="15 6 9 12 15 18" />
-                      </svg> prev
-															</a></li>
-															<li class="page-item"><a class="page-link" href="#">1</a></li>
-															<li class="page-item"><a class="page-link" href="#">2</a></li>
-															<li class="page-item"><a class="page-link" href="#">3</a></li>
-															<li class="page-item"><a class="page-link" href="#">4</a></li>
-															<li class="page-item"><a class="page-link" href="#">5</a></li>
-															<li class="page-item"><a class="page-link" href="#">
-																	next <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-																	<svg xmlns="http://www.w3.org/2000/svg" class="icon"
-																		width="24" height="24" viewBox="0 0 24 24"
-																		stroke-width="2" stroke="currentColor" fill="none"
-																		stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"
-																			fill="none" />
-                        <polyline points="9 6 15 12 9 18" />
-                      </svg>
-															</a></li>
-														</ul>
-
-													</div>
-													<form action="#" method="#">
-														<div class="card-footer">
-															<div class="row m-auto mb-3">
-
-																<div class="col-3"></div>
-																<div class="col-auto">
-																	<select type="text" class="form-select"
-																		placeholder="Select a date" id="select-tags" value="">
-																		<option value="title">제목</option>
-																		<option value="writer">작성자</option>
-																		<option value="content">내용</option>
-																	</select>
-																</div>
-																<div class="col-4">
-																	<div class="input-group">
-																		<input type="text" class="form-control"
-																			aria-label="Text input with dropdown button">
-																	</div>
-																</div>
-																<div class="col-1">
-																	<button type="submit" class="btn btn-icon"
-																		value="Submit">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			class="icon icon-tabler icon-tabler-search"
-																			width="24" height="24" viewBox="0 0 24 24"
-																			stroke-width="2" stroke="currentColor" fill="none"
-																			stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z"
-																				fill="none"></path>
-                          <circle cx="10" cy="10" r="7"></circle>
-                          <line x1="21" y1="21" x2="15" y2="15"></line>
-                        </svg>
-																	</button>
-
-																	</a>
-																</div>
-															</div>
-														</div>
-													</form>
+									
 												</div>
 											</div>
 										</div>
-										<div class="tab-pane" id="tabs-activity-14" role="tabpanel">
-											<div>
-												<div class="bg-light border-y">
+										<div class="tab-pane divide-y " id="tabs-activity-14" role="tabpanel">
+											<div class="">
+												<div class="bg-light border-y ">
 													<div class="table-responsive">
 														<table class="table table-vcenter table-hover">
 															<thead>
 																<tr>
 																	<!-- 함께해요 -->
-																	<th>번호</th>
+																	<th></th>
 																	<th>내용</th>
 																	<th>ID</th>
 																	<th>등록일</th>
@@ -418,88 +293,18 @@ function imgList() {
 															</tbody>
 														</table>
 													</div>
-													<div class="card-footer d-flex align-items-center py-2">
-														<ul class="pagination m-0 m-auto">
-															<li class="page-item disabled"><a class="page-link"
-																href="#" tabindex="-1" aria-disabled="true"> <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-																	<svg xmlns="http://www.w3.org/2000/svg" class="icon"
-																		width="24" height="24" viewBox="0 0 24 24"
-																		stroke-width="2" stroke="currentColor" fill="none"
-																		stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"
-																			fill="none" />
-                        <polyline points="15 6 9 12 15 18" />
-                      </svg> prev
-															</a></li>
-															<li class="page-item"><a class="page-link" href="#">1</a></li>
-															<li class="page-item"><a class="page-link" href="#">2</a></li>
-															<li class="page-item"><a class="page-link" href="#">3</a></li>
-															<li class="page-item"><a class="page-link" href="#">4</a></li>
-															<li class="page-item"><a class="page-link" href="#">5</a></li>
-															<li class="page-item"><a class="page-link" href="#">
-																	next <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-																	<svg xmlns="http://www.w3.org/2000/svg" class="icon"
-																		width="24" height="24" viewBox="0 0 24 24"
-																		stroke-width="2" stroke="currentColor" fill="none"
-																		stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"
-																			fill="none" />
-                        <polyline points="9 6 15 12 9 18" />
-                      </svg>
-															</a></li>
-														</ul>
-
-													</div>
-													<form action="#" method="#">
-														<div class="card-footer">
-															<div class="row m-auto mb-3">
-
-																<div class="col-3"></div>
-																<div class="col-auto">
-																	<select type="text" class="form-select"
-																		placeholder="Select a date" id="select-tags" value="">
-																		<option value="title">제목</option>
-																		<option value="writer">작성자</option>
-																		<option value="content">내용</option>
-																	</select>
-																</div>
-																<div class="col-4">
-																	<div class="input-group">
-																		<input type="text" class="form-control"
-																			aria-label="Text input with dropdown button">
-																	</div>
-																</div>
-																<div class="col-1">
-																	<button type="submit" class="btn btn-icon"
-																		value="Submit">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			class="icon icon-tabler icon-tabler-search"
-																			width="24" height="24" viewBox="0 0 24 24"
-																			stroke-width="2" stroke="currentColor" fill="none"
-																			stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z"
-																				fill="none"></path>
-                          <circle cx="10" cy="10" r="7"></circle>
-                          <line x1="21" y1="21" x2="15" y2="15"></line>
-                        </svg>
-																	</button>
-
-																	</a>
-																</div>
-															</div>
-														</div>
-													</form>
+												
 												</div>
 											</div>
 										</div>
-										<div class="tab-pane" id="tabs-img-14" role="tabpanel">
+										<div class="tab-pane divide-y" id="tabs-img-14" role="tabpanel">
 											<div>
 												<div class="bg-light border-y">
 													<div class="table-responsive">
 														<table class="table table-vcenter table-hover">
 															<thead>
 																<tr>
-																	<th>번호</th>
+																	<th></th>
 																	<th>내용</th>
 																	<th>ID</th>
 																	<th>등록일</th>
@@ -511,77 +316,8 @@ function imgList() {
 															</tbody>
 														</table>
 													</div>
-													<div class="card-footer d-flex align-items-center py-2">
-														<ul class="pagination m-0 m-auto">
-															<li class="page-item disabled"><a class="page-link"
-																href="#" tabindex="-1" aria-disabled="true"> <!-- Download SVG icon from http://tabler-icons.io/i/chevron-left -->
-																	<svg xmlns="http://www.w3.org/2000/svg" class="icon"
-																		width="24" height="24" viewBox="0 0 24 24"
-																		stroke-width="2" stroke="currentColor" fill="none"
-																		stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"
-																			fill="none" />
-                        <polyline points="15 6 9 12 15 18" />
-                      </svg> prev
-															</a></li>
-															<li class="page-item"><a class="page-link" href="#">1</a></li>
-															<li class="page-item"><a class="page-link" href="#">2</a></li>
-															<li class="page-item"><a class="page-link" href="#">3</a></li>
-															<li class="page-item"><a class="page-link" href="#">4</a></li>
-															<li class="page-item"><a class="page-link" href="#">5</a></li>
-															<li class="page-item"><a class="page-link" href="#">
-																	next <!-- Download SVG icon from http://tabler-icons.io/i/chevron-right -->
-																	<svg xmlns="http://www.w3.org/2000/svg" class="icon"
-																		width="24" height="24" viewBox="0 0 24 24"
-																		stroke-width="2" stroke="currentColor" fill="none"
-																		stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z"
-																			fill="none" />
-                        <polyline points="9 6 15 12 9 18" />
-                      </svg>
-															</a></li>
-														</ul>
-
-													</div>
-													<form action="#" method="#">
-														<div class="card-footer">
-															<div class="row m-auto mb-3">
-
-																<div class="col-3"></div>
-																<div class="col-auto">
-																	<select type="text" class="form-select"
-																		placeholder="Select a date" id="select-tags" value="">
-																		<option value="title">제목</option>
-																		<option value="writer">작성자</option>
-																		<option value="content">내용</option>
-																	</select>
-																</div>
-																<div class="col-4">
-																	<div class="input-group">
-																		<input type="text" class="form-control"
-																			aria-label="Text input with dropdown button">
-																	</div>
-																</div>
-																<div class="col-1">
-																	<button type="submit" class="btn btn-icon"
-																		value="Submit">
-																		<svg xmlns="http://www.w3.org/2000/svg"
-																			class="icon icon-tabler icon-tabler-search"
-																			width="24" height="24" viewBox="0 0 24 24"
-																			stroke-width="2" stroke="currentColor" fill="none"
-																			stroke-linecap="round" stroke-linejoin="round">
-                          <path stroke="none" d="M0 0h24v24H0z"
-																				fill="none"></path>
-                          <circle cx="10" cy="10" r="7"></circle>
-                          <line x1="21" y1="21" x2="15" y2="15"></line>
-                        </svg>
-																	</button>
-
-																	</a>
-																</div>
-															</div>
-														</div>
-													</form>
+												
+													
 												</div>
 											</div>
 										</div>
