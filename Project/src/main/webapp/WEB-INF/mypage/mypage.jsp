@@ -54,27 +54,41 @@
 				<!--프로필 시작-->
 
 				<div class="card-body text-center mb-4">
-					<span class="avatar avatar-xl mb-3 avatar-rounded"
-						style="background-image: url(https://img.freepik.com/premium-vector/illustration-of-earth-character-sprouts_279539-60.jpg?w=1060)"></span>
+				<c:if test="${mvo.u_grade eq '씨앗'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/K-002.jpg)"></span>
+					</c:if>
+					<c:if test="${mvo.u_grade eq '새싹'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/K-001.jpg)"></span>
+					</c:if>
+					<c:if test="${mvo.u_grade eq '나무'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/K-002.jpg)"></span>
+					</c:if>
+					<c:if test="${mvo.u_grade eq '숲'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/K-002.jpg)"></span>
+					</c:if>
+					<c:if test="${mvo.u_grade eq 'admin'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/K-004.jpg)"></span>
+					</c:if>
+<!-- 					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(https://img.freepik.com/premium-vector/illustration-of-earth-character-sprouts_279539-60.jpg?w=1060)"></span> -->
 					<h3 class="m-0 mb-1">
 						<a href="#">${mvo.u_nick }</a>
 					</h3>
 					<div class="text-muted">${mvo.login_id }</div>
 					<div class="mt-3">
-						<span class="badge bg-blue-lt">등급</span>
+						<span class="badge bg-blue-lt">${mvo.u_grade}</span>
 					</div>
 				</div>
 				<!-- 프로필 끝-->
 
 				<div class="progress mb-2">
-					<div class="progress-bar" style="width: 20%" role="progressbar"
+					<div class="progress-bar" style="width: ${mvo.u_point}%" role="progressbar"
 						aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"
 						aria-label="38% Complete">
 						<span class="visually-hidden">38% Complete</span>
 					</div>
 				</div>
 				<p class="text-center">
-					<small>포인트</small>
+					<small>다음 등급까지<span class="text-orange strong">${100-mvo.u_point}</span> 포인트</small>
 				</p>
 				<div
 					class="list-group list-group-transparent mb-3 ml-3  theme-light mb-5">
@@ -82,10 +96,10 @@
 						class="list-group-item list-group-item-action d-flex align-items-center"
 						href="${cpath}/memberView.do"> 내 프로필 수정 </a> <a
 						class="list-group-item list-group-item-action d-flex align-items-center"
-						href="${cpath}/mypageWrite.do"> 내가 쓴 글 <small class="text-muted ms-auto">45</small>
+						href="${cpath}/mypageWrite.do"> 내가 쓴 글 <small class="text-muted ms-auto">${cmw} </small>
 					</a> <a
 						class="list-group-item list-group-item-action d-flex align-items-center"
-						href="${cpath}/mypageComment.do"> 내가 쓴 댓글 <small class="text-muted ms-auto">88</small>
+						href="${cpath}/mypageComment.do"> 내가 쓴 댓글 <small class="text-muted ms-auto">${cmc} </small>
 					</a>
 				</div>
 			</div>
@@ -104,16 +118,11 @@
 			</div>
 		</div>
 
-	</div>
-	</div>
 	<!-- footer -->
 	<!-- WEB-INF폴더에서 사용시 page="../footer/footer.jsp"로 변경 -->
 	<jsp:include page="../../footer/footer.jsp" />
-	</div>
-	</div>
 
 
 
-	</script>
 </body>
 </html>

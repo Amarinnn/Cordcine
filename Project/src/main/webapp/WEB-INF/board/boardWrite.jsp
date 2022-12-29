@@ -9,11 +9,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
   <title>FOR THE URTH
   </title>
   <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-   
+   <script src="${cpath }/js/summernote/summernote-lite.js"></script>
+<script src="${cpath }/js/summernote/lang/summernote-ko-KR.js"></script>
 
 <link rel="stylesheet" href="${cpath }/css/summernote/summernote-lite.css">
 
@@ -61,12 +63,10 @@
     	});
  	 })
 	function checkForm(){
-		var text = $('#title').val();
-		
-		console.log(text)
-		
+		change.innerHTML="<input type ="
+		var title = $('#title').val();
 		var content = $('#tinymce-default').val();
-		if(text == ""){
+		if(title == ""){
 			alert("제목을 입력하세요")
 			$('#title').focus();
 			return false
@@ -78,9 +78,9 @@
 			return false
 		}
 		
-		
 		return true
 	}
+	
 
 
 </script>
@@ -96,7 +96,7 @@
       <div class="cover-wrap">
         <div class="container">
           <div class="cover">
-            제로웨이스트
+            제로웨이스트/비건
           </div>
         </div>
       </div>
@@ -108,7 +108,7 @@
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2></br>
+                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2>
                   글작성
                 </h2>
               </div>
@@ -127,9 +127,7 @@
                       <select type="text" class="form-select " name ="headval" placeholder="Select" id="headline-tags" value="">
                         <option value="제로웨이스트">제로웨이스트</option>
                         <option value="비건">비건</option>
-                        
                       </select>
-                      
                     </div>
                 </td>
     				<td><input type="text" id="title" name="title" class="form-control"/></td>
@@ -142,10 +140,10 @@
     				<Td colspan="2"><input type="file" name = "filename"></Td>
     			</tr>
     			<tr>
-    				<Td colspan="2" align="right">
+    				<td colspan="2" align="right">
     				<button type="submit" class="btn btn-outline-success w-5">등록</button>
     				<button type="button" class ="btn btn-outline-danger w-5" onclick="location.href='${cpath }/zwlist.do'">취소</button>
-    				</Td>
+    				</td>
     			</tr>
     		</table>
     	</form>
@@ -154,6 +152,9 @@
         <jsp:include page="../../footer/footer.jsp" />
   </div>
   </div>
+  </div>
+  </div>
+  
 
 </body>
 </html>

@@ -29,7 +29,6 @@
   <!-- my -->
   <link rel="stylesheet" href="${cpath}/css/my/sub.css">
   <link rel="stylesheet" href="${cpath}/css/my/dy.css">
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" viewport-fit=cover">
 <script
@@ -152,17 +151,15 @@ $(document).ready(function(){
   					comm+="<div class='col-3 m-auto'>";
   					comm+="<div class='form-selectgroup-label-content d-flex align-items-center '>";
   					comm+="<span class='avatar avatar-m avatar-rounded  me-3'";
-  					comm+="style='background-image: url(./dist/img/my/sample2.jpg)'></span>";
+  					comm+="style='background-image: url(${cpath}"+obj.u_grade+")'></span>";
   					comm+="<div>"
   					comm+="<div class='font-weight-medium'>"+obj.login_id+"</div>";
   					comm+='<div class="text-muted"><small>'+obj.zw_cmt_date+'</small></div>';
   					comm+='</div>';
   					comm+='</div>';
   					comm+='</div>';
-					
-					
-					
-					if(obj.login_id=="${mvo.login_id}"){
+
+  					if(obj.login_id=="${mvo.login_id}"){
 						comm+='<div class="col-7 px-0" id="cmt'+obj.zw_cmt_seq+'">'+obj.zw_cmt_content.replace("\n","<br>")+'</div>';
 						comm+='<div class="col m-auto">';
 						comm+='<div class="row mt-2">';
@@ -211,7 +208,12 @@ $(document).ready(function(){
   		}
   	
   	}
-  	
+  	function goNotice(num){
+  		location.href="${cpath}/boardNotice.do?num="+ num;
+  	}
+  	function delNotice(num){
+  		location.href="${cpath}/delNotice.do?num="+num;
+  	}
   	
   	</script>
   	
@@ -241,7 +243,7 @@ $(document).ready(function(){
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2></br>
+                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2>
               </div>
             </div>
           </div>
@@ -286,10 +288,26 @@ $(document).ready(function(){
   				
     			
     			<td colspan="4" align="right">
-    			<c:if test="${vo.login_id  eq mvo.login_id}">
-    				<button class="btn btn-outline-success w-5" onclick="goUpdate(${vo.zw_seq})">수정</button>
-    				<button class="btn btn-outline-danger w-5" onclick="goDel(${vo.zw_seq})">삭제</button>
-    			</c:if>
+    			<c:choose>
+	    			<c:when test="${mvo.u_type eq 'admin' }">
+	    				<c:choose>
+			    			<c:when test="${vo.notice eq 0 }">
+			    				<button class="btn btn-sm btn-warning" onclick="goNotice(${vo.zw_seq})">공지</button>
+			    			</c:when>
+			    			<c:otherwise>
+			    				<button class="btn btn-sm btn-warning" onclick="delNotice(${vo.zw_seq})">공지 제거</button>
+			    			</c:otherwise>
+	    				</c:choose>
+	    				<button class="btn btn-sm btn-warning" onclick="goUpdate(${vo.zw_seq})">수정</button>
+	    				<button class="btn btn-sm btn-danger" onclick="goDel(${vo.zw_seq})">삭제</button>
+	    			</c:when>
+	    			
+	    			<c:when test="${vo.login_id  eq mvo.login_id}">
+	    				<button class="btn btn-sm btn-warning" onclick="goUpdate(${vo.zw_seq})">수정</button>
+	    				<button class="btn btn-sm btn-danger" onclick="goDel(${vo.zw_seq})">삭제</button>
+	    			</c:when>
+	    		</c:choose>
+
     			<button class="btn btn-outline-primary w-5" onclick="goList()">목록</button>
     			</td>
     		</tr>
@@ -330,7 +348,7 @@ $(document).ready(function(){
                         <div class="col-3 m-auto">
                           <div class="form-selectgroup-label-content d-flex align-items-center ">
                             <span class="avatar avatar-m avatar-rounded  me-3"
-                              style="background-image: url(./dist/img/my/sample2.jpg)"></span>
+                              style="background-image: url(${cpath}${grade })"></span>
                             <div>
                               <div class="font-weight-medium">${mvo.login_id }</div>
                               <div class="text-muted"><small>grade</small></div>
@@ -378,6 +396,7 @@ $(document).ready(function(){
         <jsp:include page="../../footer/footer.jsp" />
   </div>
   </div>
-
+</div>
+</div>
 </body>
 </html>

@@ -208,7 +208,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                  <a class="nav-link" href="${cpath}/weeklyView.do">
+                    <a class="nav-link" href="${cpath}/weeklyView.do">
                       <span class="nav-link-title">
                         주간인기검색어
                       </span>
@@ -236,8 +236,9 @@
                         <a class="dropdown-item" href="${cpath }/imgList.do">
                           Gallery
                         </a>
-                        <a class="dropdown-item" href="#">
-                          함께해요
+                       <a class="dropdown-item" href="${cpath }/tolist.do?page=1">
+                            함께해요
+                          </a>
                         </a>
                         <a class="dropdown-item" href="${cpath }/gradeList.do">
                           등급제게시판
@@ -246,24 +247,23 @@
                       </div>
                     </div>
                   </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#navbar-layout" role="button" aria-expanded="false">
-                      <span class="nav-link-title ">
-                        정보게시판
-                      </span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-arrow">
-                      <div class="dropdown-menu-columns">
-                        <div class="dropdown-menu-column">
-                          <a class="dropdown-item" href="${cpath}/callist.do">
-                            칼럼게시판
-                          </a>
-                          <a class="dropdown-item" href="./layout-boxed.html">
-                            Boxed
-                          </a>
-                          
-                        </div>
+                <li class="nav-item active dropdown">
+                  <a class="nav-link dropdown-toggle" href="#navbar-layout" role="button" aria-expanded="false">
+                    <span class="nav-link-title ">
+                      정보게시판
+                    </span>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-arrow">
+                    <div class="dropdown-menu-columns">
+                      <div class="dropdown-menu-column">
+                        <a class="dropdown-item" href="${cpath}/callist.do">
+                          칼럼 Archive
+                        </a>
+                        <a class="dropdown-item" href="${cpath}/buylist.do">
+                          공동구매
+                        </a>
                       </div>
+                    </div>
                     </div>
                   </li>
 
@@ -323,26 +323,17 @@
                 </div>
               </div>
               <div class="row">
-
               </div>
-
             </div>
             <div class="row mb-3">
-              <div class="col-md-3">
+             <div class="col-md-3">
                 <div class="card">
                   <div class="card-status-start bg-blue"></div>
                   <div class="card-body">
-                    <h3 class="card-title text-truncate"><a href="#" class="text-truncate">Card with side status
-                        orem
-                        ipsum d</a>
+                    <h3 class="card-title text-truncate"><a href="#" class="text-truncate">${zw.zw_title }</a>
                     </h3>
-                    <div class="text-muted mb-1 hei">Lorem ipsum dolor sit amet, consectetur adipisicing
-                      elit.
-                      Aperiam deleniti
-                      fugit incidunt,
-                      iste, itaque minima
-                      neque pariatur perferendis sed suscipit velit vitae voluptatem.</div>
-                    <p class="text-muted text-end"><small>2022-01-01</small></p>
+                    <div class="text-muted mb-1 hei">${zw.zw_content }</div>
+                    <p class="text-muted text-end"><small>${zw.zw_date }</small></p>
                   </div>
                 </div>
               </div>
@@ -350,17 +341,10 @@
                 <div class="card">
                   <div class="card-status-start bg-blue"></div>
                   <div class="card-body">
-                    <h3 class="card-title text-truncate"><a href="#" class="text-truncate">Card with side status
-                        orem
-                        ipsum d</a>
+                    <h3 class="card-title text-truncate"><a href="#" class="text-truncate">${img.img_title }</a>
                     </h3>
-                    <div class="text-muted mb-1 hei">Lorem ipsum dolor sit amet, consectetur adipisicing
-                      elit.
-                      Aperiam deleniti
-                      fugit incidunt,
-                      iste, itaque minima
-                      neque pariatur perferendis sed suscipit velit vitae voluptatem.</div>
-                    <p class="text-muted text-end"><small>2022-01-01</small></p>
+                    <div class="text-muted mb-1 hei">${img.img_content }</div>
+                    <p class="text-muted text-end"><small>{img.img_regdate</small></p>
                   </div>
                 </div>
               </div>
@@ -368,17 +352,10 @@
                 <div class="card">
                   <div class="card-status-start bg-blue"></div>
                   <div class="card-body">
-                    <h3 class="card-title text-truncate"><a href="#" class="text-truncate">Card with side status
-                        orem
-                        ipsum d</a>
+                    <h3 class="card-title text-truncate"><a href="#" class="text-truncate">${to.tb_title }</a>
                     </h3>
-                    <div class="text-muted mb-1 hei">Lorem ipsum dolor sit amet, consectetur adipisicing
-                      elit.
-                      Aperiam deleniti
-                      fugit incidunt,
-                      iste, itaque minima
-                      neque pariatur perferendis sed suscipit velit vitae voluptatem.</div>
-                    <p class="text-muted text-end"><small>2022-01-01</small></p>
+                    <div class="text-muted mb-1 hei">${to.tb_content }</div>
+                    <p class="text-muted text-end"><small>${to.tb_regdate }</small></p>
                   </div>
                 </div>
               </div>
@@ -386,17 +363,10 @@
                 <div class="card">
                   <div class="card-status-start bg-blue"></div>
                   <div class="card-body">
-                    <h3 class="card-title text-truncate"><a href="#" class="text-truncate">Card with side status
-                        orem
-                        ipsum d</a>
+                    <h3 class="card-title text-truncate"><a href="#" class="text-truncate">${buy.buy_title}</a>
                     </h3>
-                    <div class="text-muted mb-1 hei">Lorem ipsum dolor sit amet, consectetur adipisicing
-                      elit.
-                      Aperiam deleniti
-                      fugit incidunt,
-                      iste, itaque minima
-                      neque pariatur perferendis sed suscipit velit vitae voluptatem.</div>
-                    <p class="text-muted text-end"><small>2022-01-01</small></p>
+                    <div class="text-muted mb-1 hei">${buy.buy_content }</div>
+                    <p class="text-muted text-end"><small>${buy.buy_regdate }</small></p>
                   </div>
                 </div>
               </div>

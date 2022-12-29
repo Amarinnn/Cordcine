@@ -12,7 +12,14 @@ public class Zw_Board {
 	private int notice;
 	private int zw_cmtcnt;
 	private String zw_headline;
+	private String u_grade;
 	
+	public String getU_grade() {
+		return u_grade;
+	}
+	public void setU_grade(String u_grade) {
+		this.u_grade = u_grade;
+	}
 	public String getZw_headline() {
 		return zw_headline;
 	}

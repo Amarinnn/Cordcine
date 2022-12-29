@@ -25,6 +25,12 @@ public class Notice {
 //	private int zw_likes;
 //	private int zw_cmtcnt;  //댓글수
 	
+	public String getHeadline() {
+		return headline;
+	}
+	public void setHeadline(String headline) {
+		this.headline = headline;
+	}
 	public String getFiles() {
 		return files;
 	}

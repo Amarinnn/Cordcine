@@ -6,6 +6,15 @@ public class zw_comment {
 	private String zw_cmt_content;
 	private String zw_cmt_date;
 	private String login_id;
+	private String u_grade;
+	
+	
+	public String getU_grade() {
+		return u_grade;
+	}
+	public void setU_grade(String u_grade) {
+		this.u_grade = u_grade;
+	}
 	public int getZw_cmt_seq() {
 		return zw_cmt_seq;
 	}

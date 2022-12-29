@@ -85,7 +85,7 @@ $(document).ready(function(){
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2></br>
+                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2>
                  <form action="${cpath }/hlSearch.do" method="get" id="searchForm" >
                   <select type="text" class="from-select" name="headval" id="headline-tags" value="">
                     	<option value="제로웨이스트">제로웨이스트</option>

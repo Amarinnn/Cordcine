@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 
 import kr.board.dao.BoardMyBatisDAO;
 import kr.login.controller.Controller;
+import kr.toBoard.entity.ToBoard;
 import kr.zw_board.entity.BoardPaging;
 import kr.zw_board.entity.Member;
 import kr.zw_board.entity.Zw_Board;
@@ -50,9 +51,34 @@ public class PageListController implements Controller {
 		board.end_Page(Integer.parseInt(p));
 		board.setCurrentPage(Integer.parseInt(p));
 		List<Zw_Board> list=dao.someList(board);
+		System.out.println(list.get(1).getU_grade());
+		for (Zw_Board to : list) {
+			if(to.getU_grade()==null) {
+				System.out.println("ㅇㅇㅇ");
+				continue;
+			}
+			if(to.getU_grade().equals("지구프랜즈")) {
+				to.setU_grade("/img/my/1.png");
+			}
+			else if(to.getU_grade().equals("지구지킴단")) {
+				to.setU_grade("/img/my/2.png");
+			}
+			else if(to.getU_grade().equals("지구특공대")) {
+				to.setU_grade("/img/my/3.png");
+			}
+			else if(to.getU_grade().equals("지구어벤져스")) {
+				to.setU_grade("/img/my/4.png");
+			}
+			else if(to.getU_grade().equals("admin")) {
+				to.setU_grade("/img/my/5.png");
+			}
+			
+		}
 		
 		List<Zw_Board> notice_list =dao.noticeList();
+		
 		System.out.println(board.getNumPageCount());
+		
 		request.setAttribute("notice", notice_list);
 		
 		request.setAttribute("list", list);

@@ -18,8 +18,8 @@ public class GradeCommentUpdateController implements Controller {
 		int grade_cmt_seq = Integer.parseInt(request.getParameter("grade_cmt_seq"));
 		String grade_cmt_content = request.getParameter("grade_cmt_content");
 		Grade_comment gcom = new Grade_comment();
-		gcom.setgrade_cmt_seq(grade_cmt_seq);
-		gcom.setgrade_cmt_content(grade_cmt_content);
+		gcom.setGrade_cmt_seq(grade_cmt_seq);
+		gcom.setGrade_cmt_content(grade_cmt_content);
 		BoardMyBatisDAO dao = new BoardMyBatisDAO();
 		dao.gradeCommentUpdate(gcom);
 		

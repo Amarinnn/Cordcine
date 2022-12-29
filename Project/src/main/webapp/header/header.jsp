@@ -13,7 +13,8 @@
         <div class="container-xl">
           <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
             <a href=".">
-              <img src="" width="110" height="32" alt="Logo" class="navbar-brand-image">
+              <img src="${cpath }/img/my/logo.png" alt="Logo"  width="90rem" height="auto" >
+              <img src="./static/logo.svg" width="110" height="32" alt="Logo" class="navbar-brand-image">
             </a>
           </h1>
           <div class="navbar-nav flex-row order-md-last">
@@ -69,8 +70,6 @@
 	                          <div class="col text-truncate">
 	                            <a href="#" class="text-body d-block">Example 2</a>
 	                            <div class="d-block text-muted text-truncate mt-n1">
-	                              justify-content:between ⇒ justify-content:space-between
-	                              (#29734)
 	                            </div>
 	                          </div>
 	                          <div class="col-auto">
@@ -93,7 +92,6 @@
 	                          <div class="col text-truncate">
 	                            <a href="#" class="text-body d-block">Example 3</a>
 	                            <div class="d-block text-muted text-truncate mt-n1">
-	                              Update change-version.js (#29736)
 	                            </div>
 	                          </div>
 	                          <div class="col-auto">
@@ -208,8 +206,8 @@
                         </a>
                         <a class="dropdown-item" href="${cpath }/imgList.do">
                           Gallery
-                        </a>
-                        <a class="dropdown-item" href="#">
+                         </a>
+                        <a class="dropdown-item" href="${cpath }/tolist.do?page=1">
                           함께해요
                         </a>
                         <a class="dropdown-item" href="${cpath }/gradeList.do">
@@ -232,8 +230,8 @@
                         <a class="dropdown-item" href="${cpath}/callist.do">
                           칼럼게시판
                         </a>
-                        <a class="dropdown-item" href="./layout-boxed.html">
-                          Boxed
+                        <a class="dropdown-item" href="${cpath }/buylist.do">
+                          공동구매
                         </a>
                       </div>
                     </div>

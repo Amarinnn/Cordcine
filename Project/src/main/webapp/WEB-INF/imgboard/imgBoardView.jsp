@@ -152,7 +152,7 @@ $(document).ready(function(){
   					comm+="<div class='col-3 m-auto'>";
   					comm+="<div class='form-selectgroup-label-content d-flex align-items-center '>";
   					comm+="<span class='avatar avatar-m avatar-rounded  me-3'";
-  					comm+="style='background-image: url(./dist/img/my/sample2.jpg)'></span>";
+  					comm+="style='background-image: url(${cpath}"+obj.u_grade+")'></span>";
   					comm+="<div>"
   					comm+="<div class='font-weight-medium'>"+obj.login_id+"</div>";
   					comm+='<div class="text-muted"><small>'+obj.img_cmt_date+'</small></div>';
@@ -338,7 +338,7 @@ $(document).ready(function(){
                         <div class="col-3 m-auto">
                           <div class="form-selectgroup-label-content d-flex align-items-center ">
                             <span class="avatar avatar-m avatar-rounded  me-3"
-                              style="background-image: url(./dist/img/my/sample2.jpg)"></span>
+                              style="background-image: url(${cpath}${grade })"></span>
                             <div>
                               <div class="font-weight-medium">${mvo.login_id }</div>
                               <div class="text-muted"><small>grade</small></div>
@@ -424,6 +424,7 @@ $(document).ready(function(){
       Copyright© 2022 코D카인. All Right Reserved.
     </div>
   </footer>
+  </div>
   </div>
   </div>
 

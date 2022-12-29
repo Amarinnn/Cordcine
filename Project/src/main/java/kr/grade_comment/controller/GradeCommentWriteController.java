@@ -27,12 +27,12 @@ public class GradeCommentWriteController implements Controller {
 		String grade_cmt_content = request.getParameter("grade_cmt_content");
 	
 		Grade_comment cb = new Grade_comment();
-		cb.setgrade_seq(grade_seq);
+		cb.setGrade_seq(grade_seq);
 		cb.setLogin_id(login_id);
-		cb.setgrade_cmt_content(grade_cmt_content);
+		cb.setGrade_cmt_content(grade_cmt_content);
 		
 		BoardMyBatisDAO dao = new BoardMyBatisDAO();
-		System.out.println(cb.getgrade_seq());
+		System.out.println(cb.getGrade_seq());
 		dao.gradeCommentWrite(cb);
 		
 //		List<grade_comment> list = dao.allComment(grade_seq);

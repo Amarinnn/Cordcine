@@ -56,13 +56,6 @@ function fn_subdel(login_id){
 			<!-- 여기까지 header -->
 
 
-
-
-
-
-
-
-
 			<!------------여기부터 입력----------->
 			<div class="container-xl">
 		<div class="page-header mb-3">
@@ -79,27 +72,40 @@ function fn_subdel(login_id){
 				<!--프로필 시작-->
 
 				<div class="card-body text-center mb-4">
-					<span class="avatar avatar-xl mb-3 avatar-rounded"
-						style="background-image: url(https://img.freepik.com/premium-vector/illustration-of-earth-character-sprouts_279539-60.jpg?w=1060)"></span>
+				<c:if test="${mvo.u_grade eq '지구프랜즈'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p1.jpg)"></span>
+					</c:if>
+					<c:if test="${mvo.u_grade eq '지구지킴단'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p2.jpg)"></span>
+					</c:if>
+					<c:if test="${mvo.u_grade eq '지구특공대'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p3.jpg)"></span>
+					</c:if>
+					<c:if test="${mvo.u_grade eq '지구어벤져스'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/p4.jpg)"></span>
+					</c:if>
+					<c:if test="${mvo.u_grade eq 'admin'}">
+					<span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url(${cpath}/img/my/kf.gif)"></span>
+					</c:if>
 					<h3 class="m-0 mb-1">
-						<a href="#">닉네임</a>
+						<a href="#">${mvo.u_nick }</a>
 					</h3>
-					<div class="text-muted">ID</div>
+					<div class="text-muted">${mvo.login_id }</div>
 					<div class="mt-3">
-						<span class="badge bg-blue-lt">등급</span>
+						<span class="badge bg-blue-lt">${mvo.u_grade}</span>
 					</div>
 				</div>
 				<!-- 프로필 끝-->
 
 				<div class="progress mb-2">
-					<div class="progress-bar" style="width: 20%" role="progressbar"
+					<div class="progress-bar" style="width: ${mvo.u_point}%" role="progressbar"
 						aria-valuenow="38" aria-valuemin="0" aria-valuemax="100"
 						aria-label="38% Complete">
 						<span class="visually-hidden">38% Complete</span>
 					</div>
 				</div>
 				<p class="text-center">
-					<small>포인트</small>
+					<small>다음 등급까지<span class="text-orange strong">${100-mvo.u_point}</span> 포인트</small>
 				</p>
 				<div
 					class="list-group list-group-transparent mb-3 ml-3  theme-light mb-5">
@@ -107,10 +113,10 @@ function fn_subdel(login_id){
 						class="list-group-item list-group-item-action d-flex align-items-center"
 						href="${cpath}/memberView.do"> 내 프로필 수정 </a> <a
 						class="list-group-item list-group-item-action d-flex align-items-center"
-						href="${cpath}/mypageWrite.do"> 내가 쓴 글 <small class="text-muted ms-auto">45</small>
+						href="${cpath}/mypageWrite.do"> 내가 쓴 글 <small class="text-muted ms-auto">${cmw} </small>
 					</a> <a
 						class="list-group-item list-group-item-action d-flex align-items-center"
-						href="${cpath}/mypageComment.do"> 내가 쓴 댓글 <small class="text-muted ms-auto">88</small>
+						href="${cpath}/mypageComment.do"> 내가 쓴 댓글 <small class="text-muted ms-auto">${cmc} </small>
 					</a>
 				</div>
 			</div>

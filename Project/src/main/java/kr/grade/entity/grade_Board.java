@@ -12,8 +12,14 @@ public class grade_Board {
 	private int grade_likes;
 	private int grade_cmtcnt;  //댓글수
 	private int notice;
+	private String u_grade;
 	
-	
+	public String getU_grade() {
+		return u_grade;
+	}
+	public void setU_grade(String u_grade) {
+		this.u_grade = u_grade;
+	}
 	public int getGrade_seq() {
 		return grade_seq;
 	}

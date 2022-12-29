@@ -1,6 +1,7 @@
 package kr.zw_board.controller;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,7 +34,6 @@ public class LikeController implements Controller {
 		Map<String,Object> m = new HashMap<>();
 		m.put("no",zw_seq);
 		m.put("id",login_id);
-		ImgBoardMyBatisDAO dao = new ImgBoardMyBatisDAO();
 		
 		BoardMyBatisDAO dao = new BoardMyBatisDAO();
 		int result = dao.likeCheck(m);

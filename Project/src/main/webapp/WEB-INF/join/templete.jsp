@@ -16,7 +16,8 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<jsp:include page="../header/header.jsp" />
+<<<<<<< HEAD
+	<jsp:include page="${cpath }header/header.jsp" />
 	<div class="container">
 		<h2>MVC02</h2>
 		<div class="panel panel-default">

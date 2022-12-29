@@ -97,7 +97,7 @@ $(document).ready(function(){
       <div class="cover-wrap">
         <div class="container">
           <div class="cover">
-            제로웨이스트
+            제로웨이스트/비건
           </div>
         </div>
       </div>
@@ -109,7 +109,7 @@ $(document).ready(function(){
             <div class="row g-2 align-items-center">
               <div class="col">
                 <h2 class="page-title">
-                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2></br>
+                <a href="${cpath }/zwlist.do">제로웨이스트/비건</a> </h2>
               </div>
             </div>
           </div>
@@ -163,6 +163,12 @@ $(document).ready(function(){
         <jsp:include page="../../footer/footer.jsp" />
   </div>
   </div>
+<<<<<<< HEAD
+  </div>
+  </div>
+
+=======
+>>>>>>> a9aa297390baeee79bfc3fd88db4b4841527f1c4
 
 </body>
 </html>

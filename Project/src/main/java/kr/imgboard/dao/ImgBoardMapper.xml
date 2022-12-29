@@ -33,7 +33,8 @@
 
  
  <select id="imgallComment" parameterType="int" resultType="kr.img_comment.entity.Img_comment">
- 	select * from t_img_comment where img_seq=#{img_seq} order by img_cmt_seq
+ 	select c.*, (select u_grade from t_login t where t.login_id=c.login_id) as u_grade from t_img_comment c where img_seq=#{img_seq} order by img_cmt_seq
+
  </select>
  
  <select id ="imglikeCheck" parameterType="map" resultType="int">

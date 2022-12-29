@@ -150,8 +150,9 @@ $("#kakao-login-btn").on("click", function(){
 			
 			  var param = {
 				  user_name : res.kakao_account.profile.nickname,
-				  login_id : res.kakao_account.email, 
-				  u_nick : id
+				  email : res.kakao_account.email,
+				  login_id : id, 
+				  u_nick : res.kakao_account.profile.nickname
     			}
 			  
 			  
